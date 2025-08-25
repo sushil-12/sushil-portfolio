@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Mail, Phone, MapPin } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import heroImage from '../assets/hero.jpg';
 
 // Small helper component for the eyebrow text

@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, Star, Clock } from 'lucide-react';
 
+// Import project images
+import wpvipImage from '../assets/project/wpvip.png';
+import limoImage from '../assets/project/1800limo.png';
+import metaImage from '../assets/project/meta.jpg';
+import hegroupImage from '../assets/project/hegroup.png';
+
 // Project interface
 interface Project {
   title: string;
@@ -108,15 +114,10 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
   // Function to get project image based on title
   const getProjectImage = (title: string) => {
     const titleLower = title.toLowerCase();
-    if (titleLower.includes('wpvip')) return '/src/assets/project/wpvip.png';
-    if (titleLower.includes('1800limo')) return '/src/assets/project/1800limo.png';
-    if (titleLower.includes('metahub') || titleLower.includes('meta')) return '/src/assets/project/meta.jpg';
-    if (titleLower.includes('hegroup')) return '/src/assets/project/hegroup.png';
-    if (titleLower.includes('pups4sale')) return '/src/assets/project/pups4sale.png';
-    if (titleLower.includes('gitmate')) return '/src/assets/project/gitmate.png';
-    if (titleLower.includes('witlingo')) return '/src/assets/project/witlingo.png';
-    if (titleLower.includes('vetted')) return '/src/assets/project/vetted.png';
-    if (titleLower.includes('llm')) return '/src/assets/project/llm.png';
+    if (titleLower.includes('wpvip')) return wpvipImage;
+    if (titleLower.includes('1800limo')) return limoImage;
+    if (titleLower.includes('metahub') || titleLower.includes('meta')) return metaImage;
+    if (titleLower.includes('hegroup')) return hegroupImage;
     return null; // No image available
   };
 

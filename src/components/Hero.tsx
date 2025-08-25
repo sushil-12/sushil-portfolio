@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar } from 'lucide-react';
+import { Calendar, Mail, Phone, MapPin } from 'lucide-react';
+import heroImage from '../assets/hero.jpg';
 
 // Small helper component for the eyebrow text
 const SectionEyebrow: React.FC<{ children: React.ReactNode }> = ({ children }) => (
@@ -13,7 +14,7 @@ const SectionEyebrow: React.FC<{ children: React.ReactNode }> = ({ children }) =
 const DeveloperIllustration: React.FC = () => (
   <div className="p-4 rounded-xl">
     <img 
-      src="src/assets/hero.jpg" 
+      src={heroImage} 
       alt="Developer Illustration" 
       className="w-full h-80 md:h-100 object-cover rounded-lg " 
     />

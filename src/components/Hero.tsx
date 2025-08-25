@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Mail, Phone, MapPin } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 
 // Small helper component for the eyebrow text
 const SectionEyebrow: React.FC<{ children: React.ReactNode }> = ({ children }) => (

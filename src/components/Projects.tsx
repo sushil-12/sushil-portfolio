@@ -7,6 +7,11 @@ import wpvipImage from '../assets/project/wpvip.png';
 import limoImage from '../assets/project/1800limo.png';
 import metaImage from '../assets/project/meta.jpg';
 import hegroupImage from '../assets/project/hegroup.png';
+import pups4saleImage from '../assets/project/pups4sale.png';
+import gitmateImage from '../assets/project/gitmate.png';
+import witlingoImage from '../assets/project/witlingo.png';
+import vettedImage from '../assets/project/vetted.png';
+import llmImage from '../assets/project/llm.png';
 
 // Project interface
 interface Project {
@@ -118,6 +123,11 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
     if (titleLower.includes('1800limo')) return limoImage;
     if (titleLower.includes('metahub') || titleLower.includes('meta')) return metaImage;
     if (titleLower.includes('hegroup')) return hegroupImage;
+    if (titleLower.includes('pups4sale')) return pups4saleImage;
+    if (titleLower.includes('gitmate')) return gitmateImage;
+    if (titleLower.includes('witlingo')) return witlingoImage;
+    if (titleLower.includes('vetted')) return vettedImage;
+    if (titleLower.includes('llm')) return llmImage;
     return null; // No image available
   };
 

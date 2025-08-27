@@ -1,92 +1,22 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { User, Share2, Download, X } from 'lucide-react';
-import FreelancerBusinessCard from './FreelancerBusinessCard';
-
-// Dynamic import for dom-to-image to avoid SSR issues
-let domtoimage: any = null;
-if (typeof window !== 'undefined') {
-  import('dom-to-image').then(module => {
-    domtoimage = module.default;
-  });
-}
+import businessCardImage from '../assets/business-card.png';
 
 const FloatingBusinessCardButton: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
 
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
 
-  // Business card data
-  const businessCardData = {
-    name: 'Sushil Kumar',
-    title: 'Full Stack Developer & UI/UX Designer',
-    services: [
-      'ReactJS/NextJS',
-      'NodeJS',
-      'UI/UX Design',
-      'Mobile Apps',
-      'Database Design',
-      'API Integration'
-    ],
-    highlights: [
-      {
-        title: 'E-commerce Platforms',
-        desc: 'Built scalable e-commerce solutions with modern tech stacks'
-      },
-      {
-        title: 'SaaS Applications',
-        desc: 'Developed enterprise SaaS platforms with complex workflows'
-      },
-      {
-        title: 'Mobile Apps',
-        desc: 'Created cross-platform mobile applications using React Native'
-      },
-      {
-        title: 'AI Integration',
-        desc: 'Integrated AI services and machine learning models'
-      }
-    ],
-    links: {
-      github: 'https://github.com/sushil-12',
-      linkedin: 'https://www.linkedin.com/in/er-sushil-maurya',
-      email: 'developer.er.sushil@gmail.com'
-    },
-    accentColor: 'emerald-500'
-  };
-
-  const handleHire = () => {
-    // Scroll to contact section
-    const contactSection = document.getElementById('contact-heading');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
-    handleClose();
-  };
-
-  const handleDownloadPNG = async () => {
-    if (cardRef.current && domtoimage) {
-      try {
-        const dataUrl = await domtoimage.toPng(cardRef.current, {
-          quality: 1.0,
-          bgcolor: '#ffffff',
-          width: cardRef.current.offsetWidth * 2,
-          height: cardRef.current.offsetHeight * 2,
-          style: {
-            'transform': 'scale(2)',
-            'transform-origin': 'top left'
-          }
-        });
-        
-        const link = document.createElement('a');
-        link.download = 'sushil-kumar-business-card.png';
-        link.href = dataUrl;
-        link.click();
-      } catch (error) {
-        console.error('Error generating PNG:', error);
-      }
-    }
+  const handleDownloadImage = () => {
+    // Create a temporary link element to download the image directly
+    const link = document.createElement('a');
+    link.href = businessCardImage;
+    link.download = 'sushil-kumar-business-card.png';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const handleShare = async () => {
@@ -136,51 +66,50 @@ const FloatingBusinessCardButton: React.FC = () => {
       {/* Business Card Display */}
       {isOpen && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="relative">
-            {/* Business Card Content */}
-            <div className="relative" ref={cardRef}>
-              <FreelancerBusinessCard 
-                {...businessCardData}
-                onHire={handleHire}
-                showTrigger={false}
-              />
-              
-              {/* Overlay Action Buttons */}
-              <div className="absolute bottom-2 right-4 flex flex-row gap-2">
-                {/* Share Button */}
-                <motion.button
-                  onClick={handleShare}
-                  className="p-3 bg-black hover:bg-gray-600 text-white rounded-full shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  title="Share"
-                >
-                  <Share2 className="w-4 h-4" />
-                </motion.button>
-                
-                {/* Download Button */}
-                <motion.button
-                  onClick={handleDownloadPNG}
-                  className="p-3 bg-emerald-600 hover:bg-emerald-800 text-white rounded-full shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  title="Download PNG"
-                >
-                  <Download className="w-4 h-4" />
-                </motion.button>
-              </div>
-              
-              {/* Close Button */}
+          <div className="relative max-w-none">
+            {/* Business Card Image */}
+            <img 
+              src={businessCardImage} 
+              alt="Sushil Kumar Business Card" 
+              className="max-w-none h-auto shadow-2xl"
+              style={{ borderRadius: 'inherit' }}
+            />
+            
+            {/* Overlay Action Buttons */}
+            <div className="absolute top-4 right-4 flex flex-col gap-2">
+              {/* Share Button */}
               <motion.button
-                onClick={handleClose}
-                className="absolute top-4 left-4 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-neutral-500"
+                onClick={handleShare}
+                className="p-3 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                title="Close"
+                title="Share"
               >
-                <X className="w-5 h-5 text-neutral-600" />
+                <Share2 className="w-4 h-4" />
+              </motion.button>
+
+              {/* Download Button */}
+              <motion.button
+                onClick={handleDownloadImage}
+                className="p-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                title="Download Image"
+              >
+                <Download className="w-4 h-4" />
               </motion.button>
             </div>
+            
+            {/* Close Button */}
+            <motion.button
+              onClick={handleClose}
+              className="absolute top-4 left-4 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-neutral-500"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              title="Close"
+            >
+              <X className="w-5 h-5 text-neutral-600" />
+            </motion.button>
           </div>
         </div>
       )}

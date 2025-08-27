@@ -1,5 +1,31 @@
 @import "tailwindcss";
 
+/* Custom CSS Variables for Accent Colors */
+:root {
+  --emerald-500: #10b981;
+  --blue-500: #3b82f6;
+  --purple-500: #8b5cf6;
+  --pink-500: #ec4899;
+  --red-500: #ef4444;
+  --orange-500: #f97316;
+  --yellow-500: #eab308;
+  --green-500: #22c55e;
+  --indigo-500: #6366f1;
+  --teal-500: #14b8a6;
+  --cyan-500: #06b6d4;
+  --rose-500: #f43f5e;
+  --amber-500: #f59e0b;
+  --lime-500: #84cc16;
+  --violet-500: #8b5cf6;
+  --fuchsia-500: #d946ef;
+  --sky-500: #0ea5e9;
+  --slate-500: #64748b;
+  --gray-500: #6b7280;
+  --zinc-500: #71717a;
+  --neutral-500: #737373;
+  --stone-500: #78716c;
+}
+
 @theme {
   --font-family-sans: 'Montserrat', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
   
@@ -14,6 +40,9 @@
   --color-neutral-800: #262626;
   --color-neutral-900: #171717;
   --color-neutral-950: #0a0a0a;
+  --color-primary: #10b981;
+  --color-secondary: #3b82f6;
+  --color-accent: #8b5cf6;
 }
 
 /* Custom base styles */

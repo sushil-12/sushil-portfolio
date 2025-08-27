@@ -1,18 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar } from 'lucide-react';
+import { Calendar, User } from 'lucide-react';
 import heroImage from '../assets/hero.jpg';
 
-// Small helper component for the eyebrow text
-const SectionEyebrow: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className="text-xl font-semibold tracking-tight text-neutral-800 mb-6">
+interface HeroProps {
+  onOpenBusinessCard?: () => void;
+}
+
+const SectionEyebrow = ({ children }: { children: React.ReactNode }) => (
+  <p className="text-sm font-semibold text-emerald-600 uppercase tracking-wide mb-4">
     {children}
-  </div>
+  </p>
 );
 
-// Developer illustration SVG component
-const DeveloperIllustration: React.FC = () => (
-  <div className="p-4 rounded-xl">
+const DeveloperIllustration = () => (
+  <div className="relative">
     <img 
       src={heroImage} 
       alt="Developer Illustration" 
@@ -21,7 +23,7 @@ const DeveloperIllustration: React.FC = () => (
   </div>
 );
 
-const Hero: React.FC = () => {
+const Hero: React.FC<HeroProps> = ({ onOpenBusinessCard }) => {
   const contentVariants = {
     hidden: { opacity: 0, y: 8 },
     visible: { opacity: 1, y: 0 }
@@ -30,6 +32,18 @@ const Hero: React.FC = () => {
   const illustrationVariants = {
     hidden: { opacity: 0, y: 8 },
     visible: { opacity: 1, y: 0 }
+  };
+
+  const handleBookMeeting = () => {
+    // Create Google Meet calendar event
+    const eventTitle = encodeURIComponent('Meeting with Sushil Kumar - Portfolio Discussion');
+    const eventDetails = encodeURIComponent('Let\'s discuss your project requirements and how I can help bring your ideas to life.');
+    
+    // Google Calendar event creation URL
+    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&details=${eventDetails}&dates=20241201T100000Z/20241201T110000Z&add=developer.er.sushil@gmail.com&sf=true&output=xml`;
+    
+    // Open Google Calendar in new tab
+    window.open(googleCalendarUrl, '_blank');
   };
 
   return (
@@ -66,32 +80,15 @@ const Hero: React.FC = () => {
               </p>
             </div>
 
-            {/* Contact Information */}
-            {/* <div className="space-y-3 mb-8">
-              <div className="flex items-center gap-3 text-sm text-neutral-600">
-                <Mail className="w-4 h-4" />
-                <a href="mailto:sushil124maurya@gmail.com" className="hover:text-neutral-900 transition-colors">
-                  sushil124maurya@gmail.com
-                </a>
-              </div>
-              <div className="flex items-center gap-3 text-sm text-neutral-600">
-                <Phone className="w-4 h-4" />
-                <span>+91 8219479708</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm text-neutral-600">
-                <MapPin className="w-4 h-4" />
-                <span>Parwanoo, Himachal Pradesh</span>
-              </div>
-            </div> */}
-            
-            <a
-              href="#contact"
-              aria-label="Book a call"
+            {/* Book a Meeting Button - Restored Original Styling */}
+            <button
+              onClick={handleBookMeeting}
+              aria-label="Book a meeting"
               className="inline-flex items-center gap-2 px-6 py-3 border border-neutral-300 rounded-xl text-neutral-700 font-medium transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 hover:border-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2"
             >
               <Calendar className="w-5 h-5" />
-              Let's Work Together
-            </a>
+              Book a Meeting
+            </button>
           </motion.div>
           
           {/* Right column - Illustration */}

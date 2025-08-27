@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import SideNavigation from './components/Header'
 import Hero from './components/Hero'
 import Skills from './components/Skills'
@@ -5,6 +6,7 @@ import Projects from './components/Projects'
 import Experience from './components/Experience'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import FloatingBusinessCardButton from './components/FloatingBusinessCardButton'
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
       <Experience />
       <Contact />
       <Footer />
+      <FloatingBusinessCardButton />
     </main>
   )
 }

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import SideNavigation from './components/Header'
 import Hero from './components/Hero'
 import Skills from './components/Skills'

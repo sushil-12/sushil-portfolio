@@ -1,11 +1,12 @@
 import React from 'react';
 import FreelancerBusinessCard from './FreelancerBusinessCard';
+import Hero from '../assets/hero.jpg';
 
 const FreelancerBusinessCardDemo: React.FC = () => {
   const sampleData = {
     name: "Sushil Kumar",
     title: "Full-Stack & Mobile Developer",
-    avatarUrl: undefined, // Will use initials
+    avatarUrl: Hero, // Will use initials
     accentColor: "emerald-500",
     services: [
       "React & React Native",
@@ -31,7 +32,7 @@ const FreelancerBusinessCardDemo: React.FC = () => {
     ],
     links: {
       github: "https://github.com/sushilkumar",
-      linkedin: "https://linkedin.com/in/sushilkumar",
+      linkedin: "https://linkedin.com/in/er-sushil-maurya",
       twitter: "https://twitter.com/sushilkumar",
       email: "developer.er.sushil@gmail.com"
     },
@@ -44,7 +45,7 @@ const FreelancerBusinessCardDemo: React.FC = () => {
   const alternativeData = {
     name: "Alex Chen",
     title: "UI/UX Designer & Frontend Developer",
-    avatarUrl: undefined,
+    avatarUrl: Hero,
     accentColor: "blue-500",
     services: [
       "Figma & Adobe Creative Suite",
@@ -66,7 +67,7 @@ const FreelancerBusinessCardDemo: React.FC = () => {
     ],
     links: {
       github: "https://github.com/alexchen",
-      linkedin: "https://linkedin.com/in/alexchen",
+      linkedin: "https://linkedin.com/in/er-sushil-maurya",
       email: "alex@designer.com"
     },
     onHire: () => {

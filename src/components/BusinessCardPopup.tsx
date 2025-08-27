@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import FreelancerBusinessCard from './FreelancerBusinessCard';
+import Hero from '../assets/hero.jpg';
 
 interface BusinessCardPopupProps {
   isOpen: boolean;
@@ -12,7 +13,7 @@ const BusinessCardPopup: React.FC<BusinessCardPopupProps> = ({ isOpen, onClose }
   const sushilData = {
     name: "Sushil Kumar",
     title: "Full-Stack & Mobile Developer",
-    avatarUrl: undefined, // Will use initials
+    avatarUrl: Hero, // Will use initials
     accentColor: "emerald-500",
     services: [
       "React & React Native",
@@ -38,7 +39,7 @@ const BusinessCardPopup: React.FC<BusinessCardPopupProps> = ({ isOpen, onClose }
     ],
     links: {
       github: "https://github.com/sushilkumar",
-      linkedin: "https://linkedin.com/in/sushilkumar",
+      linkedin: "https://linkedin.com/in/er-sushil-maurya",
       twitter: "https://twitter.com/sushilkumar",
       email: "developer.er.sushil@gmail.com"
     },

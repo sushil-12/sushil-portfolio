@@ -1,11 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, User } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import heroImage from '../assets/hero.jpg';
 
-interface HeroProps {
-  onOpenBusinessCard?: () => void;
-}
 
 const SectionEyebrow = ({ children }: { children: React.ReactNode }) => (
   <p className="text-sm font-semibold text-emerald-600 uppercase tracking-wide mb-4">
@@ -23,7 +20,7 @@ const DeveloperIllustration = () => (
   </div>
 );
 
-const Hero: React.FC<HeroProps> = ({ onOpenBusinessCard }) => {
+const Hero: React.FC = () => {
   const contentVariants = {
     hidden: { opacity: 0, y: 8 },
     visible: { opacity: 1, y: 0 }
@@ -36,7 +33,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenBusinessCard }) => {
 
   const handleBookMeeting = () => {
     // Create Google Meet calendar event
-    const eventTitle = encodeURIComponent('Meeting with Sushil Kumar - Portfolio Discussion');
+    const eventTitle = encodeURIComponent('Meeting with Sushil Kumar - Discussion');
     const eventDetails = encodeURIComponent('Let\'s discuss your project requirements and how I can help bring your ideas to life.');
     
     // Google Calendar event creation URL

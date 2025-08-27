@@ -1,20 +1,15 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  X, 
-  Download, 
-  Mail, 
-  Github, 
-  Linkedin, 
-  Twitter, 
-  ExternalLink,
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Mail,
+  Github,
+  Linkedin,
+  X,
   User,
   Briefcase,
-  Star,
-  Award,
-  Calendar,
-  MapPin
-} from 'lucide-react';
+} from "lucide-react";
+import QrCode from "../assets/qrcode.png";
+import Hero from "../assets/hero.jpg";
 
 interface ProjectHighlight {
   title: string;
@@ -52,7 +47,7 @@ const FreelancerBusinessCard: React.FC<FreelancerBusinessCardProps> = ({
   name,
   title,
   avatarUrl,
-  accentColor = '#3B82F6',
+  accentColor = "#3B82F6",
   services,
   highlights,
   links,
@@ -63,24 +58,26 @@ const FreelancerBusinessCard: React.FC<FreelancerBusinessCardProps> = ({
   location,
   availability,
   rating,
-  projectsCompleted
+  projectsCompleted,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const modalRef = useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen] = React.useState(false);
+  const modalRef = React.useRef<HTMLDivElement>(null);
 
   // Focus trap
-  useEffect(() => {
+  React.useEffect(() => {
     if (isOpen) {
       const focusableElements = modalRef.current?.querySelectorAll(
         'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
       );
       const firstElement = focusableElements?.[0] as HTMLElement;
-      const lastElement = focusableElements?.[focusableElements.length - 1] as HTMLElement;
-      
+      const lastElement = focusableElements?.[
+        focusableElements.length - 1
+      ] as HTMLElement;
+
       firstElement?.focus();
 
       const handleTabKey = (e: KeyboardEvent) => {
-        if (e.key === 'Tab') {
+        if (e.key === "Tab") {
           if (e.shiftKey) {
             if (document.activeElement === firstElement) {
               e.preventDefault();
@@ -95,21 +92,21 @@ const FreelancerBusinessCard: React.FC<FreelancerBusinessCardProps> = ({
         }
       };
 
-      document.addEventListener('keydown', handleTabKey);
-      return () => document.removeEventListener('keydown', handleTabKey);
+      document.addEventListener("keydown", handleTabKey);
+      return () => document.removeEventListener("keydown", handleTabKey);
     }
   }, [isOpen]);
 
   // ESC key handler
-  useEffect(() => {
+  React.useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
+      if (e.key === "Escape" && isOpen) {
         setIsOpen(false);
       }
     };
 
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
   }, [isOpen]);
 
   const handleOpen = () => setIsOpen(true);
@@ -120,56 +117,13 @@ const FreelancerBusinessCard: React.FC<FreelancerBusinessCardProps> = ({
     }
   };
 
-  const handleHire = () => {
-    onHire?.();
-    handleClose();
-  };
-
-  const handleDownloadCV = () => {
-    if (resumeUrl) {
-      window.open(resumeUrl, '_blank');
-    }
-  };
-
-  const getInitials = (fullName: string) => {
-    return fullName
-      .split(' ')
-      .map(n => n[0])
-      .join('')
-      .toUpperCase()
-      .slice(0, 2);
-  };
-
-  const renderStars = (rating: number = 0) => {
-    return Array.from({ length: 5 }).map((_, i) => (
-      <Star 
-        key={i} 
-        className={`w-4 h-4 ${i < rating ? 'fill-amber-400 text-amber-400' : 'text-gray-300'}`} 
-      />
-    ));
-  };
-
   // If showTrigger is false, just render the card content directly
   if (!showTrigger) {
     return (
       <div className="max-w-3xl mx-auto bg-white dark:bg-neutral-900 rounded-2xl overflow-hidden shadow-2xl border border-neutral-200 dark:border-neutral-700">
         <div className="flex flex-col lg:flex-row">
-          {/* Left Brand Panel */}
-          <div className="w-full lg:w-[40%] bg-gradient-to-br from-emerald-500 to-emerald-600 p-8 flex flex-col items-center justify-center text-white relative overflow-hidden">
-            {/* Subtle background pattern */}
-            <div className="absolute inset-0 opacity-10">
-              <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <pattern id="circuit-board" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                    <rect x="0" y="0" width="40" height="40" fill="transparent" />
-                    <path d="M0,20 L40,20 M20,0 L20,40" stroke="white" strokeWidth="0.5" fill="none" />
-                    <circle cx="20" cy="20" r="2" fill="white" />
-                  </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#circuit-board)" />
-              </svg>
-            </div>
-
+          {/* Left Panel - Full Black */}
+          <div className="w-full lg:w-[40%] bg-black p-8 flex flex-col items-center justify-center text-white relative">
             {/* Avatar/Logo */}
             <div className="relative z-10 mb-6">
               {avatarUrl ? (
@@ -179,37 +133,36 @@ const FreelancerBusinessCard: React.FC<FreelancerBusinessCardProps> = ({
                   className="w-24 h-24 rounded-full object-cover border-4 border-white/30 shadow-xl"
                 />
               ) : (
-                <div className="w-24 h-24 rounded-full bg-white/20 border-4 border-white/30 flex items-center justify-center text-2xl font-bold shadow-xl">
-                  {getInitials(name)}
+                <div className="w-24 h-24 rounded-full ">
+                 <img src={Hero} alt={`${name} avatar`} className="w-24 h-24 rounded-full object-cover " />
                 </div>
               )}
             </div>
 
             {/* Name & Title */}
             <div className="text-center relative z-10 mb-6">
-              <h2 
-                id="business-card-title"
-                className="text-xl font-bold mb-2"
-              >
+              <h2 id="business-card-title" className="text-xl font-bold mb-2 text-white">
                 {name}
               </h2>
-              <p className="text-base opacity-90 leading-relaxed">
-                {title}
-              </p>
+              <p className="text-base text-white/80 leading-relaxed">{title}</p>
+              <span className="text-sm text-white/70">Crafting fast, scalable apps with user-first design</span>
             </div>
 
             {/* Key Services - Only show top 3 */}
-            <div className="w-full space-y-2 relative z-10">
-              {services.slice(0, 3).map((service, index) => (
-                <div key={index} className="text-center">
-                  <span className="text-sm opacity-80">• {service}</span>
-                </div>
-              ))}
-            </div>
+            
           </div>
 
           {/* Right Content Panel */}
-          <div className="flex-1 p-6 bg-white dark:bg-neutral-900">
+          <div className="flex-1 p-6 bg-white dark:bg-neutral-900 relative">
+            {/* QR Code Section - Top Right */}
+            <div className="absolute top-10 right-4">
+              <div className="flex flex-col items-center">
+                <div className="w-20 h-20 bg-white rounded-lg border border-neutral-300 dark:border-neutral-400 flex items-center justify-center shadow-sm">
+                  <img src={QrCode} alt="QR Code" className="w-18 h-18" />
+                </div>
+              </div>
+            </div>
+
             {/* Contact Info */}
             <div className="mb-6">
               <h3 className="text-lg font-semibold text-neutral-900 dark:text-white mb-3">
@@ -219,51 +172,46 @@ const FreelancerBusinessCard: React.FC<FreelancerBusinessCardProps> = ({
                 {links.email && (
                   <div className="flex items-center gap-3">
                     <Mail className="w-4 h-4 text-neutral-500" />
-                    <span className="text-sm text-neutral-600 dark:text-neutral-400">{links.email}</span>
+                    <span className="text-sm text-neutral-600 dark:text-neutral-400">
+                      {links.email}
+                    </span>
                   </div>
                 )}
                 {links.github && (
                   <div className="flex items-center gap-3">
                     <Github className="w-4 h-4 text-neutral-500" />
-                    <span className="text-sm text-neutral-600 dark:text-neutral-400">github.com/sushil-12</span>
+                    <span className="text-sm text-neutral-600 dark:text-neutral-400">
+                      github.com/sushil-12
+                    </span>
                   </div>
                 )}
                 {links.linkedin && (
                   <div className="flex items-center gap-3">
                     <Linkedin className="w-4 h-4 text-neutral-500" />
-                    <span className="text-sm text-neutral-600 dark:text-neutral-400">linkedin.com/in/sushil-maurya</span>
+                    <span className="text-sm text-neutral-600 dark:text-neutral-400">
+                      linkedin.com/in/er-sushil-maurya
+                    </span>
                   </div>
                 )}
               </div>
             </div>
 
-            {/* Top Skills - Only show top 6 */}
+            {/* Core Skills */}
             <div className="mb-6">
               <h4 className="text-sm font-semibold text-neutral-900 dark:text-white mb-3 flex items-center gap-2">
                 <Briefcase className="w-4 h-4" />
                 Core Skills
               </h4>
-              <div className="flex flex-wrap gap-2">
+              <div className="grid grid-cols-2 gap-2">
                 {services.slice(0, 6).map((service, index) => (
                   <span
                     key={index}
-                    className="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-xs rounded-full border border-neutral-200 dark:border-neutral-700"
+                    className="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-xs rounded-full border border-neutral-200 dark:border-neutral-700 text-center"
                   >
                     {service}
                   </span>
                 ))}
               </div>
-            </div>
-
-            {/* CTA Button */}
-            <div className="mt-auto">
-              <button
-                onClick={handleHire}
-                className="w-full px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 flex items-center justify-center gap-2"
-              >
-                <ExternalLink className="w-4 h-4" />
-                Get In Touch
-              </button>
             </div>
           </div>
         </div>
@@ -319,24 +267,24 @@ const FreelancerBusinessCard: React.FC<FreelancerBusinessCardProps> = ({
               </motion.button>
 
               <div className="p-2 bg-white dark:bg-neutral-900 rounded-2xl">
-                <FreelancerBusinessCard 
-                  {...{ 
-                    name, 
-                    title, 
-                    avatarUrl, 
-                    accentColor, 
-                    services, 
-                    highlights, 
-                    links, 
-                    onHire, 
-                    resumeUrl, 
+                <FreelancerBusinessCard
+                  {...{
+                    name,
+                    title,
+                    avatarUrl,
+                    accentColor,
+                    services,
+                    highlights,
+                    links,
+                    onHire,
+                    resumeUrl,
                     showTrigger: false,
                     experience,
                     location,
                     availability,
                     rating,
-                    projectsCompleted
-                  }} 
+                    projectsCompleted,
+                  }}
                 />
               </div>
             </motion.div>

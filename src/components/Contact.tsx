@@ -10,10 +10,6 @@ interface ContactForm {
   message: string;
 }
 
-interface ContactProps {
-  onOpenBusinessCard?: () => void;
-}
-
 // Contact links data
 const contactLinks = [
   {
@@ -25,7 +21,7 @@ const contactLinks = [
   },
   {
     name: 'LinkedIn',
-    value: 'linkedin.com/in/sushilkumar',
+    value: 'linkedin.com/in/er-sushil-maurya',
     href: 'https://www.linkedin.com/in/sushil-maurya-6256b4154/',
     icon: Linkedin,
     description: 'Connect professionally'
@@ -39,7 +35,7 @@ const contactLinks = [
   }
 ];
 
-const Contact: React.FC<ContactProps> = ({ onOpenBusinessCard }) => {
+const Contact: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState<ContactForm>({
     name: '',
@@ -132,7 +128,7 @@ const Contact: React.FC<ContactProps> = ({ onOpenBusinessCard }) => {
 
   const handleBookMeeting = () => {
     // Create Google Meet calendar event
-    const eventTitle = encodeURIComponent('Meeting with Sushil Kumar - Portfolio Discussion');
+    const eventTitle = encodeURIComponent('Meeting with Sushil Kumar - Discussion');
     const eventDetails = encodeURIComponent('Let\'s discuss your project requirements and how I can help bring your ideas to life.');
     
     // Google Calendar event creation URL

@@ -76,11 +76,11 @@ const FloatingBusinessCardButton: React.FC = () => {
             />
             
             {/* Overlay Action Buttons */}
-            <div className="absolute top-4 right-4 flex flex-col gap-2">
+            <div className="absolute bottom-2 right-4 flex flex-row gap-2">
               {/* Share Button */}
               <motion.button
                 onClick={handleShare}
-                className="p-3 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                className="p-3 bg-black hover:bg-gray-600 text-white rounded-full shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 title="Share"
@@ -91,7 +91,7 @@ const FloatingBusinessCardButton: React.FC = () => {
               {/* Download Button */}
               <motion.button
                 onClick={handleDownloadImage}
-                className="p-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+                className="p-3 bg-black hover:bg-gray-800 text-white rounded-full shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 title="Download Image"

@@ -123,9 +123,13 @@ const ExperienceSliderCard: React.FC<{ experience: ExperienceItem }> = ({ experi
               <MapPin className="w-3 h-3" />
               {experience.location}
             </div>
+          
           </div>
+          <div className="items-center block md:hidden gap-1  text-neutral-600 py-1 rounded-lg text-sm">
+              {experience.period}
+            </div>
         </div>
-        <div className="flex items-center gap-1 bg-neutral-100 text-neutral-600 px-3 py-1 rounded-lg text-sm">
+        <div className="items-center hidden md:block gap-1 bg-neutral-100 text-neutral-600 px-3 py-1 rounded-lg text-sm">
           <Calendar className="w-3 h-3" />
           {experience.period}
         </div>
@@ -211,7 +215,7 @@ const Experience: React.FC = () => {
   return (
     <section
       aria-labelledby="experience-heading"
-      className="mx-auto max-w-7xl px-6 md:px-8 py-16"
+      className="mx-auto max-w-7xl px-6 md:px-8 py-12"
     >
       {/* Section Heading */}
       <h2

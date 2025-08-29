@@ -48,16 +48,16 @@ const Hero: React.FC = () => {
       <header
         id="home"
         aria-labelledby="hero-heading"
-        className="mx-auto max-w-7xl px-6 md:px-8 py-16 md:py-24"
+        className="mx-auto max-w-7xl px-6 md:px-8 py-12 md:py-16"
       >
-        <div className="md:grid md:grid-cols-2 md:gap-12 items-center">
-          {/* Left column - Content */}
+        <div className="grid grid-cols-1 md:grid-cols-2 md:gap-12 items-center">
+          {/* Content - Left side on desktop, full width on mobile */}
           <motion.div
             initial="hidden"
             animate="visible"
             variants={contentVariants}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="mb-12 md:mb-0"
+            className="order-2 md:order-1 text-left"
           >
             <SectionEyebrow>Portfolio</SectionEyebrow>
             
@@ -68,16 +68,22 @@ const Hero: React.FC = () => {
               Hello, I'm Sushil Kumar<span className="text-neutral-600">.</span>
             </h1>
             
-            <div className="space-y-4 text-lg text-neutral-700 mb-8 max-w-xl">
+            <div className="space-y-4 text-lg text-neutral-700 mb-8 max-w-xl mx-auto md:mx-0">
               <p>
                 Full Stack Engineer with 5+ years of experience building scalable web and mobile applications using React.js, Node.js, Next.js, and AWS.
               </p>
+              
+              {/* Illustration - Between paragraphs on mobile, hidden on desktop */}
+              <div className="md:hidden flex justify-center my-8">
+                <DeveloperIllustration />
+              </div>
+              
               <p>
                 Skilled in end-to-end project ownership, UI/UX design, microservices architecture, and CI/CD pipelines. Passionate about delivering high-performance, user-centric solutions.
               </p>
             </div>
 
-            {/* Book a Meeting Button - Restored Original Styling */}
+            {/* Book a Meeting Button */}
             <button
               onClick={handleBookMeeting}
               aria-label="Book a meeting"
@@ -88,13 +94,13 @@ const Hero: React.FC = () => {
             </button>
           </motion.div>
           
-          {/* Right column - Illustration */}
+          {/* Illustration - Right side on desktop only */}
           <motion.div
             initial="hidden"
             animate="visible"
             variants={illustrationVariants}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.08 }}
-            className="flex justify-center md:justify-end"
+            className="hidden md:flex justify-end order-1 md:order-2"
           >
             <DeveloperIllustration />
           </motion.div>

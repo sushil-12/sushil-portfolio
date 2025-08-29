@@ -123,29 +123,29 @@ const FreelancerBusinessCard: React.FC<FreelancerBusinessCardProps> = ({
       <div className="max-w-3xl mx-auto bg-white dark:bg-neutral-900 rounded-2xl overflow-hidden shadow-2xl border border-neutral-200 dark:border-neutral-700">
         <div className="flex flex-col lg:flex-row">
           {/* Left Panel - Full Black */}
-          <div className="w-full lg:w-[40%] bg-black p-8 flex flex-col items-center justify-center text-white relative">
+          <div className="w-full lg:w-[40%] bg-black p-4 sm:p-6 lg:p-8 flex flex-col items-center justify-center text-white relative">
             {/* Avatar/Logo */}
-            <div className="relative z-10 mb-6">
+            <div className="relative z-10 mb-4 sm:mb-6">
               {avatarUrl ? (
                 <img
                   src={avatarUrl}
                   alt={`${name} avatar`}
-                  className="w-24 h-24 rounded-full object-cover border-4 border-white/30 shadow-xl"
+                  className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full object-cover border-4 border-white/30 shadow-xl"
                 />
               ) : (
-                <div className="w-24 h-24 rounded-full ">
-                 <img src={Hero} alt={`${name} avatar`} className="w-24 h-24 rounded-full object-cover " />
+                <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full">
+                 <img src={Hero} alt={`${name} avatar`} className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full object-cover" />
                 </div>
               )}
             </div>
 
             {/* Name & Title */}
-            <div className="text-center relative z-10 mb-6">
-              <h2 id="business-card-title" className="text-xl font-bold mb-2 text-white">
+            <div className="text-center relative z-10 mb-4 sm:mb-6">
+              <h2 id="business-card-title" className="text-lg sm:text-xl font-bold mb-2 text-white">
                 {name}
               </h2>
-              <p className="text-base text-white/80 leading-relaxed">{title}</p>
-              <span className="text-sm text-white/70">Crafting fast, scalable apps with user-first design</span>
+              <p className="text-sm sm:text-base text-white/80 leading-relaxed">{title}</p>
+              <span className="text-xs sm:text-sm text-white/70">Crafting fast, scalable apps with user-first design</span>
             </div>
 
             {/* Key Services - Only show top 3 */}
@@ -250,23 +250,23 @@ const FreelancerBusinessCard: React.FC<FreelancerBusinessCardProps> = ({
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="rounded-2xl shadow-2xl w-full max-w-4xl overflow-hidden"
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="business-card-title"
+              className="bg-white dark:bg-neutral-900 rounded-2xl shadow-2xl w-full max-w-[95vw] sm:max-w-[90vw] md:max-w-[800px] lg:max-w-[900px] overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
             >
-              {/* Close Button */}
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={handleClose}
-                className="absolute top-4 right-4 z-10 p-2 bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm rounded-full hover:bg-white dark:hover:bg-neutral-800 transition-colors focus:outline-none focus:ring-2 focus:ring-neutral-500"
-                aria-label="Close modal"
-              >
-                <X className="w-5 h-5 text-neutral-600 dark:text-neutral-400" />
-              </motion.button>
+              {/* Header */}
+              <div className="flex items-center justify-between p-4 sm:p-6 border-b border-neutral-200 dark:border-neutral-700">
+                <h2 className="text-lg sm:text-xl font-bold text-neutral-900 dark:text-white">Business Card</h2>
+                <button
+                  onClick={handleClose}
+                  className="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg transition-colors"
+                  aria-label="Close popup"
+                >
+                  <X className="w-5 h-5 text-neutral-600 dark:text-neutral-400" />
+                </button>
+              </div>
 
-              <div className="p-2 bg-white dark:bg-neutral-900 rounded-2xl">
+              {/* Freelancer Business Card Content */}
+              <div className="p-3 sm:p-4 md:p-6">
                 <FreelancerBusinessCard
                   {...{
                     name,

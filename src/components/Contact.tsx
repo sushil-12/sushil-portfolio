@@ -158,7 +158,7 @@ const Contact: React.FC = () => {
   return (
     <section
       aria-labelledby="contact-heading"
-      className="mx-auto max-w-7xl px-6 md:px-8 py-16"
+      className="mx-auto max-w-7xl px-6 md:px-8 py-12"
     >
       <motion.div
         variants={containerVariants}

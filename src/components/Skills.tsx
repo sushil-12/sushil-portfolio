@@ -86,7 +86,7 @@ const Skills: React.FC = () => {
   return (
     <section
       aria-labelledby="skills-heading"
-      className="mx-auto max-w-7xl px-6 md:px-8 py-16"
+      className="mx-auto max-w-7xl px-6 md:px-8 py-12"
     >
       {/* Section Heading */}
       <h2 

@@ -1,0 +1,41 @@
+# Open Graph Image Placeholder
+
+## Instructions for creating og-image.jpg
+
+1. **Image Specifications:**
+   - Size: 1200x630 pixels (recommended by Facebook, Twitter, LinkedIn)
+   - Format: JPG or PNG
+   - File size: Under 8MB (preferably under 1MB for faster loading)
+
+2. **Design Guidelines:**
+   - Include your name: "Sushil Kumar"
+   - Add your title: "Full Stack Developer & Software Engineer"
+   - Include your website URL: "sushilhub.com"
+   - Use your brand colors (currently set to #3B82F6)
+   - Add a professional photo or logo
+   - Keep text readable and not too cluttered
+   - Ensure it looks good when cropped to square (for some social platforms)
+
+3. **Tools to create the image:**
+   - Canva (templates available for social media)
+   - Figma
+   - Adobe Photoshop/Illustrator
+   - Online tools like og-image.vercel.app
+
+4. **File Placement:**
+   - Save the image as `og-image.jpg` in the `/public` folder
+   - The path will be: `/public/og-image.jpg`
+   - This will be accessible at: `https://sushilhub.com/og-image.jpg`
+
+5. **Testing:**
+   - Use Facebook's Sharing Debugger: https://developers.facebook.com/tools/debug/
+   - Use Twitter's Card Validator: https://cards-dev.twitter.com/validator
+   - Use LinkedIn's Post Inspector: https://www.linkedin.com/post-inspector/
+
+## Current Configuration
+The og-image is configured in:
+- `/src/config/seo.ts` (line with ogImage: "/og-image.jpg")
+- `/index.html` (Open Graph meta tags)
+- `/src/components/SEOHead.tsx` (dynamic meta tag generation)
+
+Replace this placeholder file with your actual og-image.jpg when ready.

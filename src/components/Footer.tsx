@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from '../assets/logo.png';
 
 const Footer: React.FC = () => {
   return (
@@ -6,8 +7,11 @@ const Footer: React.FC = () => {
       <div className="mx-auto max-w-7xl px-6 md:px-8 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           {/* Left side - Copyright */}
-          <div className="text-sm text-neutral-300">
-            © 2025 Sushil Kumar. All rights reserved.
+          <div className="flex flex-col space-x-4 gap-4">
+            <img src={Logo} alt="Sushil Kumar" className="w-40 h-auto" />
+            <div className="text-sm text-neutral-300">
+              © 2025 Sushil Kumar. All rights reserved.
+            </div>
           </div>
           
           {/* Right side - Links */}

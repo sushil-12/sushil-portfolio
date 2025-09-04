@@ -6,19 +6,25 @@ import Experience from './components/Experience'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import FloatingBusinessCardButton from './components/FloatingBusinessCardButton'
+import SEOHead from './components/SEOHead'
+import Analytics from './components/Analytics'
 
 function App() {
   return (
-    <main className="min-h-screen bg-white">
-      <SideNavigation />
-      <Hero />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Contact />
-      <Footer />
-      <FloatingBusinessCardButton />
-    </main>
+    <>
+      <SEOHead />
+      <Analytics />
+      <main className="min-h-screen bg-white">
+        <SideNavigation />
+        <Hero />
+        <Skills />
+        <Projects />
+        <Experience />
+        <Contact />
+        <FloatingBusinessCardButton />
+        <Footer />
+      </main>
+    </>
   )
 }
 

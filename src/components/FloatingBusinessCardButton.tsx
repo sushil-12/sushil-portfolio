@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, Share2, Download, X } from 'lucide-react';
-import businessCardImage from '../assets/business-card.png';
+import OptimizedImage from './OptimizedImage';
 
 const FloatingBusinessCardButton: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +27,7 @@ const FloatingBusinessCardButton: React.FC = () => {
 
   const handleDownloadImage = () => {
     const link = document.createElement('a');
-    link.href = businessCardImage;
+    link.href = '/src/assets/business-card.png';
     link.download = 'sushil-kumar-business-card.png';
     document.body.appendChild(link);
     link.click();
@@ -94,8 +94,8 @@ const FloatingBusinessCardButton: React.FC = () => {
               transition={{ type: 'spring', stiffness: 150, damping: 18 }}
             >
               {/* Business Card */}
-              <img
-                src={businessCardImage}
+              <OptimizedImage
+                src="/src/assets/business-card.png"
                 alt="Sushil Kumar Business Card"
                 className="
                   w-[90vw] 
@@ -111,6 +111,7 @@ const FloatingBusinessCardButton: React.FC = () => {
                   border-neutral-800 
                   object-contain
                 "
+                priority={true}
               />
 
               {/* Action Buttons */}

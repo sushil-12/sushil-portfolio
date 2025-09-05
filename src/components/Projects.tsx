@@ -1,17 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Star, Clock } from 'lucide-react';
-
-// Import project images
-import wpvipImage from '../assets/project/wpvip.png';
-import limoImage from '../assets/project/1800limo.png';
-import metaImage from '../assets/project/meta.jpg';
-import hegroupImage from '../assets/project/hegroup.png';
-import pups4saleImage from '../assets/project/pups4sale.png';
-import gitmateImage from '../assets/project/gitmate.png';
-import witlingoImage from '../assets/project/witlingo.png';
-import vettedImage from '../assets/project/vetted.png';
-import llmImage from '../assets/project/llm.png';
+import { ExternalLink, FileText, Star, Clock } from 'lucide-react';
+import ProjectImage from './ProjectImage';
+import CaseStudyPopup from './CaseStudyPopup';
+import { getCaseStudyById } from '../data/caseStudies';
 
 // Project interface
 interface Project {
@@ -19,7 +11,7 @@ interface Project {
   description: string;
   tech: string[];
   live: string;
-  github: string;
+  caseStudyId?: string;
   category: 'featured' | 'past';
 }
 
@@ -30,14 +22,14 @@ const categories = {
   past: { name: 'Past Projects', icon: Clock }
 } as const;
 
-// Projects data - Updated with ALL of Sushil's real projects
+// Projects data - Updated with case study IDs
 const projects: Project[] = [
   {
     title: "WPVIP.com",
     description: "Official website of WPVIP. Built custom plugins for WordPress VIP, Gutenberg blocks, and comprehensive WordPress solutions.",
     tech: ["WordPress", "PHP", "Gutenberg", "Custom Plugins", "WordPress VIP"],
     live: "https://wpvip.com",
-    github: "https://github.com/sushil-kumar/wpvip",
+    caseStudyId: "wpvip",
     category: "featured"
   },
   {
@@ -45,7 +37,7 @@ const projects: Project[] = [
     description: "Online limousine booking platform with real-time communication. Full-stack solution with Angular frontend and Laravel + Node.js backend.",
     tech: ["Angular", "Laravel", "Node.js", "Real-time Communication", "WebSockets"],
     live: "https://1800limo.com",
-    github: "https://github.com/sushil-kumar/1800limo",
+    caseStudyId: "1800limo",
     category: "featured"
   },
   {
@@ -53,7 +45,7 @@ const projects: Project[] = [
     description: "My own AI-based tool for git operations. Featured tool that enhances developer productivity with intelligent git assistance.",
     tech: ["Node.js", "React.js", "AI", "Git Operations", "Developer Tools"],
     live: "https://gitmate.com",
-    github: "https://github.com/sushil-kumar/gitmate",
+    caseStudyId: "gitmate",
     category: "featured"
   },
   {
@@ -61,7 +53,6 @@ const projects: Project[] = [
     description: "Official website of Metahub. Built custom themes on their own platform Nexudus using Next.js for optimal performance.",
     tech: ["Next.js", "React.js", "Nexudus Platform", "Custom Themes"],
     live: "https://metahub.com",
-    github: "https://github.com/sushil-kumar/metahub",
     category: "past"
   },
   {
@@ -69,7 +60,6 @@ const projects: Project[] = [
     description: "Custom content management system built for HeGroup using Node.js and React. Tailored solution for enterprise content management.",
     tech: ["Node.js", "React.js", "Custom CMS", "Enterprise Solution"],
     live: "https://hegroup-cms.com",
-    github: "https://github.com/sushil-kumar/hegroup-cms",
     category: "past"
   },
   {
@@ -77,7 +67,6 @@ const projects: Project[] = [
     description: "Multi-user platform for job seekers and employers built with Laravel and Vue.js. Comprehensive job matching and verification system.",
     tech: ["Laravel", "Vue.js", "Multi-user Platform", "Job Matching", "Verification System"],
     live: "https://vetted.work",
-    github: "https://github.com/sushil-kumar/vetted-work",
     category: "past"
   },
   {
@@ -85,7 +74,6 @@ const projects: Project[] = [
     description: "Next.js and React.js based audio station platform. Modern audio streaming and management solution.",
     tech: ["Next.js", "React.js", "Audio Streaming", "Audio Management"],
     live: "https://witlingo-audio.com",
-    github: "https://github.com/sushil-kumar/witlingo-audio",
     category: "past"
   },
   {
@@ -93,7 +81,6 @@ const projects: Project[] = [
     description: "AI-powered chatbot built with Node.js and React.js. Advanced language model integration for intelligent conversations.",
     tech: ["Node.js", "React.js", "LLM", "AI Chatbot", "Natural Language Processing"],
     live: "https://llm-chatbot.com",
-    github: "https://github.com/sushil-kumar/llm-chatbot",
     category: "past"
   },
   {
@@ -101,7 +88,7 @@ const projects: Project[] = [
     description: "Full-stack e-commerce platform built with React.js and Node.js. Complete online shopping solution with payment integration.",
     tech: ["Next.js", "Nest.js", "E-commerce", "Payment Integration", "Full-stack"],
     live: "https://dev.pups4sale.com.au/",
-    github: "https://github.com/sushil-kumar/ecommerce",
+    caseStudyId: "pups4sale",
     category: "featured"
   },
   {
@@ -109,29 +96,34 @@ const projects: Project[] = [
     description: "Backend APIs for the 1800LIMO mobile application. RESTful services supporting the mobile booking experience.",
     tech: ["Laravel", "REST APIs", "Mobile Backend", "Booking System"],
     live: "https://1800limo.com/",
-    github: "https://github.com/sushil-kumar/1800limo-mobile-apis",
     category: "featured"
   }
 ];
 
 // Project Card Component
-const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, index }) => {
-  // Function to get project image based on title
-  const getProjectImage = (title: string) => {
+const ProjectCard: React.FC<{ project: Project; index: number; onCaseStudyClick: (caseStudyId: string) => void }> = ({ project, index, onCaseStudyClick }) => {
+  // Function to get project image path based on title
+  const getProjectImagePath = (title: string) => {
     const titleLower = title.toLowerCase();
-    if (titleLower.includes('wpvip')) return wpvipImage;
-    if (titleLower.includes('1800limo')) return limoImage;
-    if (titleLower.includes('metahub') || titleLower.includes('meta')) return metaImage;
-    if (titleLower.includes('hegroup')) return hegroupImage;
-    if (titleLower.includes('pups4sale')) return pups4saleImage;
-    if (titleLower.includes('gitmate')) return gitmateImage;
-    if (titleLower.includes('witlingo')) return witlingoImage;
-    if (titleLower.includes('vetted')) return vettedImage;
-    if (titleLower.includes('llm')) return llmImage;
+    if (titleLower.includes('wpvip')) return '/src/assets/project/wpvip.png';
+    if (titleLower.includes('1800limo')) return '/src/assets/project/1800limo.png';
+    if (titleLower.includes('metahub') || titleLower.includes('meta')) return '/src/assets/project/meta.jpg';
+    if (titleLower.includes('hegroup')) return '/src/assets/project/hegroup.png';
+    if (titleLower.includes('pups4sale')) return '/src/assets/project/pups4sale.png';
+    if (titleLower.includes('gitmate')) return '/src/assets/project/gitmate.png';
+    if (titleLower.includes('witlingo')) return '/src/assets/project/witlingo.png';
+    if (titleLower.includes('vetted')) return '/src/assets/project/vetted.png';
+    if (titleLower.includes('llm')) return '/src/assets/project/llm.png';
     return null; // No image available
   };
 
-  const projectImage = getProjectImage(project.title);
+  const projectImagePath = getProjectImagePath(project.title);
+
+  const handleCaseStudyClick = () => {
+    if (project.caseStudyId) {
+      onCaseStudyClick(project.caseStudyId);
+    }
+  };
 
   return (
     <motion.div
@@ -144,11 +136,12 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
     >
       {/* Project Image or Screenshot Placeholder */}
       <div className="aspect-video rounded-xl m-4 mb-0 overflow-hidden">
-        {projectImage ? (
-          <img 
-            src={projectImage} 
+        {projectImagePath ? (
+          <ProjectImage 
+            src={projectImagePath} 
             alt={`${project.title} screenshot`}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            className="w-full h-full group-hover:scale-105 transition-transform duration-300"
+            priority={index < 3} // Prioritize first 3 images
           />
         ) : (
           <div className="w-full h-full bg-neutral-100 flex items-center justify-center text-neutral-400 text-sm">
@@ -193,16 +186,16 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
             <ExternalLink className="w-3 h-3" />
             Live
           </a>
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`View GitHub repository for ${project.title}`}
-            className="inline-flex items-center gap-1 text-xs font-medium text-neutral-600 hover:text-neutral-900 transition-colors duration-200"
-          >
-            <Github className="w-3 h-3" />
-            GitHub
-          </a>
+          {project.caseStudyId && (
+            <button
+              onClick={handleCaseStudyClick}
+              aria-label={`View case study for ${project.title}`}
+              className="inline-flex items-center gap-1 text-xs font-medium text-blue-600 hover:text-blue-800 transition-colors duration-200"
+            >
+              <FileText className="w-3 h-3" />
+              Case Study
+            </button>
+          )}
         </div>
       </div>
     </motion.div>
@@ -211,8 +204,17 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
 
 const Projects: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>('featured');
+  const [selectedCaseStudy, setSelectedCaseStudy] = useState<string | null>(null);
   
   const filteredProjects = projects.filter(project => project.category === activeCategory);
+
+  const handleCaseStudyClick = (caseStudyId: string) => {
+    setSelectedCaseStudy(caseStudyId);
+  };
+
+  const handleCloseCaseStudy = () => {
+    setSelectedCaseStudy(null);
+  };
 
   return (
     <section
@@ -278,12 +280,20 @@ const Projects: React.FC = () => {
               <ProjectCard 
                 key={project.title} 
                 project={project} 
-                index={index} 
+                index={index}
+                onCaseStudyClick={handleCaseStudyClick}
               />
             ))}
           </motion.div>
         </AnimatePresence>
       </div>
+
+      {/* Case Study Popup */}
+      <CaseStudyPopup
+        caseStudy={selectedCaseStudy ? getCaseStudyById(selectedCaseStudy) || null : null}
+        isOpen={!!selectedCaseStudy}
+        onClose={handleCloseCaseStudy}
+      />
     </section>
   );
 };

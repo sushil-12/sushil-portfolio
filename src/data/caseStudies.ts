@@ -1,12 +1,18 @@
 import type { CaseStudy } from '../types/caseStudy';
 
+// Import project images
+import wpvipImage from '../assets/project/wpvip.png';
+import limoImage from '../assets/project/1800limo.png';
+import gitmateImage from '../assets/project/gitmate.png';
+import pups4saleImage from '../assets/project/pups4sale.png';
+
 export const caseStudies: CaseStudy[] = [
   {
     id: 'wpvip',
     title: 'WPVIP.com',
     tagline: 'Official WordPress VIP Platform Website',
     status: 'live',
-    heroImage: '/src/assets/project/wpvip.png',
+    heroImage: wpvipImage,
     overview: 'Built the official website for WPVIP, a premium WordPress hosting platform. Developed custom plugins, Gutenberg blocks, and comprehensive WordPress solutions for enterprise clients.',
     problem: 'WPVIP needed a modern, professional website to showcase their enterprise WordPress hosting services and attract high-value clients in the competitive hosting market.',
     solution: 'Created a fully responsive website with custom WordPress plugins, Gutenberg blocks, and a content management system that highlights WPVIP\'s enterprise features and technical capabilities.',
@@ -26,9 +32,9 @@ export const caseStudies: CaseStudy[] = [
       { metric: 'Client Satisfaction', value: '100%', description: 'Client approval rate' }
     ],
     screenshots: [
-      '/src/assets/project/wpvip.png',
-      '/src/assets/project/wpvip.png', // Add more screenshots as available
-      '/src/assets/project/wpvip.png'
+      wpvipImage,
+      wpvipImage, // Add more screenshots as available
+      wpvipImage
     ],
     lessonsLearned: [
       'WordPress VIP requires specific optimization techniques',
@@ -46,7 +52,7 @@ export const caseStudies: CaseStudy[] = [
     title: '1800LIMO.com',
     tagline: 'Premium Limousine Booking Platform',
     status: 'live',
-    heroImage: '/src/assets/project/1800limo.png',
+    heroImage: limoImage,
     overview: 'Developed a comprehensive limousine booking platform with real-time communication, payment processing, and fleet management capabilities.',
     problem: 'Traditional limousine booking was inefficient with phone calls and manual scheduling. Clients needed a modern, digital solution for seamless booking experiences.',
     solution: 'Built a full-stack platform with Angular frontend, Laravel backend, and Node.js real-time services, featuring instant booking, live tracking, and automated communications.',
@@ -66,9 +72,9 @@ export const caseStudies: CaseStudy[] = [
       { metric: 'Revenue Growth', value: '60%', description: 'Year-over-year revenue increase' }
     ],
     screenshots: [
-      '/src/assets/project/1800limo.png',
-      '/src/assets/project/1800limo.png',
-      '/src/assets/project/1800limo.png'
+      limoImage,
+      limoImage,
+      limoImage
     ],
     lessonsLearned: [
       'Real-time features require careful state management',
@@ -86,7 +92,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'GitMate',
     tagline: 'AI-Powered Git Operations Tool',
     status: 'live',
-    heroImage: '/src/assets/project/gitmate.png',
+    heroImage: gitmateImage,
     overview: 'Created an innovative AI-based tool that enhances developer productivity with intelligent git assistance, automated commit messages, and smart branch management.',
     problem: 'Developers spend significant time on repetitive git operations and struggle with consistent commit message formatting and branch management strategies.',
     solution: 'Developed an AI-powered tool that learns from code patterns, suggests intelligent commit messages, automates common git operations, and provides smart recommendations for branch management.',
@@ -106,9 +112,9 @@ export const caseStudies: CaseStudy[] = [
       { metric: 'User Rating', value: '4.9/5', description: 'Average user satisfaction' }
     ],
     screenshots: [
-      '/src/assets/project/gitmate.png',
-      '/src/assets/project/gitmate.png',
-      '/src/assets/project/gitmate.png'
+      gitmateImage,
+      gitmateImage,
+      gitmateImage
     ],
     lessonsLearned: [
       'AI integration requires careful prompt engineering',
@@ -126,7 +132,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'pups4sale',
     tagline: 'Full-Stack E-commerce Platform',
     status: 'live',
-    heroImage: '/src/assets/project/pups4sale.png',
+    heroImage: pups4saleImage,
     overview: 'Built a comprehensive e-commerce platform for pet sales with advanced features including payment processing, inventory management, and user authentication.',
     problem: 'Pet breeders needed a specialized e-commerce platform that could handle unique requirements like health certificates, vaccination records, and breed-specific information.',
     solution: 'Developed a full-stack solution with Next.js frontend and Nest.js backend, featuring specialized product management, secure payments, and comprehensive user profiles.',
@@ -146,9 +152,9 @@ export const caseStudies: CaseStudy[] = [
       { metric: 'Platform Uptime', value: '99.9%', description: 'System reliability' }
     ],
     screenshots: [
-      '/src/assets/project/pups4sale.png',
-      '/src/assets/project/pups4sale.png',
-      '/src/assets/project/pups4sale.png'
+      pups4saleImage,
+      pups4saleImage,
+      pups4saleImage
     ],
     lessonsLearned: [
       'E-commerce requires robust security measures',

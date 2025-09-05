@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar } from 'lucide-react';
 import HeroImage from './HeroImage';
+import heroImage from '../assets/hero.jpg';
 
 
 const SectionEyebrow = ({ children }: { children: React.ReactNode }) => (
@@ -13,7 +14,7 @@ const SectionEyebrow = ({ children }: { children: React.ReactNode }) => (
 const DeveloperIllustration = () => (
   <div className="relative">
     <HeroImage 
-      src="/src/assets/hero.jpg"
+      src={heroImage}
       alt="Sushil Kumar - Full Stack Developer" 
       className="w-full h-96 md:h-[500px] lg:h-[600px] rounded-lg" 
     />

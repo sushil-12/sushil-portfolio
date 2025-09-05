@@ -5,6 +5,17 @@ import ProjectImage from './ProjectImage';
 import CaseStudyPopup from './CaseStudyPopup';
 import { getCaseStudyById } from '../data/caseStudies';
 
+// Import project images
+import wpvipImage from '../assets/project/wpvip.png';
+import limoImage from '../assets/project/1800limo.png';
+import metaImage from '../assets/project/meta.jpg';
+import hegroupImage from '../assets/project/hegroup.png';
+import pups4saleImage from '../assets/project/pups4sale.png';
+import gitmateImage from '../assets/project/gitmate.png';
+import witlingoImage from '../assets/project/witlingo.png';
+import vettedImage from '../assets/project/vetted.png';
+import llmImage from '../assets/project/llm.png';
+
 // Project interface
 interface Project {
   title: string;
@@ -102,22 +113,22 @@ const projects: Project[] = [
 
 // Project Card Component
 const ProjectCard: React.FC<{ project: Project; index: number; onCaseStudyClick: (caseStudyId: string) => void }> = ({ project, index, onCaseStudyClick }) => {
-  // Function to get project image path based on title
-  const getProjectImagePath = (title: string) => {
+  // Function to get project image based on title
+  const getProjectImage = (title: string) => {
     const titleLower = title.toLowerCase();
-    if (titleLower.includes('wpvip')) return '/src/assets/project/wpvip.png';
-    if (titleLower.includes('1800limo')) return '/src/assets/project/1800limo.png';
-    if (titleLower.includes('metahub') || titleLower.includes('meta')) return '/src/assets/project/meta.jpg';
-    if (titleLower.includes('hegroup')) return '/src/assets/project/hegroup.png';
-    if (titleLower.includes('pups4sale')) return '/src/assets/project/pups4sale.png';
-    if (titleLower.includes('gitmate')) return '/src/assets/project/gitmate.png';
-    if (titleLower.includes('witlingo')) return '/src/assets/project/witlingo.png';
-    if (titleLower.includes('vetted')) return '/src/assets/project/vetted.png';
-    if (titleLower.includes('llm')) return '/src/assets/project/llm.png';
+    if (titleLower.includes('wpvip')) return wpvipImage;
+    if (titleLower.includes('1800limo')) return limoImage;
+    if (titleLower.includes('metahub') || titleLower.includes('meta')) return metaImage;
+    if (titleLower.includes('hegroup')) return hegroupImage;
+    if (titleLower.includes('pups4sale')) return pups4saleImage;
+    if (titleLower.includes('gitmate')) return gitmateImage;
+    if (titleLower.includes('witlingo')) return witlingoImage;
+    if (titleLower.includes('vetted')) return vettedImage;
+    if (titleLower.includes('llm')) return llmImage;
     return null; // No image available
   };
 
-  const projectImagePath = getProjectImagePath(project.title);
+  const projectImage = getProjectImage(project.title);
 
   const handleCaseStudyClick = () => {
     if (project.caseStudyId) {
@@ -136,9 +147,9 @@ const ProjectCard: React.FC<{ project: Project; index: number; onCaseStudyClick:
     >
       {/* Project Image or Screenshot Placeholder */}
       <div className="aspect-video rounded-xl m-4 mb-0 overflow-hidden">
-        {projectImagePath ? (
+        {projectImage ? (
           <ProjectImage 
-            src={projectImagePath} 
+            src={projectImage} 
             alt={`${project.title} screenshot`}
             className="w-full h-full group-hover:scale-105 transition-transform duration-300"
             priority={index < 3} // Prioritize first 3 images

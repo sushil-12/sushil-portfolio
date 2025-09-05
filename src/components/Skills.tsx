@@ -14,13 +14,15 @@ import {
   Zap
 } from 'lucide-react';
 
-// Import OptimizedImage component
-import OptimizedImage from './OptimizedImage';
+// Import images using ES6 syntax
+import softwareIcon from '../assets/icons/software.png';
+import expertiseIcon from '../assets/icons/expertise.png';
+import languageIcon from '../assets/icons/lang.png';
 
 const icons = {
-  Tech: <OptimizedImage src="/src/assets/icons/software.png" alt="Tech" className="w-6 h-6" />,
-  Expertise: <OptimizedImage src="/src/assets/icons/expertise.png" alt="Expertise" className="w-6 h-6" />,
-  Language: <OptimizedImage src="/src/assets/icons/lang.png" alt="Language" className="w-6 h-6" />
+  Tech: <img src={softwareIcon} alt="Tech" className="w-6 h-6" />,
+  Expertise: <img src={expertiseIcon} alt="Expertise" className="w-6 h-6" />,
+  Language: <img src={languageIcon} alt="Language" className="w-6 h-6" />
 }
 
 // Skills data organized by category with icons

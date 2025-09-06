@@ -23,7 +23,7 @@ export const seoConfig = {
   twitterImage: "/og-image.jpg",
   
   // Analytics
-  googleAnalyticsId: "G-K1VM6TBZF6", // Your GA4 Measurement ID
+  googleAnalyticsId: "G-3ZX8977CYQ", // Your GA4 Measurement ID
   vercelAnalytics: true, // Set to false if you don't want Vercel Analytics
   
   // Additional Meta

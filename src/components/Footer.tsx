@@ -1,14 +1,20 @@
 import React from 'react';
-import Logo from '../assets/logo.png';
+import LightLogo from '../assets/light-logo.png';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-neutral-950 border-t border-neutral-800">
+    <footer className="bg-neutral-950 border-t border-neutral-800 dark-scrollbar">
       <div className="mx-auto max-w-7xl px-6 md:px-8 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           {/* Left side - Copyright */}
           <div className="flex flex-col space-x-4 items-center md:items-start gap-4">
-            <img src={Logo} alt="Sushil Kumar" className="w-40 h-auto" />
+            <div className="transition-transform duration-300 hover:scale-105">
+              <img 
+                src={LightLogo} 
+                alt="Sushil Kumar Logo" 
+                className="w-44 h-auto" 
+              />
+            </div>
             <div className="text-sm text-neutral-300">
               © 2025 Sushil Kumar. All rights reserved.
             </div>

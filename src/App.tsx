@@ -8,6 +8,7 @@ import Footer from './components/Footer'
 import FloatingBusinessCardButton from './components/FloatingBusinessCardButton'
 import SEOHead from './components/SEOHead'
 import Analytics from './components/Analytics'
+import AnalyticsDebug from './components/AnalyticsDebug'
 
 function App() {
   return (

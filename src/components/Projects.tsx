@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, FileText, Star, Clock } from 'lucide-react';
+import { ExternalLink, Star,  Eye, UserRound } from 'lucide-react';
 import ProjectImage from './ProjectImage';
 import CaseStudyPopup from './CaseStudyPopup';
 import { getCaseStudyById } from '../data/caseStudies';
@@ -15,6 +15,7 @@ import gitmateImage from '../assets/project/gitmate.png';
 import witlingoImage from '../assets/project/witlingo.png';
 import vettedImage from '../assets/project/vetted.png';
 import llmImage from '../assets/project/llm.png';
+import toddlerImage from '../assets/project/toddlr.png';
 
 // Project interface
 interface Project {
@@ -29,8 +30,8 @@ interface Project {
 type ProjectCategory = 'featured' | 'past';
 
 const categories = {
-  featured: { name: 'Featured', icon: Star },
-  past: { name: 'Past Projects', icon: Clock }
+  featured: { name: 'Client Projects', icon: UserRound },
+  past: { name: 'Personal Projects', icon: Star }
 } as const;
 
 // Projects data - Updated with case study IDs
@@ -57,20 +58,30 @@ const projects: Project[] = [
     tech: ["Node.js", "React.js", "AI", "Git Operations", "Developer Tools"],
     live: "https://gitmate.com",
     caseStudyId: "gitmate",
-    category: "featured"
+    category: "past"
+  },
+  {
+    title: "Toddler",
+    description: "A powerfull application for toddlers to learn and explore the world. Buys and sells products for toddlers.",
+    tech: ["Node.js", "React.js", "AI", "Toddlers", "Products"],
+    live: "https://sushilhub.com",
+    caseStudyId: "toddler",
+    category: "past"
   },
   {
     title: "Metahub.com",
     description: "Official website of Metahub. Built custom themes on their own platform Nexudus using Next.js for optimal performance.",
     tech: ["Next.js", "React.js", "Nexudus Platform", "Custom Themes"],
     live: "https://metahub.com",
-    category: "past"
+    caseStudyId: "metahub",
+    category: "featured"
   },
   {
     title: "HeGroup CMS",
     description: "Custom content management system built for HeGroup using Node.js and React. Tailored solution for enterprise content management.",
     tech: ["Node.js", "React.js", "Custom CMS", "Enterprise Solution"],
     live: "https://hegroup-cms.com",
+    caseStudyId: "hegroup",
     category: "past"
   },
   {
@@ -78,20 +89,23 @@ const projects: Project[] = [
     description: "Multi-user platform for job seekers and employers built with Laravel and Vue.js. Comprehensive job matching and verification system.",
     tech: ["Laravel", "Vue.js", "Multi-user Platform", "Job Matching", "Verification System"],
     live: "https://vetted.work",
-    category: "past"
+    caseStudyId: "vetted",
+    category: "featured"
   },
   {
     title: "Witlingo Audio Station",
     description: "Next.js and React.js based audio station platform. Modern audio streaming and management solution.",
     tech: ["Next.js", "React.js", "Audio Streaming", "Audio Management"],
     live: "https://witlingo-audio.com",
-    category: "past"
+    caseStudyId: "witlingo",
+    category: "featured"
   },
   {
     title: "LLM Based Chatbot",
     description: "AI-powered chatbot built with Node.js and React.js. Advanced language model integration for intelligent conversations.",
     tech: ["Node.js", "React.js", "LLM", "AI Chatbot", "Natural Language Processing"],
     live: "https://llm-chatbot.com",
+    caseStudyId: "llm-chatbot",
     category: "past"
   },
   {
@@ -107,7 +121,8 @@ const projects: Project[] = [
     description: "Backend APIs for the 1800LIMO mobile application. RESTful services supporting the mobile booking experience.",
     tech: ["Laravel", "REST APIs", "Mobile Backend", "Booking System"],
     live: "https://1800limo.com/",
-    category: "featured"
+    caseStudyId: "1800limo-apis",
+    category: "past"
   }
 ];
 
@@ -125,6 +140,7 @@ const ProjectCard: React.FC<{ project: Project; index: number; onCaseStudyClick:
     if (titleLower.includes('witlingo')) return witlingoImage;
     if (titleLower.includes('vetted')) return vettedImage;
     if (titleLower.includes('llm')) return llmImage;
+    if (titleLower.includes('toddler')) return toddlerImage;
     return null; // No image available
   };
 
@@ -192,19 +208,19 @@ const ProjectCard: React.FC<{ project: Project; index: number; onCaseStudyClick:
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`View live demo of ${project.title}`}
-            className="inline-flex items-center gap-1 text-xs font-medium text-neutral-600 hover:text-neutral-900 transition-colors duration-200"
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-neutral-600 hover:text-neutral-900 transition-all duration-200 hover:scale-105"
           >
             <ExternalLink className="w-3 h-3" />
-            Live
+            Live Demo
           </a>
-          {project.caseStudyId && (
+          {project.caseStudyId && project.category === 'featured' && (
             <button
               onClick={handleCaseStudyClick}
               aria-label={`View case study for ${project.title}`}
-              className="inline-flex items-center gap-1 text-xs font-medium text-blue-600 hover:text-blue-800 transition-colors duration-200"
+              className="inline-flex border-black px-3 py-1.5 items-center gap-1.5 text-xs font-medium text-black hover:text-neutral-900 transition-all duration-200 hover:scale-105"
             >
-              <FileText className="w-3 h-3" />
-              Case Study
+              <Eye className="w-3 h-3" />
+              View Case Study
             </button>
           )}
         </div>

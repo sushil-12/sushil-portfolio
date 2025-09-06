@@ -3,13 +3,8 @@ import { motion } from 'framer-motion';
 import { Calendar } from 'lucide-react';
 import HeroImage from './HeroImage';
 import heroImage from '../assets/hero.jpg';
+import DarkLogo from '../assets/dark-logo.png';
 
-
-const SectionEyebrow = ({ children }: { children: React.ReactNode }) => (
-  <p className="text-sm font-semibold text-emerald-600 uppercase tracking-wide mb-4">
-    {children}
-  </p>
-);
 
 const DeveloperIllustration = () => (
   <div className="relative">
@@ -60,7 +55,21 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="order-2 md:order-1 text-left"
           >
-            <SectionEyebrow>Portfolio</SectionEyebrow>
+            {/* Logo Section */}
+            <div className="mb-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="inline-block"
+              >
+                <img 
+                  src={DarkLogo} 
+                  alt="Sushil Kumar Logo" 
+                  className="w-48 h-auto transition-transform duration-300 hover:scale-105" 
+                />
+              </motion.div>
+            </div>
             
             <h1 
               id="hero-heading"

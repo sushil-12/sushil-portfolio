@@ -3,32 +3,65 @@ import { seoConfig } from '../config/seo';
 
 const Analytics = () => {
   useEffect(() => {
+    console.log('🔍 Analytics component loaded');
+    console.log('📊 Google Analytics ID:', seoConfig.googleAnalyticsId);
+    console.log('🌐 Current URL:', window.location.href);
+    console.log('📄 Page Title:', document.title);
+
     // Google Analytics 4
     if (seoConfig.googleAnalyticsId && seoConfig.googleAnalyticsId !== 'G-XXXXXXXXXX') {
+      console.log('✅ Initializing Google Analytics...');
+      
       // Load Google Analytics script
       const script = document.createElement('script');
       script.async = true;
       script.src = `https://www.googletagmanager.com/gtag/js?id=${seoConfig.googleAnalyticsId}`;
+      
+      script.onload = () => {
+        console.log('✅ Google Analytics script loaded successfully');
+      };
+      
+      script.onerror = () => {
+        console.error('❌ Failed to load Google Analytics script');
+      };
+      
       document.head.appendChild(script);
 
       // Initialize gtag
       window.dataLayer = window.dataLayer || [];
       function gtag(...args: any[]) {
+        console.log('📊 GA Event:', args);
         window.dataLayer.push(args);
       }
       window.gtag = gtag;
+      
       gtag('js', new Date());
       gtag('config', seoConfig.googleAnalyticsId, {
         page_title: document.title,
         page_location: window.location.href,
+        send_page_view: true,
+        debug_mode: process.env.NODE_ENV === 'development'
       });
+      
+      console.log('✅ Google Analytics configured successfully');
+      
+      // Send a test event
+      setTimeout(() => {
+        gtag('event', 'page_view', {
+          page_title: document.title,
+          page_location: window.location.href,
+          custom_parameter: 'portfolio_visit'
+        });
+        console.log('📊 Test page view event sent');
+      }, 1000);
+      
+    } else {
+      console.warn('⚠️ Google Analytics ID not configured or using placeholder');
     }
 
     // Vercel Analytics (if enabled)
     if (seoConfig.vercelAnalytics && typeof window !== 'undefined') {
-      // This will be handled by Vercel's analytics script in production
-      // For development, we'll just log that it would be active
-      console.log('Vercel Analytics would be active in production');
+      console.log('✅ Vercel Analytics enabled');
     }
   }, []);
 

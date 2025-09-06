@@ -4,10 +4,6 @@ import {
   Calendar,
   MapPin,
   CheckCircle,
-  Users,
-  TrendingUp,
-  Code,
-  Globe,
   ChevronLeft,
   ChevronRight
 } from 'lucide-react';
@@ -21,14 +17,6 @@ interface ExperienceItem {
   description: string;
   achievements: string[];
   technologies: string[];
-}
-
-// Achievement interface
-interface Achievement {
-  title: string;
-  description: string;
-  icon: React.ComponentType<{ className?: string }>;
-  metric?: string;
 }
 
 // Experience data
@@ -70,39 +58,11 @@ const experiences: ExperienceItem[] = [
     period: "July 2020 - Feb 2021",
     description: "Worked as a full stack developer and built responsive, Api for mobile app and developed AI based chatbot",
     achievements: [
-      "Built AI chatbot using Node.js and React.js",   
-      "Built Weather app using Node.js and  python",   
+      "Built AI chatbot using Node.js and React.js",
+      "Built Weather app using Node.js and  python",
     ],
     technologies: ["React.js", "Node.js", "Python", "AI"]
   },
-];
-
-// Key achievements
-const keyAchievements: Achievement[] = [
-  {
-    title: "Project Leadership",
-    description: "Successfully led end-to-end delivery of multiple complex projects",
-    icon: Users,
-    metric: "5+ Years"
-  },
-  {
-    title: "Team Leadership",
-    description: "Led development team of 4 members using Agile methodologies",
-    icon: TrendingUp,
-    metric: "4 Members"
-  },
-  {
-    title: "Technology Expertise",
-    description: "Mastered modern technologies including React.js, Node.js, Next.js, and AWS",
-    icon: Code,
-    metric: "15+ Technologies"
-  },
-  {
-    title: "Full-Stack Development",
-    description: "Built scalable web and mobile applications end-to-end",
-    icon: Globe,
-    metric: "Full-Stack"
-  }
 ];
 
 // Experience Slider Card Component
@@ -123,11 +83,11 @@ const ExperienceSliderCard: React.FC<{ experience: ExperienceItem }> = ({ experi
               <MapPin className="w-3 h-3" />
               {experience.location}
             </div>
-          
+
           </div>
           <div className="items-center block md:hidden gap-1  text-neutral-600 py-1 rounded-lg text-sm">
-              {experience.period}
-            </div>
+            {experience.period}
+          </div>
         </div>
         <div className="items-center hidden md:block gap-1 bg-neutral-100 text-neutral-600 px-3 py-1 rounded-lg text-sm">
           <Calendar className="w-3 h-3" />
@@ -171,35 +131,6 @@ const ExperienceSliderCard: React.FC<{ experience: ExperienceItem }> = ({ experi
   );
 };
 
-// Achievement Card Component (Minimalist Professional)
-const AchievementCard: React.FC<{ achievement: Achievement; index: number }> = ({
-  achievement,
-  index
-}) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
-      className="bg-neutral-50 rounded-lg border border-neutral-200 p-3 hover:bg-white hover:shadow-sm transition-all duration-200"
-    >
-      <div className="text-center">
-        {achievement.metric && (
-          <div className="text-xl font-bold text-neutral-900 mb-1">
-            {achievement.metric}
-          </div>
-        )}
-        <h3 className="text-xs font-medium text-neutral-700 mb-1">
-          {achievement.title}
-        </h3>
-        <p className="text-xs text-neutral-500 leading-tight">
-          {achievement.description}
-        </p>
-      </div>
-    </motion.div>
-  );
-};
 
 const Experience: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -222,50 +153,33 @@ const Experience: React.FC = () => {
         id="experience-heading"
         className="text-2xl font-bold tracking-tight text-neutral-900 mb-3"
       >
-        Experience & Achievements
+        Professional Experience
       </h2>
-      <p className="text-neutral-600 text-base leading-relaxed mb-8 max-w-2xl">
-        5+ years of full-stack development experience, delivering scalable solutions
-        for enterprises and startups across web and mobile platforms.
-      </p>
-
-      {/* Compact Achievement Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-        {keyAchievements.map((achievement, index) => (
-          <AchievementCard
-            key={achievement.title}
-            achievement={achievement}
-            index={index}
-          />
-        ))}
+      <div className="flex items-center justify-between">
+        <p className="text-neutral-600 text-base leading-relaxed mb-8 max-w-2xl">
+          5+ years of full-stack development experience, delivering scalable solutions
+          for enterprises and startups across web and mobile platforms.
+        </p>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={prevSlide}
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 transition-all duration-200 shadow-sm hover:shadow-md"
+            aria-label="Previous experience"
+          >
+            <ChevronLeft className="w-5 h-5 text-neutral-700" />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 transition-all duration-200 shadow-sm hover:shadow-md"
+            aria-label="Next experience"
+          >
+            <ChevronRight className="w-5 h-5 text-neutral-700" />
+          </button>
+        </div>
       </div>
 
       {/* Experience Slider */}
       <div>
-        <div className="flex items-center justify-between mb-6">
-          <h3 className="text-lg font-semibold text-neutral-900">
-            Professional Experience
-          </h3>
-          
-          {/* Navigation Controls */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={prevSlide}
-              className="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 transition-all duration-200 shadow-sm hover:shadow-md"
-              aria-label="Previous experience"
-            >
-              <ChevronLeft className="w-5 h-5 text-neutral-700" />
-            </button>
-            <button
-              onClick={nextSlide}
-              className="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 transition-all duration-200 shadow-sm hover:shadow-md"
-              aria-label="Next experience"
-            >
-              <ChevronRight className="w-5 h-5 text-neutral-700" />
-            </button>
-          </div>
-        </div>
-
         {/* Slider Container */}
         <div className="relative overflow-hidden">
           <motion.div
@@ -287,9 +201,8 @@ const Experience: React.FC = () => {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-                index === currentSlide ? 'bg-neutral-800' : 'bg-neutral-300'
-              }`}
+              className={`w-2 h-2 rounded-full transition-colors duration-200 ${index === currentSlide ? 'bg-neutral-800' : 'bg-neutral-300'
+                }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}

@@ -76,7 +76,7 @@ const FreelancerBusinessCardDemo: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-800 p-8">
+    <div className="min-h-screen bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-800 p-8 custom-scrollbar">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">

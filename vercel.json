@@ -1,0 +1,15 @@
+{
+    "redirects": [
+        {
+            "source": "/(.*)",
+            "destination": "https://sushilhub.com/$1",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "www.sushilhub.com"
+                }
+            ],
+            "permanent": true
+        }
+    ]
+}

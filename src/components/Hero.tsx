@@ -8,10 +8,10 @@ import DarkLogo from '../assets/dark-logo.png';
 
 const DeveloperIllustration = () => (
   <div className="relative">
-    <HeroImage 
+    <HeroImage
       src={heroImage}
-      alt="Sushil Kumar - Full Stack Developer" 
-      className="w-full h-96 md:h-[500px] lg:h-[600px] rounded-lg" 
+      alt="Sushil Hub - Full Stack Developer"
+      className="w-full h-96 md:h-[500px] lg:h-[600px] rounded-lg"
     />
   </div>
 );
@@ -29,12 +29,12 @@ const Hero: React.FC = () => {
 
   const handleBookMeeting = () => {
     // Create Google Meet calendar event
-    const eventTitle = encodeURIComponent('Meeting with Sushil Kumar - Discussion');
-    const eventDetails = encodeURIComponent('Let\'s discuss your project requirements and how I can help bring your ideas to life.');
-    
+    const eventTitle = encodeURIComponent('Meeting with Sushil Hub - Discussion');
+    const eventDetails = encodeURIComponent('Let\'s discuss your project requirements and how Sushil Hub can help bring your ideas to life.');
+
     // Google Calendar event creation URL
     const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&details=${eventDetails}&dates=20241201T100000Z/20241201T110000Z&add=developer.er.sushil@gmail.com&sf=true&output=xml`;
-    
+
     // Open Google Calendar in new tab
     window.open(googleCalendarUrl, '_blank');
   };
@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
       <header
         id="home"
         aria-labelledby="hero-heading"
-        className="mx-auto max-w-7xl px-6 md:px-8 py-12 md:py-16"
+        className="mx-auto max-w-7xl px-6 md:px-8"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 md:gap-12 items-center">
           {/* Content - Left side on desktop, full width on mobile */}
@@ -63,60 +63,63 @@ const Hero: React.FC = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="inline-block"
               >
-                <img 
-                  src={DarkLogo} 
-                  alt="Sushil Kumar Logo" 
-                  className="w-48 h-auto transition-transform duration-300 hover:scale-105" 
+                <img
+                  src={DarkLogo}
+                  alt="Sushil Hub Logo"
+                  className="w-48 h-auto transition-transform duration-300 hover:scale-105"
                 />
               </motion.div>
             </div>
-            
-            <h1 
+
+            <h1
               id="hero-heading"
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-neutral-900 mb-6"
+              className="text-4xl md:text-3xl lg:text-4xl font-bold leading-tight text-neutral-900 mb-6"
             >
-              Hello, I'm Sushil Kumar<span className="text-neutral-600">.</span>
+              <span className="text-neutral-600 text-4xl ">Welcome to </span> Sushil Hub
             </h1>
-            
+
             <div className="space-y-4 text-lg text-neutral-700 mb-8 max-w-xl mx-auto md:mx-0">
               <p>
-                Full Stack Engineer with 5+ years of experience building scalable web and mobile applications using React.js, Node.js, Next.js, and AWS.
+                Sushil Hub, founded by Sushil Kumar, is a leading full stack development portfolio showcasing expertise in
+                React.js, Node.js, Next.js, TypeScript, and AWS. With over 5 years of experience, Sushil Hub transforms innovative ideas
+                into high-performance web applications, scalable backend systems, and modern digital solutions.
               </p>
-              
+
               {/* Illustration - Between paragraphs on mobile, hidden on desktop */}
               <div className="md:hidden flex justify-center my-8">
                 <DeveloperIllustration />
               </div>
-              
+
               <p>
-                Skilled in end-to-end project ownership, UI/UX design, microservices architecture, and CI/CD pipelines. Passionate about delivering high-performance, user-centric solutions.
+                At Sushil Hub, we specialize in end-to-end project ownership,
+                modern UI/UX design, microservices architecture, and scalable solutions
+                that drive real business value.
               </p>
             </div>
 
             {/* Book a Meeting Button */}
             <button
               onClick={handleBookMeeting}
-              aria-label="Book a meeting"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-neutral-300 rounded-xl text-neutral-700 font-medium transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 hover:border-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2"
+              aria-label="Book a meeting with Sushil Hub"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white font-semibold rounded-lg hover:bg-neutral-800 transition-all duration-200 shadow-sm hover:shadow-md"
             >
               <Calendar className="w-5 h-5" />
-              Book a Meeting
+              Book a Meeting with Sushil Hub
             </button>
           </motion.div>
-          
-          {/* Illustration - Right side on desktop only */}
+
+          {/* Illustration - Right side on desktop, hidden on mobile */}
           <motion.div
             initial="hidden"
             animate="visible"
             variants={illustrationVariants}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.08 }}
-            className="hidden md:flex justify-end order-1 md:order-2"
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            className="order-1 md:order-2 hidden md:block"
           >
             <DeveloperIllustration />
           </motion.div>
         </div>
       </header>
-      
     </>
   );
 };

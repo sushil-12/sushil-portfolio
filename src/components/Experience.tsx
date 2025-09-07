@@ -151,7 +151,7 @@ const Experience: React.FC = () => {
   return (
     <section
       aria-labelledby="experience-heading"
-      className="mx-auto max-w-7xl px-6 md:px-8 py-12"
+      className="mx-auto max-w-7xl px-6 "
     >
       {/* Section Heading */}
       <h2

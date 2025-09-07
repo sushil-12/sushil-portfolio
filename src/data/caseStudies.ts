@@ -18,80 +18,80 @@ export const caseStudies: CaseStudy[] = [
     tagline: 'Official WordPress VIP Platform Website',
     status: 'live',
     heroImage: wpvipImage,
-    overview: 'Built the official website for WPVIP, a premium WordPress hosting platform. Developed custom plugins, Gutenberg blocks, and comprehensive WordPress solutions for enterprise clients.',
-    problem: 'WPVIP having a custom modern, professional website to showcase their enterprise WordPress hosting services and attract high-value clients in the competitive hosting market.',
-    solution: 'Created a fully responsive website with custom WordPress plugins, Gutenberg blocks, and a content management system that highlights WPVIP\'s enterprise features and technical capabilities.',
-    technologies: ['WordPress', 'PHP', 'Gutenberg', 'Custom Plugins', 'WordPress VIP', 'JavaScript', 'CSS3', 'MySQL'],
+    overview: 'Contributed to the official website for WPVIP, building a scalable design system with custom themes, reusable components, Gutenberg blocks, and marketplace-ready patterns tailored for enterprise clients.',
+    problem: 'WPVIP needed more than a marketing site. They required a flexible marketplace framework with themes, reusable design components, custom Gutenberg blocks, and scalable content patterns to showcase their services and solutions.',
+    solution: 'Delivered a fully responsive and modular WordPress platform featuring custom plugins, Gutenberg blocks, reusable design components, and performance-optimized architecture aligned with enterprise standards.',
+    technologies: ['WordPress', 'PHP', 'Gutenberg', 'Custom Plugins', 'Reusable Patterns', 'WordPress VIP', 'JavaScript', 'CSS3', 'MySQL'],
     features: [
-      'Custom Gutenberg blocks for content management',
-      'Enterprise-focused design and messaging',
+      'Marketplace-ready themes and reusable design patterns',
+      'Custom Gutenberg blocks for flexible publishing',
+      'Component-driven design system for scalability',
       'Performance-optimized WordPress setup',
-      'Custom plugin development',
       'Responsive design across all devices',
-      'SEO-optimized content structure'
+      'SEO-friendly content architecture'
     ],
     results: [
       { metric: 'Performance Score', value: '95+', description: 'Lighthouse performance & accessibility score' },
-      { metric: 'Page Load Time', value: '<2s', description: 'Average page load time for desktop & mobile for desktop & mobile' },
+      { metric: 'Page Load Time', value: '<2s', description: 'Average load time across devices' },
       { metric: 'Mobile Score', value: '98+', description: 'Mobile usability & accessibility score' },
-      { metric: 'Client Satisfaction', value: '100%', description: 'Client approval rate' }
+      { metric: 'Client Satisfaction', value: '100%', description: 'Client approval and successful adoption' }
     ],
     screenshots: [
       wpvipImage,
-      wpvipImage, // Add more screenshots as available
+      wpvipImage,
       wpvipImage
     ],
     lessonsLearned: [
-      'WordPress VIP requires specific optimization techniques',
-      'Custom Gutenberg blocks significantly improve content management',
-      'Enterprise clients value performance and reliability over flashy features',
-      'Proper WordPress architecture is crucial for maintainability'
+      'Scalable component libraries accelerate enterprise content workflows',
+      'Marketplace-style themes and patterns improve design consistency',
+      'Enterprise clients prioritize performance and reliability',
+      'Well-architected WordPress solutions ensure long-term maintainability'
     ],
     liveUrl: 'https://wpvip.com',
     duration: '8 months',
     teamSize: '14 developers',
-    category: 'featured'
-  },
+    category: 'featured',
+    role: 'Lead Frontend Developer'
+  },  
   {
-    id: '1800limo',
-    title: '1800LIMO.com',
-    tagline: 'Premium Limousine Booking Platform',
-    status: 'live',
+    id: "1800limo",
+    title: "1800LIMO.com",
+    tagline: "Premium Limousine Booking Platform",
+    status: "live",
     heroImage: limoImage,
-    overview: 'Developed a comprehensive limousine booking platform with real-time communication, payment processing, and fleet management capabilities.',
-    problem: 'Traditional limousine booking was inefficient with phone calls and manual scheduling. Clients having a modern, digital solution for seamless booking experiences.',
-    solution: 'Built a full-stack platform with Angular frontend, Laravel backend, and Node.js real-time services, featuring instant booking, live tracking, and automated communications.',
-    technologies: ['Angular', 'Laravel', 'Node.js', 'WebSockets', 'MySQL', 'Redis', 'Stripe API', 'Google Maps API'],
+    overview: "Developed a comprehensive limousine booking platform with real-time communication, payment processing, and fleet management capabilities.",
+    problem: "The client was operating their limousine business on third-party platforms that charged heavy commissions and imposed multiple restrictions. Being completely non-technical, they lacked control over their business data, customers, and revenue stream.",
+    solution: "Designed and delivered a full-fledged, secure booking platform tailored to the client’s business needs. The system supported multi-user roles (individual customers, admin, sub-admin, affiliate drivers, travel agents, and corporate accounts), integrated secure payment services, enabled real-time booking notifications, and provided complete business independence without third-party dependency.",
+    technologies: ["Angular", "Laravel", "Node.js", "WebSockets", "MySQL", "Redis", "Stripe API", "Google Maps API"],
     features: [
-      'Real-time booking and availability checking',
-      'Live vehicle tracking and driver communication',
-      'Automated SMS and email notifications',
-      'Payment processing with Stripe integration',
-      'Admin dashboard for fleet management',
-      'Mobile-responsive design'
+      "Multi-user system with admin, sub-admin, affiliates, drivers, and corporate accounts",
+      "Real-time booking and availability checking",
+      "Live vehicle tracking and driver communication",
+      "Automated SMS and email notifications",
+      "Payment processing with Stripe integration",
+      "Admin dashboard for fleet management",
+      "Mobile-responsive design"
     ],
     results: [
-      { metric: 'Booking Conversion', value: '40%', description: 'Increase in online bookings' },
-      { metric: 'Customer Satisfaction', value: '4.8/5', description: 'Average customer rating for desktop & mobile' },
-      { metric: 'Response Time', value: '<1s', description: 'Average booking response time for desktop & mobile' },
-      { metric: 'Revenue Growth', value: '60%', description: 'Year-over-year revenue increase for desktop & mobile' }
+      { metric: "Booking Conversion", value: "40%", description: "Increase in online bookings" },
+      { metric: "Customer Satisfaction", value: "4.8/5", description: "Average customer rating" },
+      { metric: "Response Time", value: "<1s", description: "Average booking response time" },
+      { metric: "Revenue Growth", value: "60%", description: "Year-over-year revenue increase" }
     ],
-    screenshots: [
-      limoImage,
-      limoImage,
-      limoImage
-    ],
+    screenshots: [limoImage, limoImage, limoImage],
     lessonsLearned: [
-      'Real-time features require careful state management',
-      'Payment integration needs robust error handling',
-      'Mobile-first design is essential for booking platforms',
-      'User experience directly impacts conversion rates'
+      "Real-time features require careful state management",
+      "Payment integration needs robust error handling",
+      "Mobile-first design is essential for booking platforms",
+      "User experience directly impacts conversion rates",
+      "Collaborating with non-technical clients requires clear communication and extra focus on usability"
     ],
-    liveUrl: 'https://1800limo.com',
-    duration: '6 months',
-    teamSize: '4 developers',
-    category: 'featured'
-  },
+    liveUrl: "https://1800limo.com",
+    duration: "3 years",
+    teamSize: "4 developers",
+    category: "featured",
+    role: "Senior Developer & Project Manager"
+  },  
   {
     id: 'gitmate',
     title: 'GitMate',
@@ -130,7 +130,8 @@ export const caseStudies: CaseStudy[] = [
     liveUrl: 'https://gitmate.com',
     duration: '4 months',
     teamSize: '3 developers',
-    category: 'featured'
+    category: 'featured',
+    role: 'Lead Developer & Product Owner'
   },
   {
     id: 'pups4sale',
@@ -170,43 +171,46 @@ export const caseStudies: CaseStudy[] = [
     liveUrl: 'https://dev.pups4sale.com.au/',
     duration: '5 months',
     teamSize: '3 developers',
-    category: 'featured'
+    category: 'featured',
+    role: 'Full-Stack Developer'
   },
   {
-    id: 'metahub',
-    title: 'Metahub.com',
-    tagline: 'Official Metahub Platform Website',
-    status: 'live',
+    id: "metahub",
+    title: "Meta Business Hub",
+    tagline: "Workspace & Hub Management Platform",
+    status: "live",
     heroImage: metaImage,
-    overview: 'Developed the official website for Metahub using their proprietary Nexudus platform. Built custom themes and optimized the site for maximum performance and user engagement.',
-    problem: 'Metahub having a modern, high-performance website that could showcase their platform capabilities while maintaining fast load times and excellent user experience.',
-    solution: 'Created a custom Next.js application with optimized themes for the Nexudus platform, implementing advanced performance optimizations and responsive design.',
-    technologies: ['Next.js', 'React.js', 'Nexudus Platform', 'Custom Themes', 'TypeScript', 'CSS3', 'JavaScript'],
+    overview: "Developed a custom hub and space management platform for Meta, replacing third-party dependency with a scalable and secure in-house solution.",
+    problem: "Meta relied on a third-party organization using a CMS-like platform (Nexudus) to manage their side business hub and workspace operations. This led to high costs, limited flexibility, and dependency on external vendors for even small changes.",
+    solution: "Designed and delivered a full-featured, secure hub management platform using Next.js and NestJS. The solution allowed Meta to manage spaces, memberships, events, and bookings independently with complete customization control, scalability, and seamless user experience.",
+    technologies: ["Next.js", "NestJS", "PostgreSQL", "TypeORM", "AWS", "Stripe API", "Socket.io"],
     features: [
-      'Custom Next.js themes for Nexudus platform',
-      'Performance-optimized page loading',
-      'Responsive design across all devices',
-      'SEO-optimized content structure',
-      'Interactive platform demonstrations',
-      'Modern UI/UX design'
+      "Custom space and membership management",
+      "Event scheduling and booking system",
+      "Multi-role access control for admins, managers, and users",
+      "Real-time notifications and communication",
+      "Secure payment and invoicing system",
+      "Analytics dashboard for usage insights",
+      "Scalable architecture for global hubs"
     ],
     results: [
-      { metric: 'Page Speed', value: '98+', description: 'Lighthouse performance score' },
-      { metric: 'Load Time', value: '<1.5s', description: 'Average page load time for desktop & mobile' },
-      { metric: 'Mobile Score', value: '100', description: 'Mobile usability score' },
-      { metric: 'SEO Score', value: '95+', description: 'Search engine optimization for desktop & mobile' }
+      { metric: "Vendor Costs", value: "70% Reduction", description: "Savings by moving away from third-party CMS (Nexudus)" },
+      { metric: "Customization", value: "100%", description: "Full control over features and branding" },
+      { metric: "System Uptime", value: "99.9%", description: "Ensured reliability and scalability" },
+      { metric: "User Adoption", value: "2x Growth", description: "Faster onboarding and improved user satisfaction" }
     ],
     screenshots: [metaImage, metaImage, metaImage],
     lessonsLearned: [
-      'Platform-specific development requires deep understanding of constraints',
-      'Performance optimization is crucial for user retention',
-      'Custom themes need to be maintainable and scalable',
-      'Platform integration requires careful API usage'
+      "Migrating from a third-party CMS requires careful data mapping and testing",
+      "Multi-role systems need robust access control policies",
+      "Real-time communication features are critical for workspace management",
+      "Building scalable solutions for enterprise clients requires strong infra planning"
     ],
-    liveUrl: 'https://metahub.com',
-    duration: '2 months',
-    teamSize: '2 developers',
-    category: 'featured'
+    liveUrl: "https://meta.com/business-hub",
+    duration: "8 months",
+    teamSize: "5 developers",
+    category: "featured",
+    role: "Next.js Developer"
   },
   {
     id: 'hegroup',
@@ -242,43 +246,46 @@ export const caseStudies: CaseStudy[] = [
     liveUrl: 'https://hegroup-cms.com',
     duration: '4 months',
     teamSize: '3 developers',
-    category: 'past'
+    category: 'past',
+    role: 'Full-Stack Developer'
   },
   {
-    id: 'vetted',
-    title: 'Vetted.work',
-    tagline: 'Professional Job Matching Platform',
-    status: 'live',
+    id: "vetted",
+    title: "Vetted",
+    tagline: "Contractor Workforce & Compliance Management",
+    status: "live",
     heroImage: vettedImage,
-    overview: 'Created a comprehensive job matching platform connecting verified professionals with employers. Built with Laravel and Vue.js for optimal performance and user experience.',
-    problem: 'Job seekers and employers struggling with trust and verification in the hiring process. A platform was needed to connect verified professionals with quality opportunities.',
-    solution: 'Developed a multi-sided platform with advanced verification systems, intelligent matching algorithms, and comprehensive profile management for both job seekers and employers.',
-    technologies: ['Laravel', 'Vue.js', 'MySQL', 'Redis', 'Elasticsearch', 'Stripe', 'AWS S3', 'Docker'],
+    overview: "Built a secure contractor management platform enabling businesses to onboard, manage, and deploy workers with strong compliance and health & safety features.",
+    problem: "Contractors struggled with managing large worker teams, ensuring compliance with safety standards, and handling multiple agreements manually. Existing systems lacked integrated solutions for security, health checks, and signed document management.",
+    solution: "Developed a full-fledged workforce management platform with multi-layered security, digital health verification, and automated agreement workflows. The system allowed contractors to send workers onsite with compliance guarantees, manage signed forms, and track workforce activity seamlessly.",
+    technologies: ["React.js", "Node.js", "Express.js", "PostgreSQL", "AWS S3", "JWT", "DocuSign API", "Twilio"],
     features: [
-      'Advanced verification and background checking',
-      'Intelligent job matching algorithms',
-      'Real-time messaging and communication',
-      'Portfolio and skill showcase',
-      'Employer dashboard and analytics',
-      'Payment processing for premium features'
+      "Worker onboarding with identity verification",
+      "Digital signed agreement & form handling",
+      "Health & safety compliance tracking",
+      "Role-based access for contractors, admins, and workers",
+      "Onsite deployment management with notifications",
+      "Secure document storage & retrieval",
+      "Analytics dashboard for workforce activity and compliance"
     ],
     results: [
-      { metric: 'Job Matches', value: '85%', description: 'Successful job placement rate' },
-      { metric: 'User Growth', value: '200%', description: 'Year-over-year user growth' },
-      { metric: 'Employer Satisfaction', value: '4.7/5', description: 'Average employer rating for desktop & mobile' },
-      { metric: 'Platform Revenue', value: '$25K+', description: 'Monthly recurring revenue for desktop & mobile' }
+      { metric: "Compliance Accuracy", value: "95%", description: "Automated checks reduced compliance errors" },
+      { metric: "Agreement Handling", value: "80% Faster", description: "Digital workflows replaced manual paperwork" },
+      { metric: "Worker Deployment", value: "2x Efficiency", description: "Faster scheduling and onsite readiness" },
+      { metric: "Operational Costs", value: "40% Reduction", description: "Savings from automation and reduced paperwork" }
     ],
     screenshots: [vettedImage, vettedImage, vettedImage],
     lessonsLearned: [
-      'Trust and verification are crucial for platform success',
-      'Matching algorithms need continuous refinement',
-      'User experience directly impacts platform adoption',
-      'Two-sided marketplaces require balanced value proposition'
+      "Integrating legal agreements digitally requires strong API and security considerations",
+      "Contractor workflows vary, so the platform needed high configurability",
+      "User-friendly design is critical for non-technical workforce adoption",
+      "Health & safety compliance can be a major adoption driver in enterprise solutions"
     ],
-    liveUrl: 'https://vetted.work',
-    duration: '6 months',
-    teamSize: '4 developers',
-    category: 'featured'
+    liveUrl: "https://vetted.com",
+    duration: "7 months",
+    teamSize: "6 developers",
+    category: "featured",
+    role: "Project Manager & Full-Stack Developer"
   },
   {
     id: 'witlingo',
@@ -314,7 +321,8 @@ export const caseStudies: CaseStudy[] = [
     liveUrl: 'https://witlingo-audio.com',
     duration: '3 months',
     teamSize: '2 developers',
-    category: 'featured'
+    category: 'featured',
+    role: 'Full-Stack Developer'
   },
   {
     id: 'llm-chatbot',
@@ -350,7 +358,8 @@ export const caseStudies: CaseStudy[] = [
     liveUrl: 'https://llm-chatbot.com',
     duration: '4 months',
     teamSize: '3 developers',
-    category: 'past'
+    category: 'past',
+    role: 'AI/ML Developer'
   },
   {
     id: '1800limo-apis',
@@ -386,7 +395,8 @@ export const caseStudies: CaseStudy[] = [
     liveUrl: 'https://1800limo.com/',
     duration: '3 months',
     teamSize: '2 developers',
-    category: 'past'
+    category: 'past',
+    role: 'Backend API Developer'
   }
 ];
 

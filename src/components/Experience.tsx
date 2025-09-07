@@ -68,29 +68,28 @@ const experiences: ExperienceItem[] = [
 // Experience Slider Card Component
 const ExperienceSliderCard: React.FC<{ experience: ExperienceItem }> = ({ experience }) => {
   return (
-    <div className="bg-white rounded-xl border border-neutral-200 p-6 h-full">
+    <div className="bg-white rounded-xl border border-neutral-200 p-6 h-full shadow-sm hover:shadow-md transition-shadow duration-300">
       {/* Header */}
       <div className="flex items-start justify-between mb-4">
         <div className="flex-1">
-          <h3 className="text-lg font-bold text-neutral-900 mb-1">
+          <h3 className="text-lg font-bold text-neutral-900 mb-2">
             {experience.title}
           </h3>
           <div className="flex items-center gap-3 mb-2">
-            <span className="text-base font-semibold text-neutral-700">
+            <span className="text-base font-semibold text-neutral-800">
               {experience.company}
             </span>
-            <div className="flex items-center gap-1 text-sm text-neutral-500">
+            <div className="flex items-center gap-1 text-sm text-neutral-500 bg-neutral-50 px-2 py-1 rounded-md">
               <MapPin className="w-3 h-3" />
               {experience.location}
             </div>
-
           </div>
-          <div className="items-center block md:hidden gap-1  text-neutral-600 py-1 rounded-lg text-sm">
+          <div className="items-center block md:hidden gap-1 text-neutral-600 py-1 rounded-lg text-sm font-medium">
             {experience.period}
           </div>
         </div>
-        <div className="items-center hidden md:block gap-1 bg-neutral-100 text-neutral-600 px-3 py-1 rounded-lg text-sm">
-          <Calendar className="w-3 h-3" />
+        <div className="items-center hidden md:flex gap-2 bg-gradient-to-r from-neutral-900 to-neutral-700 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-sm">
+          <Calendar className="w-4 h-4" />
           {experience.period}
         </div>
       </div>
@@ -102,11 +101,14 @@ const ExperienceSliderCard: React.FC<{ experience: ExperienceItem }> = ({ experi
 
       {/* Top 3 Achievements */}
       <div className="mb-4">
-        <h4 className="text-sm font-medium text-neutral-900 mb-2">Key Highlights</h4>
-        <ul className="space-y-1">
+        <h4 className="text-sm font-semibold text-neutral-900 mb-3 flex items-center gap-2">
+          <div className="w-1 h-4 bg-gradient-to-b from-neutral-900 to-neutral-600 rounded-full"></div>
+          Key Highlights
+        </h4>
+        <ul className="space-y-2">
           {experience.achievements.slice(0, 3).map((achievement, idx) => (
-            <li key={idx} className="flex items-start gap-2 text-sm text-neutral-600">
-              <CheckCircle className="w-3 h-3 text-green-500 mt-1 flex-shrink-0" />
+            <li key={idx} className="flex items-start gap-3 text-sm text-neutral-600">
+              <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
               <span className="text-xs leading-relaxed">{achievement}</span>
             </li>
           ))}
@@ -115,12 +117,15 @@ const ExperienceSliderCard: React.FC<{ experience: ExperienceItem }> = ({ experi
 
       {/* Technologies */}
       <div>
-        <h4 className="text-sm font-medium text-neutral-900 mb-2">Technologies</h4>
-        <div className="flex flex-wrap gap-1">
+        <h4 className="text-sm font-semibold text-neutral-900 mb-3 flex items-center gap-2">
+          <div className="w-1 h-4 bg-gradient-to-b from-neutral-900 to-neutral-600 rounded-full"></div>
+          Technologies
+        </h4>
+        <div className="flex flex-wrap gap-2">
           {experience.technologies.slice(0, 6).map((tech) => (
             <span
               key={tech}
-              className="px-2 py-1 text-xs bg-neutral-100 text-neutral-700 rounded border border-neutral-200"
+              className="px-3 py-1.5 text-xs bg-neutral-100 text-neutral-700 rounded-lg border border-neutral-200 font-medium hover:bg-neutral-200 transition-colors duration-200"
             >
               {tech}
             </span>
@@ -163,14 +168,14 @@ const Experience: React.FC = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={prevSlide}
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 transition-all duration-200 shadow-sm hover:shadow-md"
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-neutral-200 hover:border-neutral-900 hover:bg-neutral-50 transition-all duration-200 shadow-sm hover:shadow-md"
             aria-label="Previous experience"
           >
             <ChevronLeft className="w-5 h-5 text-neutral-700" />
           </button>
           <button
             onClick={nextSlide}
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 transition-all duration-200 shadow-sm hover:shadow-md"
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-neutral-200 hover:border-neutral-900 hover:bg-neutral-50 transition-all duration-200 shadow-sm hover:shadow-md"
             aria-label="Next experience"
           >
             <ChevronRight className="w-5 h-5 text-neutral-700" />
@@ -201,7 +206,7 @@ const Experience: React.FC = () => {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-2 h-2 rounded-full transition-colors duration-200 ${index === currentSlide ? 'bg-neutral-800' : 'bg-neutral-300'
+              className={`w-3 h-3 rounded-full transition-all duration-200 ${index === currentSlide ? 'bg-neutral-900 shadow-sm' : 'bg-neutral-300 hover:bg-neutral-400'
                 }`}
               aria-label={`Go to slide ${index + 1}`}
             />

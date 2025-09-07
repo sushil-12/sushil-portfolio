@@ -109,6 +109,12 @@ const CaseStudyPopup: React.FC<CaseStudyPopupProps> = ({ caseStudy, isOpen, onCl
                     <div className="flex items-center gap-6 px-4 py-2">
                       <div className="flex items-center gap-2">
                         <div className="w-2 h-2 bg-black rounded-full"></div>
+                        <span className="text-neutral-900 text-xs font-semibold">{caseStudy.role}</span>
+                        <span className="text-neutral-500 text-xs">Role</span>
+                      </div>
+                      <div className="w-px h-4 bg-neutral-300"></div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-black rounded-full"></div>
                         <span className="text-neutral-900 text-xs font-semibold">{caseStudy.duration}</span>
                         <span className="text-neutral-500 text-xs">Duration</span>
                       </div>
@@ -219,7 +225,19 @@ const CaseStudyPopup: React.FC<CaseStudyPopupProps> = ({ caseStudy, isOpen, onCl
                       View Live
                     </a>
                     <button
-                      onClick={onClose}
+                      onClick={() => {
+                        onClose();
+                        // Scroll to contact section after popup closes
+                        setTimeout(() => {
+                          const contactSection = document.getElementById('contact-heading');
+                          if (contactSection) {
+                            contactSection.scrollIntoView({ 
+                              behavior: 'smooth',
+                              block: 'start'
+                            });
+                          }
+                        }, 300); // Wait for popup close animation
+                      }}
                       className="inline-flex items-center gap-1.5 px-4 py-2 bg-black text-white text-sm font-semibold rounded hover:bg-neutral-800 transition-all duration-200 shadow-sm"
                     >
                       <ArrowRight className="w-4 h-4" />

@@ -20,6 +20,7 @@ export interface CaseStudy {
   duration: string;
   teamSize: string;
   category: 'featured' | 'past';
+  role: string;
 }
 
 export interface CaseStudyPopupProps {

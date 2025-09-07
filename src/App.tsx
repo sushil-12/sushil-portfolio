@@ -8,6 +8,7 @@ import Footer from './components/Footer'
 import FloatingBusinessCardButton from './components/FloatingBusinessCardButton'
 import SEOHead from './components/SEOHead'
 import Analytics from './components/Analytics'
+import CookieConsent from './components/CookieConsent'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <FloatingBusinessCardButton />
         <Footer />
       </main>
+      <CookieConsent />
     </>
   )
 }

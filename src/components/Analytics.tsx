@@ -3,14 +3,27 @@ import { seoConfig } from '../config/seo';
 
 const Analytics = () => {
   useEffect(() => {
+    // Check if user has consented to analytics
+    const consent = localStorage.getItem('cookie-consent');
+    if (!consent) {
+      console.log('🔍 Analytics: Waiting for cookie consent');
+      return;
+    }
+
+    const preferences = JSON.parse(consent);
+    if (!preferences.analytics) {
+      console.log('🔍 Analytics: User has not consented to analytics');
+      return;
+    }
+
     console.log('🔍 Analytics component loaded');
     console.log('📊 Google Analytics ID:', seoConfig.googleAnalyticsId);
     console.log('🌐 Current URL:', window.location.href);
     console.log('📄 Page Title:', document.title);
 
-    // Google Analytics 4
+    // Google Analytics 4 with GDPR compliance
     if (seoConfig.googleAnalyticsId && seoConfig.googleAnalyticsId !== 'G-XXXXXXXXXX') {
-      console.log('✅ Initializing Google Analytics...');
+      console.log('✅ Initializing GDPR-compliant Google Analytics...');
       
       // Load Google Analytics script
       const script = document.createElement('script');
@@ -27,7 +40,7 @@ const Analytics = () => {
       
       document.head.appendChild(script);
 
-      // Initialize gtag
+      // Initialize gtag with GDPR settings
       window.dataLayer = window.dataLayer || [];
       function gtag(...args: any[]) {
         console.log('📊 GA Event:', args);
@@ -40,10 +53,15 @@ const Analytics = () => {
         page_title: document.title,
         page_location: window.location.href,
         send_page_view: true,
-        debug_mode: process.env.NODE_ENV === 'development'
+        debug_mode: process.env.NODE_ENV === 'development',
+        // GDPR Compliance Settings
+        anonymize_ip: true,
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false,
+        cookie_flags: 'SameSite=None;Secure',
       });
       
-      console.log('✅ Google Analytics configured successfully');
+      console.log('✅ GDPR-compliant Google Analytics configured successfully');
       
       // Send a test event
       setTimeout(() => {

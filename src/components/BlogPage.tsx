@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Calendar, Clock, ArrowRight,  User, Search } from 'lucide-react';
 import DarkLogo from '../assets/dark-logo.png';
 import BlogImage from '../assets/blog.png';
+import { blogPosts } from '../data/blogPosts';
 
 const BlogHero = () => {
   const contentVariants = {
@@ -108,75 +110,6 @@ const BlogHero = () => {
 };
 
 const BlogPage: React.FC = () => {
-  // Sample blog posts data
-  const blogPosts = [
-    {
-      id: 1,
-      title: "Building Scalable React Applications with Modern Architecture",
-      excerpt: "Learn how to structure your React applications for scalability and maintainability using modern patterns and best practices.",
-      content: "Full article content here...",
-      author: "Sushil Kumar",
-      date: "2024-01-15",
-      readTime: "8 min read",
-      tags: ["React", "Architecture", "JavaScript"],
-      featured: true
-    },
-    {
-      id: 2,
-      title: "The Future of Web Development: Trends to Watch in 2024",
-      excerpt: "Exploring the latest trends and technologies that are shaping the future of web development and how to stay ahead.",
-      content: "Full article content here...",
-      author: "Sushil Kumar",
-      date: "2024-01-10",
-      readTime: "6 min read",
-      tags: ["Web Development", "Trends", "Technology"],
-      featured: false
-    },
-    {
-      id: 3,
-      title: "Mastering TypeScript: Advanced Patterns and Techniques",
-      excerpt: "Deep dive into advanced TypeScript patterns that will make your code more robust and maintainable.",
-      content: "Full article content here...",
-      author: "Sushil Kumar",
-      date: "2024-01-05",
-      readTime: "10 min read",
-      tags: ["TypeScript", "Programming", "Best Practices"],
-      featured: false
-    },
-    {
-      id: 4,
-      title: "Optimizing Performance: From Core Web Vitals to User Experience",
-      excerpt: "A comprehensive guide to web performance optimization, covering everything from Core Web Vitals to advanced techniques.",
-      content: "Full article content here...",
-      author: "Sushil Kumar",
-      date: "2024-01-01",
-      readTime: "12 min read",
-      tags: ["Performance", "Web Vitals", "Optimization"],
-      featured: false
-    },
-    {
-      id: 5,
-      title: "Building Modern APIs with Node.js and Express",
-      excerpt: "Learn how to create robust, scalable APIs using Node.js and Express with modern development practices.",
-      content: "Full article content here...",
-      author: "Sushil Kumar",
-      date: "2023-12-28",
-      readTime: "9 min read",
-      tags: ["Node.js", "API", "Backend"],
-      featured: false
-    },
-    {
-      id: 6,
-      title: "CSS Grid vs Flexbox: When to Use Which",
-      excerpt: "A practical comparison of CSS Grid and Flexbox, helping you choose the right layout method for your projects.",
-      content: "Full article content here...",
-      author: "Sushil Kumar",
-      date: "2023-12-25",
-      readTime: "7 min read",
-      tags: ["CSS", "Layout", "Frontend"],
-      featured: false
-    }
-  ];
 
   const categories = ["All", "React", "TypeScript", "Node.js", "CSS", "Performance", "Architecture"];
 
@@ -269,13 +202,15 @@ const BlogPage: React.FC = () => {
                     ))}
                   </div>
                   
-                  <motion.button
-                    whileHover={{ x: 5 }}
-                    className="flex items-center gap-2 text-neutral-900 font-medium hover:text-neutral-700 transition-colors"
-                  >
-                    Read More
-                    <ArrowRight className="w-4 h-4" />
-                  </motion.button>
+                  <Link to={`/blog/${post.id}`}>
+                    <motion.button
+                      whileHover={{ x: 5 }}
+                      className="flex items-center gap-2 text-neutral-900 font-medium hover:text-neutral-700 transition-colors"
+                    >
+                      Read More
+                      <ArrowRight className="w-4 h-4" />
+                    </motion.button>
+                  </Link>
                 </div>
               </motion.article>
             ))}
@@ -326,13 +261,15 @@ const BlogPage: React.FC = () => {
                       ))}
                     </div>
                     
-                    <motion.button
-                      whileHover={{ x: 3 }}
-                      className="flex items-center gap-1 text-neutral-900 font-medium hover:text-neutral-700 transition-colors text-sm"
-                    >
-                      Read
-                      <ArrowRight className="w-3 h-3" />
-                    </motion.button>
+                    <Link to={`/blog/${post.id}`}>
+                      <motion.button
+                        whileHover={{ x: 3 }}
+                        className="flex items-center gap-1 text-neutral-900 font-medium hover:text-neutral-700 transition-colors text-sm"
+                      >
+                        Read
+                        <ArrowRight className="w-3 h-3" />
+                      </motion.button>
+                    </Link>
                   </div>
                 </motion.article>
               ))}

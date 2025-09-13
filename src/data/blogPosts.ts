@@ -192,7 +192,7 @@ describe('Button Component', () => {
     likes: 42,
     comments: 8,
     views: 1250,
-    image: "../assets/scalable-react-applications.jpg"
+    image: "/src/assets/scalable-react-application.jpg"
   },
   {
     id: 2,
@@ -220,7 +220,7 @@ describe('Button Component', () => {
     likes: 28,
     comments: 5,
     views: 890,
-    image: "/api/placeholder/800/400"
+    image: "/src/assets/code.png"
   },
   {
     id: 3,
@@ -245,7 +245,7 @@ describe('Button Component', () => {
     likes: 35,
     comments: 12,
     views: 1100,
-    image: "/api/placeholder/800/400"
+    image: "/src/assets/skill.png"
   }
 ];
 

@@ -1,0 +1,222 @@
+{
+  "sampleBlogPosts": [
+    {
+      "id": 1,
+      "title": "Building Scalable React Applications with Modern Architecture",
+      "slug": "building-scalable-react-applications-modern-architecture",
+      "excerpt": "Learn how to structure your React applications for scalability and maintainability using modern patterns and best practices.",
+      "content": "<p>In today's fast-paced development environment, building scalable React applications is crucial for long-term success. This comprehensive guide will walk you through modern architectural patterns that will help you create maintainable, performant, and scalable React applications.</p><h2>Understanding Modern React Architecture</h2><p>Modern React architecture goes beyond just components and state management. It encompasses a holistic approach to building applications that can grow with your business needs while maintaining code quality and developer experience.</p><h3>Key Principles</h3><ul><li><strong>Separation of Concerns:</strong> Each part of your application should have a single responsibility</li><li><strong>Composition over Inheritance:</strong> Build complex UIs by combining simple components</li><li><strong>Predictable State Management:</strong> Use consistent patterns for state updates</li><li><strong>Performance by Default:</strong> Build with performance considerations from the start</li></ul><h2>Project Structure Best Practices</h2><p>A well-organized project structure is the foundation of a scalable application. Here's a recommended structure:</p><pre><code>src/\n├── components/          # Reusable UI components\n│   ├── common/         # Generic components (Button, Input, etc.)\n│   ├── features/       # Feature-specific components\n│   └── layouts/        # Layout components\n├── hooks/              # Custom React hooks\n├── services/           # API calls and external services\n├── store/              # State management\n├── utils/              # Utility functions\n├── types/              # TypeScript type definitions\n└── constants/          # Application constants</code></pre><h2>State Management Strategies</h2><p>Choosing the right state management solution depends on your application's complexity and requirements. Here are the most effective approaches:</p><h3>1. Context API for Global State</h3><p>For smaller applications, React's built-in Context API can be sufficient:</p><pre><code>// contexts/AppContext.tsx\nimport React, { createContext, useContext, useReducer } from 'react';\n\ninterface AppState {\n  user: User | null;\n  theme: 'light' | 'dark';\n  loading: boolean;\n}\n\nconst AppContext = createContext<{\n  state: AppState;\n  dispatch: React.Dispatch<AppAction>;\n} | null>(null);\n\nexport const useAppContext = () => {\n  const context = useContext(AppContext);\n  if (!context) {\n    throw new Error('useAppContext must be used within AppProvider');\n  }\n  return context;\n};</code></pre><h2>Performance Optimization Techniques</h2><p>Performance is crucial for user experience. Here are essential optimization techniques:</p><h3>Code Splitting and Lazy Loading</h3><pre><code>// Lazy load components\nconst Dashboard = lazy(() => import('./components/Dashboard'));\nconst Profile = lazy(() => import('./components/Profile'));\n\n// Route-based code splitting\nconst App = () => (\n  <Router>\n    <Suspense fallback={<div>Loading...</div>}>\n      <Routes>\n        <Route path=\"/dashboard\" element={<Dashboard />} />\n        <Route path=\"/profile\" element={<Profile />} />\n      </Routes>\n    </Suspense>\n  </Router>\n);</code></pre><h2>Conclusion</h2><p>Building scalable React applications requires careful planning and adherence to modern best practices. By following the patterns and techniques outlined in this guide, you'll be well-equipped to create applications that can grow with your needs while maintaining code quality and performance.</p>",
+      "author": {
+        "name": "Sushil Kumar",
+        "bio": "Full-stack developer with 5+ years of experience building scalable web applications. Passionate about React, Node.js, and modern web technologies.",
+        "avatar": "https://example.com/avatar.jpg"
+      },
+      "publishedAt": "2024-01-15T10:00:00Z",
+      "readTime": "8 min read",
+      "tags": ["React", "Architecture", "JavaScript", "Performance", "Best Practices"],
+      "featured": true,
+      "category": {
+        "name": "Frontend Development",
+        "slug": "frontend-development"
+      },
+      "likes": 42,
+      "comments": 8,
+      "views": 1250,
+      "image": "https://example.com/scalable-react-applications.jpg",
+      "seo": {
+        "title": "Building Scalable React Applications - Complete Guide 2024",
+        "metaDesc": "Learn modern React architecture patterns for building scalable applications. Complete guide with code examples and best practices.",
+        "canonical": "https://example.com/blog/building-scalable-react-applications",
+        "ogTitle": "Building Scalable React Applications with Modern Architecture",
+        "ogDescription": "Learn how to structure your React applications for scalability and maintainability using modern patterns and best practices.",
+        "ogImage": "https://example.com/og-images/scalable-react.jpg"
+      }
+    },
+    {
+      "id": 2,
+      "title": "The Future of Web Development: Trends to Watch in 2024",
+      "slug": "future-web-development-trends-2024",
+      "excerpt": "Exploring the latest trends and technologies that are shaping the future of web development and how to stay ahead.",
+      "content": "<p>The web development landscape is constantly evolving, and 2024 promises to bring exciting new technologies and paradigms. Let's explore the key trends that will shape the future of web development.</p><h2>1. WebAssembly (WASM) Revolution</h2><p>WebAssembly is becoming increasingly important for performance-critical applications. With near-native performance, WASM enables developers to run code written in languages like Rust, C++, and Go directly in the browser.</p><h3>Key Benefits of WASM</h3><ul><li>Near-native performance in the browser</li><li>Language agnostic - write in any language that compiles to WASM</li><li>Smaller bundle sizes for complex computations</li><li>Better security sandboxing</li></ul><h2>2. Edge Computing and Edge Functions</h2><p>Edge computing is bringing computation closer to users, reducing latency and improving performance. Platforms like Vercel Edge Functions and Cloudflare Workers are making it easier to deploy edge functions.</p><h3>Edge Computing Use Cases</h3><ul><li>Real-time data processing</li><li>Image and video optimization</li><li>Personalized content delivery</li><li>API rate limiting and authentication</li></ul><h2>3. AI-Powered Development Tools</h2><p>AI is transforming how we write code, with tools like GitHub Copilot and ChatGPT becoming integral parts of the development workflow.</p><h2>4. Progressive Web Apps (PWAs) Evolution</h2><p>PWAs are becoming more sophisticated with new capabilities like file system access, background sync, and push notifications.</p><h2>5. Web3 and Blockchain Integration</h2><p>Web3 technologies are finding their way into traditional web applications, offering new possibilities for decentralized applications.</p><h2>Conclusion</h2><p>Staying ahead in web development requires continuous learning and adaptation. These trends represent the future direction of web development, and early adoption can give you a competitive advantage.</p>",
+      "author": {
+        "name": "Sushil Kumar",
+        "bio": "Full-stack developer with 5+ years of experience building scalable web applications. Passionate about React, Node.js, and modern web technologies.",
+        "avatar": "https://example.com/avatar.jpg"
+      },
+      "publishedAt": "2024-01-10T14:30:00Z",
+      "readTime": "6 min read",
+      "tags": ["Web Development", "Trends", "Technology", "Future", "WASM", "Edge Computing"],
+      "featured": false,
+      "category": {
+        "name": "Technology Trends",
+        "slug": "technology-trends"
+      },
+      "likes": 28,
+      "comments": 5,
+      "views": 890,
+      "image": "https://example.com/web-development-trends.jpg",
+      "seo": {
+        "title": "Web Development Trends 2024 - Future of Web Development",
+        "metaDesc": "Discover the latest web development trends for 2024. Explore WASM, edge computing, AI tools, and more shaping the future of web development.",
+        "canonical": "https://example.com/blog/future-web-development-trends-2024",
+        "ogTitle": "The Future of Web Development: Trends to Watch in 2024",
+        "ogDescription": "Exploring the latest trends and technologies that are shaping the future of web development and how to stay ahead.",
+        "ogImage": "https://example.com/og-images/web-dev-trends.jpg"
+      }
+    },
+    {
+      "id": 3,
+      "title": "Mastering TypeScript: Advanced Patterns and Techniques",
+      "slug": "mastering-typescript-advanced-patterns-techniques",
+      "excerpt": "Deep dive into advanced TypeScript patterns that will make your code more robust and maintainable.",
+      "content": "<p>TypeScript has become an essential tool for modern web development. This guide explores advanced patterns and techniques that will elevate your TypeScript skills and help you write more robust, maintainable code.</p><h2>Advanced Type Patterns</h2><p>Understanding advanced type patterns is crucial for writing maintainable TypeScript code. Let's explore some powerful patterns that will make your code more expressive and type-safe.</p><h3>1. Conditional Types</h3><p>Conditional types allow you to create types that depend on other types, enabling powerful type-level programming:</p><pre><code>type ApiResponse<T> = T extends string \n  ? { message: T }\n  : T extends number\n  ? { count: T }\n  : { data: T };\n\n// Usage\ntype StringResponse = ApiResponse<string>; // { message: string }\ntype NumberResponse = ApiResponse<number>; // { count: number }\ntype ObjectResponse = ApiResponse<User>; // { data: User }</code></pre><h3>2. Mapped Types</h3><p>Mapped types allow you to create new types based on existing ones by transforming properties:</p><pre><code>type Partial<T> = {\n  [P in keyof T]?: T[P];\n};\n\ntype Required<T> = {\n  [P in keyof T]-?: T[P];\n};\n\ntype Readonly<T> = {\n  readonly [P in keyof T]: T[P];\n};</code></pre><h3>3. Template Literal Types</h3><p>Template literal types enable string manipulation at the type level:</p><pre><code>type EventName<T extends string> = `on${Capitalize<T>}`;\n\ntype ClickEvent = EventName<'click'>; // 'onClick'\ntype SubmitEvent = EventName<'submit'>; // 'onSubmit'\n\n// Advanced example\ntype ApiEndpoint<T extends string> = `/api/${T}`;\ntype UserEndpoint = ApiEndpoint<'users'>; // '/api/users'</code></pre><h2>Generic Constraints and Utility Types</h2><p>Leverage TypeScript's powerful type system to create flexible and reusable code:</p><h3>Generic Constraints</h3><pre><code>interface Lengthwise {\n  length: number;\n}\n\nfunction logLength<T extends Lengthwise>(arg: T): T {\n  console.log(arg.length);\n  return arg;\n}\n\n// This works because arrays have a length property\nlogLength([1, 2, 3]);\n\n// This also works because strings have a length property\nlogLength('hello');</code></pre><h3>Utility Types in Practice</h3><pre><code>interface User {\n  id: number;\n  name: string;\n  email: string;\n  password: string;\n  createdAt: Date;\n}\n\n// Create a type for user creation (without id and timestamps)\ntype CreateUser = Omit<User, 'id' | 'createdAt'>;\n\n// Create a type for user updates (all fields optional except id)\ntype UpdateUser = Partial<Omit<User, 'id'>> & { id: number };\n\n// Create a type for user display (without sensitive data)\ntype PublicUser = Omit<User, 'password'>;</code></pre><h2>Advanced Error Handling Patterns</h2><p>TypeScript enables sophisticated error handling patterns that provide better type safety:</p><pre><code>type Result<T, E = Error> = \n  | { success: true; data: T }\n  | { success: false; error: E };\n\nasync function fetchUser(id: string): Promise<Result<User, string>> {\n  try {\n    const user = await api.getUser(id);\n    return { success: true, data: user };\n  } catch (error) {\n    return { success: false, error: 'Failed to fetch user' };\n  }\n}\n\n// Usage with type safety\nconst result = await fetchUser('123');\nif (result.success) {\n  // TypeScript knows this is User\n  console.log(result.data.name);\n} else {\n  // TypeScript knows this is string\n  console.error(result.error);\n}</code></pre><h2>Branded Types for Better Type Safety</h2><p>Branded types help prevent mixing up similar types:</p><pre><code>type UserId = string & { __brand: 'UserId' };\ntype ProductId = string & { __brand: 'ProductId' };\n\nfunction createUserId(id: string): UserId {\n  return id as UserId;\n}\n\nfunction createProductId(id: string): ProductId {\n  return id as ProductId;\n}\n\n// This prevents accidental mixing of IDs\nfunction getUser(id: UserId): User {\n  // Implementation\n}\n\n// TypeScript will catch this error\n// getUser(createProductId('123')); // Error!</code></pre><h2>Conclusion</h2><p>Mastering these advanced TypeScript patterns will significantly improve your code quality and developer experience. These techniques enable you to write more expressive, type-safe, and maintainable code that scales with your application's complexity.</p>",
+      "author": {
+        "name": "Sushil Kumar",
+        "bio": "Full-stack developer with 5+ years of experience building scalable web applications. Passionate about React, Node.js, and modern web technologies.",
+        "avatar": "https://example.com/avatar.jpg"
+      },
+      "publishedAt": "2024-01-05T09:15:00Z",
+      "readTime": "12 min read",
+      "tags": ["TypeScript", "Programming", "Best Practices", "Advanced", "Type Safety"],
+      "featured": true,
+      "category": {
+        "name": "Programming",
+        "slug": "programming"
+      },
+      "likes": 35,
+      "comments": 12,
+      "views": 1100,
+      "image": "https://example.com/typescript-advanced.jpg",
+      "seo": {
+        "title": "Advanced TypeScript Patterns - Complete Guide 2024",
+        "metaDesc": "Master advanced TypeScript patterns and techniques. Learn conditional types, mapped types, branded types, and more with practical examples.",
+        "canonical": "https://example.com/blog/mastering-typescript-advanced-patterns",
+        "ogTitle": "Mastering TypeScript: Advanced Patterns and Techniques",
+        "ogDescription": "Deep dive into advanced TypeScript patterns that will make your code more robust and maintainable.",
+        "ogImage": "https://example.com/og-images/typescript-advanced.jpg"
+      }
+    },
+    {
+      "id": 4,
+      "title": "Building a Full-Stack E-commerce Application with Next.js and Stripe",
+      "slug": "full-stack-ecommerce-nextjs-stripe",
+      "excerpt": "Complete guide to building a modern e-commerce application using Next.js, Stripe, and best practices for production deployment.",
+      "content": "<p>Building a full-stack e-commerce application requires careful planning and the right technology stack. In this comprehensive guide, we'll build a complete e-commerce solution using Next.js, Stripe, and modern web technologies.</p><h2>Project Setup and Architecture</h2><p>Let's start by setting up our Next.js project with the necessary dependencies and folder structure.</p><h3>Initial Setup</h3><pre><code>npx create-next-app@latest ecommerce-app --typescript --tailwind --eslint\ncd ecommerce-app\nnpm install @stripe/stripe-js stripe next-auth prisma @prisma/client\nnpm install -D @types/node</code></pre><h3>Project Structure</h3><pre><code>src/\n├── components/\n│   ├── ui/              # Reusable UI components\n│   ├── layout/          # Layout components\n│   └── ecommerce/       # E-commerce specific components\n├── pages/\n│   ├── api/             # API routes\n│   ├── products/        # Product pages\n│   └── checkout/        # Checkout flow\n├── lib/\n│   ├── stripe.ts        # Stripe configuration\n│   ├── prisma.ts        # Database client\n│   └── auth.ts          # Authentication setup\n├── types/\n│   └── index.ts         # TypeScript definitions\n└── utils/\n    └── helpers.ts       # Utility functions</code></pre><h2>Database Schema with Prisma</h2><p>Let's define our database schema for the e-commerce application:</p><pre><code>// prisma/schema.prisma\ngenerator client {\n  provider = \"prisma-client-js\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id        String   @id @default(cuid())\n  email     String   @unique\n  name      String?\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n  orders    Order[]\n}\n\nmodel Product {\n  id          String   @id @default(cuid())\n  name        String\n  description String?\n  price       Decimal  @db.Decimal(10, 2)\n  image       String?\n  category    String\n  inStock     Boolean  @default(true)\n  createdAt   DateTime @default(now())\n  updatedAt   DateTime @updatedAt\n  orderItems  OrderItem[]\n}\n\nmodel Order {\n  id            String      @id @default(cuid())\n  userId        String\n  user          User        @relation(fields: [userId], references: [id])\n  total         Decimal     @db.Decimal(10, 2)\n  status        OrderStatus @default(PENDING)\n  stripeId      String?\n  createdAt     DateTime    @default(now())\n  updatedAt     DateTime    @updatedAt\n  orderItems    OrderItem[]\n}\n\nmodel OrderItem {\n  id        String  @id @default(cuid())\n  orderId   String\n  productId String\n  quantity  Int\n  price     Decimal @db.Decimal(10, 2)\n  order     Order   @relation(fields: [orderId], references: [id])\n  product   Product @relation(fields: [productId], references: [id])\n}\n\nenum OrderStatus {\n  PENDING\n  PROCESSING\n  SHIPPED\n  DELIVERED\n  CANCELLED\n}</code></pre><h2>Stripe Integration</h2><p>Setting up Stripe for payment processing:</p><pre><code>// lib/stripe.ts\nimport Stripe from 'stripe';\n\nexport const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {\n  apiVersion: '2023-10-16',\n});\n\nexport const formatAmountForStripe = (amount: number): number => {\n  return Math.round(amount * 100);\n};\n\nexport const formatAmountFromStripe = (amount: number): number => {\n  return amount / 100;\n};</code></pre><h2>API Routes for E-commerce</h2><p>Creating API routes for products, cart, and checkout:</p><pre><code>// pages/api/products/index.ts\nimport { NextApiRequest, NextApiResponse } from 'next';\nimport { prisma } from '../../../lib/prisma';\n\nexport default async function handler(\n  req: NextApiRequest,\n  res: NextApiResponse\n) {\n  if (req.method === 'GET') {\n    try {\n      const { category, page = '1', limit = '10' } = req.query;\n      \n      const products = await prisma.product.findMany({\n        where: category ? { category: category as string } : {},\n        skip: (Number(page) - 1) * Number(limit),\n        take: Number(limit),\n        orderBy: { createdAt: 'desc' }\n      });\n      \n      res.status(200).json(products);\n    } catch (error) {\n      res.status(500).json({ error: 'Failed to fetch products' });\n    }\n  } else {\n    res.setHeader('Allow', ['GET']);\n    res.status(405).end(`Method ${req.method} Not Allowed`);\n  }\n}</code></pre><h2>Checkout Process with Stripe</h2><p>Implementing the checkout process:</p><pre><code>// pages/api/checkout/create-payment-intent.ts\nimport { NextApiRequest, NextApiResponse } from 'next';\nimport { stripe } from '../../../lib/stripe';\nimport { formatAmountForStripe } from '../../../lib/stripe';\n\nexport default async function handler(\n  req: NextApiRequest,\n  res: NextApiResponse\n) {\n  if (req.method === 'POST') {\n    try {\n      const { items, userId } = req.body;\n      \n      // Calculate total amount\n      const total = items.reduce((sum: number, item: any) => {\n        return sum + (item.price * item.quantity);\n      }, 0);\n      \n      // Create payment intent\n      const paymentIntent = await stripe.paymentIntents.create({\n        amount: formatAmountForStripe(total),\n        currency: 'usd',\n        metadata: {\n          userId,\n          items: JSON.stringify(items)\n        }\n      });\n      \n      res.status(200).json({ clientSecret: paymentIntent.client_secret });\n    } catch (error) {\n      res.status(500).json({ error: 'Failed to create payment intent' });\n    }\n  } else {\n    res.setHeader('Allow', ['POST']);\n    res.status(405).end(`Method ${req.method} Not Allowed`);\n  }\n}</code></pre><h2>Frontend Components</h2><p>Building the frontend components for our e-commerce application:</p><pre><code>// components/ecommerce/ProductCard.tsx\nimport Image from 'next/image';\nimport Link from 'next/link';\nimport { Product } from '../../types';\n\nexport default function ProductCard({ product }: { product: Product }) {\n  return (\n    <div className=\"bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow\">\n      <Link href={`/products/${product.id}`}>\n        <div className=\"relative h-48 w-full\">\n          <Image\n            src={product.image || '/placeholder.jpg'}\n            alt={product.name}\n            fill\n            className=\"object-cover\"\n          />\n        </div>\n      </Link>\n      \n      <div className=\"p-4\">\n        <h3 className=\"text-lg font-semibold mb-2\">{product.name}</h3>\n        <p className=\"text-gray-600 text-sm mb-2\">{product.description}</p>\n        <div className=\"flex justify-between items-center\">\n          <span className=\"text-xl font-bold\">${product.price}</span>\n          <button className=\"bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700\">\n            Add to Cart\n          </button>\n        </div>\n      </div>\n    </div>\n  );\n}</code></pre><h2>Deployment and Production Considerations</h2><p>Preparing your e-commerce application for production:</p><h3>Environment Variables</h3><pre><code># .env.local\nDATABASE_URL=\"postgresql://username:password@localhost:5432/ecommerce\"\nNEXTAUTH_URL=\"http://localhost:3000\"\nNEXTAUTH_SECRET=\"your-secret-key\"\nSTRIPE_PUBLISHABLE_KEY=\"pk_test_...\"\nSTRIPE_SECRET_KEY=\"sk_test_...\"\nSTRIPE_WEBHOOK_SECRET=\"whsec_...\"</code></pre><h3>Security Best Practices</h3><ul><li>Validate all inputs on both client and server</li><li>Implement rate limiting for API routes</li><li>Use HTTPS in production</li><li>Sanitize user-generated content</li><li>Implement proper error handling</li></ul><h2>Conclusion</h2><p>Building a full-stack e-commerce application requires careful planning and attention to detail. This guide provides a solid foundation for creating a production-ready e-commerce solution using modern web technologies.</p>",
+      "author": {
+        "name": "Sushil Kumar",
+        "bio": "Full-stack developer with 5+ years of experience building scalable web applications. Passionate about React, Node.js, and modern web technologies.",
+        "avatar": "https://example.com/avatar.jpg"
+      },
+      "publishedAt": "2024-01-20T16:45:00Z",
+      "readTime": "15 min read",
+      "tags": ["Next.js", "E-commerce", "Stripe", "Full-stack", "TypeScript", "Prisma"],
+      "featured": true,
+      "category": {
+        "name": "Full-Stack Development",
+        "slug": "full-stack-development"
+      },
+      "likes": 58,
+      "comments": 15,
+      "views": 2100,
+      "image": "https://example.com/ecommerce-nextjs-stripe.jpg",
+      "seo": {
+        "title": "Build Full-Stack E-commerce with Next.js and Stripe - Complete Guide",
+        "metaDesc": "Complete guide to building a modern e-commerce application using Next.js, Stripe, Prisma, and TypeScript. Production-ready code examples.",
+        "canonical": "https://example.com/blog/full-stack-ecommerce-nextjs-stripe",
+        "ogTitle": "Building a Full-Stack E-commerce Application with Next.js and Stripe",
+        "ogDescription": "Complete guide to building a modern e-commerce application using Next.js, Stripe, and best practices for production deployment.",
+        "ogImage": "https://example.com/og-images/ecommerce-nextjs.jpg"
+      }
+    },
+    {
+      "id": 5,
+      "title": "Advanced CSS Techniques: Modern Layout and Animation Patterns",
+      "slug": "advanced-css-techniques-modern-layout-animation",
+      "excerpt": "Master advanced CSS techniques including Grid, Flexbox, animations, and modern layout patterns for creating stunning web interfaces.",
+      "content": "<p>CSS has evolved significantly over the years, offering powerful new features for creating modern, responsive, and visually stunning web interfaces. This comprehensive guide explores advanced CSS techniques that will elevate your frontend development skills.</p><h2>CSS Grid: The Ultimate Layout System</h2><p>CSS Grid is the most powerful layout system available in CSS, offering two-dimensional layout capabilities that make complex designs much easier to implement.</p><h3>Basic Grid Concepts</h3><pre><code>.grid-container {\n  display: grid;\n  grid-template-columns: repeat(12, 1fr);\n  grid-template-rows: auto 1fr auto;\n  gap: 1rem;\n  min-height: 100vh;\n}\n\n.header {\n  grid-column: 1 / -1;\n  grid-row: 1;\n}\n\n.sidebar {\n  grid-column: 1 / 4;\n  grid-row: 2;\n}\n\n.main-content {\n  grid-column: 4 / -1;\n  grid-row: 2;\n}\n\n.footer {\n  grid-column: 1 / -1;\n  grid-row: 3;\n}</code></pre><h3>Advanced Grid Patterns</h3><pre><code>.masonry-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\n  grid-auto-rows: 10px;\n  gap: 1rem;\n}\n\n.masonry-item {\n  grid-row-end: span var(--row-span);\n  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);\n  border-radius: 8px;\n  padding: 1rem;\n}</code></pre><h2>Flexbox: One-Dimensional Layouts</h2><p>Flexbox excels at one-dimensional layouts and is perfect for components and smaller layout tasks.</p><h3>Advanced Flexbox Patterns</h3><pre><code>.card {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n}\n\n.card-header {\n  flex-shrink: 0;\n}\n\n.card-content {\n  flex: 1;\n  overflow-y: auto;\n}\n\n.card-footer {\n  flex-shrink: 0;\n  margin-top: auto;\n}</code></pre><h2>Modern CSS Animations</h2><p>CSS animations have become incredibly powerful with new properties and techniques.</p><h3>Keyframe Animations</h3><pre><code>@keyframes slideInFromLeft {\n  0% {\n    transform: translateX(-100%);\n    opacity: 0;\n  }\n  100% {\n    transform: translateX(0);\n    opacity: 1;\n  }\n}\n\n.animate-slide-in {\n  animation: slideInFromLeft 0.6s ease-out;\n}</code></pre><h3>CSS Transitions with Custom Properties</h3><pre><code>:root {\n  --primary-color: #3b82f6;\n  --transition-duration: 0.3s;\n  --transition-easing: cubic-bezier(0.4, 0, 0.2, 1);\n}\n\n.button {\n  background-color: var(--primary-color);\n  transition: all var(--transition-duration) var(--transition-easing);\n}\n\n.button:hover {\n  --primary-color: #1d4ed8;\n  transform: translateY(-2px);\n  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);\n}</code></pre><h2>CSS Custom Properties (Variables)</h2><p>CSS custom properties enable dynamic theming and more maintainable stylesheets.</p><h3>Dynamic Theming</h3><pre><code>:root {\n  --bg-primary: #ffffff;\n  --text-primary: #1a1a1a;\n  --accent-color: #3b82f6;\n  --border-radius: 8px;\n  --spacing-unit: 1rem;\n}\n\n[data-theme=\"dark\"] {\n  --bg-primary: #1a1a1a;\n  --text-primary: #ffffff;\n  --accent-color: #60a5fa;\n}\n\n.component {\n  background-color: var(--bg-primary);\n  color: var(--text-primary);\n  border-radius: var(--border-radius);\n  padding: calc(var(--spacing-unit) * 2);\n}</code></pre><h2>Container Queries: The Future of Responsive Design</h2><p>Container queries allow components to respond to their container's size rather than the viewport size.</p><pre><code>.card-container {\n  container-type: inline-size;\n}\n\n.card {\n  display: flex;\n  flex-direction: column;\n}\n\n@container (min-width: 400px) {\n  .card {\n    flex-direction: row;\n  }\n  \n  .card-image {\n    flex: 0 0 200px;\n  }\n}</code></pre><h2>Advanced Selectors and Pseudo-elements</h2><p>Mastering advanced selectors can significantly reduce the need for additional HTML or JavaScript.</p><h3>Complex Selectors</h3><pre><code>/* Select every third item starting from the second */\n.item:nth-child(3n + 2) {\n  background-color: #f3f4f6;\n}\n\n/* Select items that are both even and have a specific class */\n.item.even:nth-child(even) {\n  border-left: 4px solid #3b82f6;\n}\n\n/* Select the last item in a group */\n.group:last-child .item:last-of-type {\n  border-bottom: none;\n}</code></pre><h3>Creative Pseudo-elements</h3><pre><code>.tooltip {\n  position: relative;\n}\n\n.tooltip::before {\n  content: attr(data-tooltip);\n  position: absolute;\n  bottom: 100%;\n  left: 50%;\n  transform: translateX(-50%);\n  background: #1a1a1a;\n  color: white;\n  padding: 0.5rem;\n  border-radius: 4px;\n  font-size: 0.875rem;\n  white-space: nowrap;\n  opacity: 0;\n  pointer-events: none;\n  transition: opacity 0.3s ease;\n}\n\n.tooltip:hover::before {\n  opacity: 1;\n}</code></pre><h2>Performance Optimization</h2><p>Optimizing CSS for performance is crucial for modern web applications.</p><h3>Efficient Animations</h3><pre><code>/* Use transform and opacity for smooth animations */\n.animate {\n  transition: transform 0.3s ease, opacity 0.3s ease;\n}\n\n.animate:hover {\n  transform: scale(1.05);\n  opacity: 0.9;\n}\n\n/* Use will-change for elements that will animate */\n.animated-element {\n  will-change: transform;\n}</code></pre><h3>CSS Containment</h3><pre><code>.isolated-component {\n  contain: layout style paint;\n  /* Prevents layout thrashing */\n}\n\n.performance-optimized {\n  contain: strict;\n  /* Applies all containment types */\n}</code></pre><h2>Conclusion</h2><p>Mastering these advanced CSS techniques will significantly improve your ability to create modern, performant, and visually stunning web interfaces. The key is to practice these patterns and understand when to use each technique appropriately.</p>",
+      "author": {
+        "name": "Sushil Kumar",
+        "bio": "Full-stack developer with 5+ years of experience building scalable web applications. Passionate about React, Node.js, and modern web technologies.",
+        "avatar": "https://example.com/avatar.jpg"
+      },
+      "publishedAt": "2024-01-25T11:20:00Z",
+      "readTime": "10 min read",
+      "tags": ["CSS", "Frontend", "Layout", "Animation", "Grid", "Flexbox"],
+      "featured": false,
+      "category": {
+        "name": "Frontend Development",
+        "slug": "frontend-development"
+      },
+      "likes": 41,
+      "comments": 7,
+      "views": 1350,
+      "image": "https://example.com/advanced-css-techniques.jpg",
+      "seo": {
+        "title": "Advanced CSS Techniques - Modern Layout and Animation Guide",
+        "metaDesc": "Master advanced CSS techniques including Grid, Flexbox, animations, and modern layout patterns. Complete guide with code examples.",
+        "canonical": "https://example.com/blog/advanced-css-techniques-modern-layout-animation",
+        "ogTitle": "Advanced CSS Techniques: Modern Layout and Animation Patterns",
+        "ogDescription": "Master advanced CSS techniques including Grid, Flexbox, animations, and modern layout patterns for creating stunning web interfaces.",
+        "ogImage": "https://example.com/og-images/advanced-css.jpg"
+      }
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Frontend Development",
+      "slug": "frontend-development",
+      "description": "Articles about modern frontend development, React, CSS, and user interface design.",
+      "postCount": 2
+    },
+    {
+      "id": 2,
+      "name": "Technology Trends",
+      "slug": "technology-trends",
+      "description": "Latest trends and innovations in web development and technology.",
+      "postCount": 1
+    },
+    {
+      "id": 3,
+      "name": "Programming",
+      "slug": "programming",
+      "description": "Programming concepts, best practices, and advanced techniques.",
+      "postCount": 1
+    },
+    {
+      "id": 4,
+      "name": "Full-Stack Development",
+      "slug": "full-stack-development",
+      "description": "Complete full-stack development guides and tutorials.",
+      "postCount": 1
+    }
+  ],
+  "wordpressIntegration": {
+    "description": "These sample blog responses are designed to work with WordPress REST API and GraphQL. They include all necessary fields for a modern blog system.",
+    "requiredPlugins": [
+      "WPGraphQL",
+      "WP REST API",
+      "Advanced Custom Fields (ACF)",
+      "Yoast SEO",
+      "Custom Post Type UI"
+    ],
+    "customFields": [
+      "readTime",
+      "likes",
+      "views",
+      "featured",
+      "authorBio",
+      "authorAvatar"
+    ],
+    "apiEndpoints": {
+      "posts": "/wp-json/wp/v2/posts",
+      "categories": "/wp-json/wp/v2/categories",
+      "media": "/wp-json/wp/v2/media",
+      "users": "/wp-json/wp/v2/users"
+    },
+    "graphqlQueries": {
+      "getPosts": "query GetPosts($first: Int, $after: String) { posts(first: $first, after: $after) { nodes { id title slug excerpt content date author { node { name avatar { url } } } categories { nodes { name slug } } featuredImage { node { sourceUrl altText } } } pageInfo { hasNextPage endCursor } } }",
+      "getPost": "query GetPost($id: ID!) { post(id: $id) { id title slug content excerpt date author { node { name avatar { url } } } categories { nodes { name slug } } featuredImage { node { sourceUrl altText } } } }"
+    }
+  }
+}

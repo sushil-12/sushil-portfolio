@@ -12,10 +12,12 @@ import FloatingBusinessCardButton from './components/FloatingBusinessCardButton'
 import SEOHead from './components/SEOHead';
 import Analytics from './components/Analytics';
 import CookieConsent from './components/CookieConsent';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <SEOHead />
       <Analytics />
       <TopNavigation />

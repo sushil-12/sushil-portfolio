@@ -1,18 +1,5 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Code, 
-  Type,
-  Globe,
-  Palette,
-  Terminal,
-  Database,
-  Braces,
-  FileCode,
-  Cpu,
-  Server,
-  Zap
-} from 'lucide-react';
 
 // Import images using ES6 syntax
 import softwareIcon from '../assets/skill.png';
@@ -25,40 +12,40 @@ const icons = {
   Language: <img src={languageIcon} alt="Language" className="w-6 h-6" />
 }
 
-// Skills data organized by category with icons
+// Skills data organized by category with actual technology icons
 const categories = {
   Tech: [
-    { name: 'React.js', icon: Code, level: 90 },
-    { name: 'Next.js', icon: Globe, level: 80 },
-    { name: 'Node.js', icon: Terminal, level: 80 },
-    { name: 'Laravel', icon: Database, level: 90 },
-    { name: 'Vue.js', icon: Palette, level: 60 },
-    { name: 'Angular', icon: Code, level: 50   },
-    { name: 'WordPress', icon: Globe, level: 80 },
-    { name: 'Shopify', icon: Palette, level: 75 },
-    { name: 'MongoDB', icon: Database, level: 80 },
-    { name: 'MySQL', icon: Database, level: 90 },
-    { name: 'Docker', icon: Terminal, level: 70 },
-    { name: 'AWS', icon: Globe, level: 60 },
-    { name: 'Git', icon: Code, level: 95 },
-    { name: 'Jest', icon: Zap, level: 60 }
+    { name: 'React.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
+    { name: 'Next.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg' },
+    { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
+    { name: 'Laravel', icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt4hgAj2QByaNVhFdb3OYDtsidv54ynE0QOw&s' },
+    { name: 'Vue.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg' },
+    { name: 'Angular', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg' },
+    { name: 'WordPress', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wordpress/wordpress-original.svg' },
+    { name: 'Shopify', icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ58f__Hs5QwGWIEcsawDwW1o5IQzaYNPONhQ&s' },
+    { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg' },
+    { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
+    { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
+    { name: 'AWS', icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf8_ACwdQT0NMs_ptU8917_1THnLQqxK_u8Q&s' },
+    { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' },
+    { name: 'Jest', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg' }
   ],
   Expertise: [
-    { name: 'Full-stack Development', icon: Code, level: 90 },
-    { name: 'Microservices Architecture', icon: Globe, level: 70 },
-    { name: 'UI/UX Design', icon: Palette, level: 80 },
-    { name: 'CI/CD Pipelines', icon: Terminal, level: 80 },
-    { name: 'AWS Cloud Services', icon: Database, level: 70 }
+    { name: 'Full-stack Development', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fullstack/fullstack-original.svg' },
+    { name: 'Microservices', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-original.svg' },
+    { name: 'UI/UX Design', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg' },
+    { name: 'CI/CD', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg' },
+    { name: 'Cloud Services', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original.svg' }
   ],
   Language: [
-    { name: 'JavaScript', icon: Code, level: 90 },
-    { name: 'TypeScript', icon: Type, level: 80 },
-    { name: 'PHP', icon: Server, level: 70 },
-    { name: 'Python', icon: Cpu, level: 60 },
-    { name: 'SQL', icon: Database, level: 50 },
-    { name: 'HTML', icon: FileCode, level: 70 },
-    { name: 'CSS', icon: Palette, level: 70 },
-    { name: 'C++', icon: Braces, level: 50 },
+    { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' },
+    { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' },
+    { name: 'PHP', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg' },
+    { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
+    { name: 'SQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
+    { name: 'HTML', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg' },
+    { name: 'CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg' },
+    { name: 'C++', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg' },
   ]
 } as const;
 
@@ -143,7 +130,7 @@ const Skills: React.FC = () => {
         })}
       </div>
 
-      {/* Skills Bar Grid */}
+      {/* Skills Grid */}
       <div
         role="tabpanel"
         id={`${activeTab.toLowerCase()}-panel`}
@@ -157,94 +144,39 @@ const Skills: React.FC = () => {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4"
+            className="mt-4 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3"
           >
             {categories[activeTab].map((skill, index) => {
-              const IconComponent = skill.icon;
-              // Generate random skill level for demo (you can replace with actual data)
-              const skillLevel = skill.level;
-              
               return (
                 <motion.div
                   key={skill.name + index}
                   variants={itemVariants}
                   transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                  className="group relative"
-                  whileHover={{ x: 4 }}
+                  className="group relative bg-white border border-neutral-200 rounded-lg p-3 hover:border-neutral-300 hover:shadow-md transition-all duration-200"
+                  whileHover={{ y: -2, scale: 1.05 }}
                 >
-                  {/* Skill Header */}
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-3">
-                      <motion.div
-                        whileHover={{ scale: 1.2, rotate: 5 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                      >
-                        <IconComponent className="w-4 h-4 text-neutral-600 group-hover:text-black transition-colors duration-200" />
-                      </motion.div>
-                      <span className="text-sm font-medium text-neutral-900 group-hover:text-black transition-colors duration-200">
-                        {skill.name}
-                      </span>
-                    </div>
-                    <motion.span 
-                      className="text-xs font-bold text-neutral-500 group-hover:text-black transition-colors duration-200"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 1 + index * 0.1 }}
-                    >
-                      {skillLevel}%
-                    </motion.span>
-                  </div>
-                  
-                  {/* Progress Bar Container */}
-                  <div className="relative w-full bg-neutral-100 h-2 rounded-full overflow-hidden shadow-inner">
-                    {/* Animated Progress Bar */}
+                  <div className="flex flex-col items-center text-center space-y-2">
                     <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: `${skillLevel}%` }}
-                      transition={{ 
-                        duration: 1.5, 
-                        delay: index * 0.05, 
-                        ease: [0.25, 0.46, 0.45, 0.94] 
-                      }}
-                      className="relative h-full bg-black rounded-full"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                      className="p-1.5 bg-neutral-50 rounded-md group-hover:bg-neutral-100 transition-colors duration-200"
                     >
-                      {/* Shimmer effect */}
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-full"
-                        animate={{ x: ['-100%', '100%'] }}
-                        transition={{ 
-                          duration: 2, 
-                          repeat: Infinity, 
-                          repeatDelay: 3,
-                          ease: "easeInOut"
+                      <img 
+                        src={skill.icon} 
+                        alt={skill.name}
+                        className="w-5 h-5"
+                        onError={(e) => {
+                          // Fallback to a simple div if icon fails to load
+                          e.currentTarget.style.display = 'none';
+                          e.currentTarget.nextElementSibling?.classList.remove('hidden');
                         }}
                       />
-                      
-                      {/* Glow effect on hover */}
-                      <div className="absolute inset-0 bg-neutral-700 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="hidden w-5 h-5 bg-neutral-300 rounded"></div>
                     </motion.div>
-                    
-                    {/* Percentage indicator dot */}
-                    <motion.div
-                      className="absolute top-1/2 w-1 h-1 bg-white rounded-full shadow-sm"
-                      style={{ left: `${skillLevel}%` }}
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 1.5 + index * 0.05 }}
-                    />
+                    <span className="text-xs font-medium text-neutral-700 group-hover:text-black transition-colors duration-200 leading-tight">
+                      {skill.name}
+                    </span>
                   </div>
-                  
-                  {/* Skill level indicator line */}
-                  <motion.div
-                    className="absolute top-8 left-0 w-0 h-0.5 -to-r from-emerald-500 to-blue-500 rounded-full"
-                    initial={{ width: 0 }}
-                    animate={{ width: `${skillLevel}%` }}
-                    transition={{ 
-                      duration: 1.2, 
-                      delay: index * 0.05 + 0.5,
-                      ease: "easeOut"
-                    }}
-                  />
                 </motion.div>
               );
             })}

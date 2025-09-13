@@ -1,0 +1,238 @@
+{
+    "blog_posts": [
+        {
+            "id": 1,
+            "title": "Building Scalable React Applications with Modern Architecture",
+            "slug": "building-scalable-react-applications-modern-architecture",
+            "excerpt": "Learn how to structure your React applications for scalability and maintainability using modern patterns and best practices. This comprehensive guide covers everything from project structure to performance optimization.",
+            "content": "<p>In today's fast-paced development environment, building scalable React applications is crucial for long-term success. This comprehensive guide will walk you through modern architectural patterns that will help you create maintainable, performant, and scalable React applications.</p>\n\n<h2>Understanding Modern React Architecture</h2>\n<p>Modern React architecture goes beyond just components and state management. It encompasses a holistic approach to building applications that can grow with your business needs while maintaining code quality and developer experience.</p>\n\n<h3>Key Principles</h3>\n<ul>\n<li><strong>Separation of Concerns:</strong> Each part of your application should have a single responsibility</li>\n<li><strong>Composition over Inheritance:</strong> Build complex UIs by combining simple components</li>\n<li><strong>Predictable State Management:</strong> Use consistent patterns for state updates</li>\n<li><strong>Performance by Default:</strong> Build with performance considerations from the start</li>\n</ul>\n\n<h2>Project Structure Best Practices</h2>\n<p>A well-organized project structure is the foundation of a scalable application. Here's a recommended structure:</p>\n\n<pre><code>src/\n├── components/          # Reusable UI components\n│   ├── common/         # Generic components (Button, Input, etc.)\n│   ├── features/       # Feature-specific components\n│   └── layouts/        # Layout components\n├── hooks/              # Custom React hooks\n├── services/           # API calls and external services\n├── store/              # State management\n├── utils/              # Utility functions\n├── types/              # TypeScript type definitions\n└── constants/          # Application constants</code></pre>\n\n<h2>State Management Strategies</h2>\n<p>Choosing the right state management solution depends on your application's complexity and requirements. Here are the most effective approaches:</p>\n\n<h3>1. Context API for Global State</h3>\n<p>For smaller applications, React's built-in Context API can be sufficient:</p>\n\n<pre><code>// contexts/AppContext.tsx\nimport React, { createContext, useContext, useReducer } from 'react';\n\ninterface AppState {\n  user: User | null;\n  theme: 'light' | 'dark';\n  loading: boolean;\n}\n\nconst AppContext = createContext<{\n  state: AppState;\n  dispatch: React.Dispatch<AppAction>;\n} | null>(null);\n\nexport const useAppContext = () => {\n  const context = useContext(AppContext);\n  if (!context) {\n    throw new Error('useAppContext must be used within AppProvider');\n  }\n  return context;\n};</code></pre>\n\n<h3>2. Redux Toolkit for Complex State</h3>\n<p>For larger applications with complex state interactions, Redux Toolkit provides excellent developer experience:</p>\n\n<pre><code>// store/slices/userSlice.ts\nimport { createSlice, createAsyncThunk } from '@reduxjs/toolkit';\n\nexport const fetchUser = createAsyncThunk(\n  'user/fetchUser',\n  async (userId: string) => {\n    const response = await api.getUser(userId);\n    return response.data;\n  }\n);\n\nconst userSlice = createSlice({\n  name: 'user',\n  initialState: {\n    data: null,\n    loading: false,\n    error: null\n  },\n  reducers: {\n    clearUser: (state) => {\n      state.data = null;\n    }\n  },\n  extraReducers: (builder) => {\n    builder\n      .addCase(fetchUser.pending, (state) => {\n        state.loading = true;\n      })\n      .addCase(fetchUser.fulfilled, (state, action) => {\n        state.loading = false;\n        state.data = action.payload;\n      });\n  }\n});</code></pre>\n\n<h2>Performance Optimization Techniques</h2>\n<p>Performance is crucial for user experience. Here are essential optimization techniques:</p>\n\n<h3>Code Splitting and Lazy Loading</h3>\n<pre><code>// Lazy load components\nconst Dashboard = lazy(() => import('./components/Dashboard'));\nconst Profile = lazy(() => import('./components/Profile'));\n\n// Route-based code splitting\nconst App = () => (\n  <Router>\n    <Suspense fallback={<div>Loading...</div>}>\n      <Routes>\n        <Route path=\"/dashboard\" element={<Dashboard />} />\n        <Route path=\"/profile\" element={<Profile />} />\n      </Routes>\n    </Suspense>\n  </Router>\n);</code></pre>\n\n<h3>Memoization Strategies</h3>\n<pre><code>// Memoize expensive calculations\nconst ExpensiveComponent = ({ data }) => {\n  const processedData = useMemo(() => {\n    return data.map(item => ({\n      ...item,\n      processed: heavyCalculation(item)\n    }));\n  }, [data]);\n  \n  return <div>{/* Render processed data */}</div>;\n};\n\n// Memoize components to prevent unnecessary re-renders\nconst MemoizedChild = memo(({ value }) => {\n  return <div>{value}</div>;\n});</code></pre>\n\n<h2>Testing Strategies</h2>\n<p>A comprehensive testing strategy ensures your application remains reliable as it scales:</p>\n\n<h3>Unit Testing with Jest and React Testing Library</h3>\n<pre><code>// components/Button.test.tsx\nimport { render, screen, fireEvent } from '@testing-library/react';\nimport { Button } from './Button';\n\ndescribe('Button Component', () => {\n  it('renders with correct text', () => {\n    render(<Button>Click me</Button>);\n    expect(screen.getByText('Click me')).toBeInTheDocument();\n  });\n  \n  it('calls onClick when clicked', () => {\n    const handleClick = jest.fn();\n    render(<Button onClick={handleClick}>Click me</Button>);\n    fireEvent.click(screen.getByText('Click me'));\n    expect(handleClick).toHaveBeenCalledTimes(1);\n  });\n});</code></pre>\n\n<h2>Conclusion</h2>\n<p>Building scalable React applications requires careful planning and adherence to modern best practices. By following the patterns and techniques outlined in this guide, you'll be well-equipped to create applications that can grow with your needs while maintaining code quality and performance.</p>\n\n<p>Remember, scalability is not just about handling more users or data—it's about creating a codebase that remains maintainable and enjoyable to work with as your team and requirements grow.</p>",
+            "author": {
+                "id": 1,
+                "name": "Sushil Kumar",
+                "slug": "sushil-kumar",
+                "bio": "Full-stack developer with 5+ years of experience building scalable web applications. Passionate about React, Node.js, and modern web technologies.",
+                "avatar": "https://example.com/avatars/sushil-kumar.jpg"
+            },
+            "publishedAt": "2024-01-15T10:00:00Z",
+            "modifiedAt": "2024-01-15T10:00:00Z",
+            "readTime": "8 min read",
+            "tags": [
+                {
+                    "id": 1,
+                    "name": "React",
+                    "slug": "react"
+                },
+                {
+                    "id": 2,
+                    "name": "Architecture",
+                    "slug": "architecture"
+                },
+                {
+                    "id": 3,
+                    "name": "JavaScript",
+                    "slug": "javascript"
+                },
+                {
+                    "id": 4,
+                    "name": "Performance",
+                    "slug": "performance"
+                },
+                {
+                    "id": 5,
+                    "name": "Best Practices",
+                    "slug": "best-practices"
+                }
+            ],
+            "category": {
+                "id": 1,
+                "name": "Frontend Development",
+                "slug": "frontend-development",
+                "description": "Articles about frontend technologies, frameworks, and best practices"
+            },
+            "featured": true,
+            "status": "published",
+            "seo": {
+                "title": "Building Scalable React Applications with Modern Architecture | Sushil Kumar",
+                "metaDescription": "Learn how to structure your React applications for scalability and maintainability using modern patterns and best practices. Comprehensive guide with code examples.",
+                "canonical": "https://sushilkumar.dev/blog/building-scalable-react-applications-modern-architecture",
+                "ogTitle": "Building Scalable React Applications with Modern Architecture",
+                "ogDescription": "Learn how to structure your React applications for scalability and maintainability using modern patterns and best practices.",
+                "ogImage": "https://sushilkumar.dev/images/scalable-react-applications.jpg"
+            },
+            "featuredImage": {
+                "id": 1,
+                "url": "https://sushilkumar.dev/images/scalable-react-applications.jpg",
+                "alt": "Building Scalable React Applications",
+                "width": 1200,
+                "height": 630
+            },
+            "stats": {
+                "likes": 42,
+                "comments": 8,
+                "views": 1250,
+                "shares": 15
+            },
+            "relatedPosts": [
+                {
+                    "id": 2,
+                    "title": "The Future of Web Development: Trends to Watch in 2024",
+                    "slug": "future-web-development-trends-2024",
+                    "excerpt": "Exploring the latest trends and technologies that are shaping the future of web development.",
+                    "featuredImage": "https://sushilkumar.dev/images/web-development-trends.jpg",
+                    "readTime": "6 min read"
+                },
+                {
+                    "id": 3,
+                    "title": "Mastering TypeScript: Advanced Patterns and Techniques",
+                    "slug": "mastering-typescript-advanced-patterns",
+                    "excerpt": "Deep dive into advanced TypeScript patterns that will make your code more robust and maintainable.",
+                    "featuredImage": "https://sushilkumar.dev/images/typescript-patterns.jpg",
+                    "readTime": "10 min read"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "The Future of Web Development: Trends to Watch in 2024",
+            "slug": "future-web-development-trends-2024",
+            "excerpt": "Exploring the latest trends and technologies that are shaping the future of web development and how to stay ahead of the curve in this rapidly evolving industry.",
+            "content": "<p>The web development landscape is constantly evolving, and 2024 promises to bring exciting new technologies and paradigms. Let's explore the key trends that will shape the future of web development and how you can prepare for them.</p>\n\n<h2>1. WebAssembly (WASM) Revolution</h2>\n<p>WebAssembly is becoming increasingly important for performance-critical applications. With near-native performance, WASM enables developers to run code written in languages like Rust, C++, and Go directly in the browser.</p>\n\n<h3>Key Benefits of WebAssembly</h3>\n<ul>\n<li><strong>Performance:</strong> Near-native execution speed</li>\n<li><strong>Language Diversity:</strong> Use any language that compiles to WASM</li>\n<li><strong>Security:</strong> Sandboxed execution environment</li>\n<li><strong>Portability:</strong> Runs consistently across all modern browsers</li>\n</ul>\n\n<pre><code>// Example: Using WebAssembly in JavaScript\nconst wasmModule = await WebAssembly.instantiateStreaming(\n  fetch('math.wasm')\n);\n\nconst result = wasmModule.instance.exports.add(5, 3);\nconsole.log(result); // 8</code></pre>\n\n<h2>2. Edge Computing and Edge Functions</h2>\n<p>Edge computing is bringing computation closer to users, reducing latency and improving performance. Platforms like Vercel Edge Functions and Cloudflare Workers are making it easier to deploy edge functions.</p>\n\n<h3>Edge Computing Use Cases</h3>\n<ul>\n<li><strong>API Routes:</strong> Serverless functions at the edge</li>\n<li><strong>Image Optimization:</strong> Dynamic image processing</li>\n<li><strong>Personalization:</strong> User-specific content delivery</li>\n<li><strong>Security:</strong> Bot detection and rate limiting</li>\n</ul>\n\n<h2>3. AI-Powered Development Tools</h2>\n<p>AI is transforming how we write code, with tools like GitHub Copilot and ChatGPT becoming integral parts of the development workflow.</p>\n\n<h3>AI Tools for Developers</h3>\n<ul>\n<li><strong>Code Generation:</strong> Automated code writing and completion</li>\n<li><strong>Bug Detection:</strong> AI-powered code analysis and debugging</li>\n<li><strong>Documentation:</strong> Automatic documentation generation</li>\n<li><strong>Testing:</strong> AI-generated test cases and scenarios</li>\n</ul>\n\n<h2>4. Progressive Web Apps (PWAs) Evolution</h2>\n<p>PWAs are becoming more powerful with new APIs and capabilities, blurring the line between web and native applications.</p>\n\n<h3>New PWA Capabilities</h3>\n<ul>\n<li><strong>File System Access API:</strong> Direct file system interaction</li>\n<li><strong>Web Share API:</strong> Native sharing functionality</li>\n<li><strong>Background Sync:</strong> Offline data synchronization</li>\n<li><strong>Push Notifications:</strong> Enhanced user engagement</li>\n</ul>\n\n<h2>5. Micro-Frontends Architecture</h2>\n<p>Micro-frontends are gaining traction as a way to scale frontend development across large teams and applications.</p>\n\n<h3>Benefits of Micro-Frontends</h3>\n<ul>\n<li><strong>Team Autonomy:</strong> Independent development and deployment</li>\n<li><strong>Technology Diversity:</strong> Use different frameworks per team</li>\n<li><strong>Scalability:</strong> Easier to scale development teams</li>\n<li><strong>Maintainability:</strong> Smaller, focused codebases</li>\n</ul>\n\n<h2>6. Web3 and Blockchain Integration</h2>\n<p>Web3 technologies are becoming more accessible to web developers, opening new possibilities for decentralized applications.</p>\n\n<h3>Web3 Development Tools</h3>\n<ul>\n<li><strong>MetaMask Integration:</strong> Wallet connectivity</li>\n<li><strong>Smart Contract Interaction:</strong> Web3.js and Ethers.js</li>\n<li><strong>NFT Marketplaces:</strong> Digital asset trading platforms</li>\n<li><strong>DeFi Applications:</strong> Decentralized finance interfaces</li>\n</ul>\n\n<h2>7. Enhanced Developer Experience (DX)</h2>\n<p>Tools and frameworks are focusing more on developer experience, making development faster and more enjoyable.</p>\n\n<h3>DX Improvements</h3>\n<ul>\n<li><strong>Hot Module Replacement:</strong> Instant code updates</li>\n<li><strong>TypeScript Integration:</strong> Better type safety and IntelliSense</li>\n<li><strong>Component Libraries:</strong> Pre-built, accessible components</li>\n<li><strong>Development Servers:</strong> Faster build and reload times</li>\n</ul>\n\n<h2>Conclusion</h2>\n<p>The future of web development is exciting and full of opportunities. By staying informed about these trends and continuously learning new technologies, you can position yourself as a forward-thinking developer ready to tackle the challenges of tomorrow.</p>\n\n<p>Remember, the key to success in this rapidly evolving field is adaptability and a willingness to embrace change while maintaining a solid foundation in core web technologies.</p>",
+            "author": {
+                "id": 1,
+                "name": "Sushil Kumar",
+                "slug": "sushil-kumar",
+                "bio": "Full-stack developer with 5+ years of experience building scalable web applications. Passionate about React, Node.js, and modern web technologies.",
+                "avatar": "https://example.com/avatars/sushil-kumar.jpg"
+            },
+            "publishedAt": "2024-01-10T14:30:00Z",
+            "modifiedAt": "2024-01-10T14:30:00Z",
+            "readTime": "6 min read",
+            "tags": [
+                {
+                    "id": 6,
+                    "name": "Web Development",
+                    "slug": "web-development"
+                },
+                {
+                    "id": 7,
+                    "name": "Trends",
+                    "slug": "trends"
+                },
+                {
+                    "id": 8,
+                    "name": "Technology",
+                    "slug": "technology"
+                },
+                {
+                    "id": 9,
+                    "name": "Future",
+                    "slug": "future"
+                }
+            ],
+            "category": {
+                "id": 2,
+                "name": "Technology Trends",
+                "slug": "technology-trends",
+                "description": "Latest trends and emerging technologies in web development"
+            },
+            "featured": false,
+            "status": "published",
+            "seo": {
+                "title": "The Future of Web Development: Trends to Watch in 2024 | Sushil Kumar",
+                "metaDescription": "Explore the latest trends and technologies shaping the future of web development in 2024. Stay ahead with insights on WebAssembly, AI tools, and more.",
+                "canonical": "https://sushilkumar.dev/blog/future-web-development-trends-2024",
+                "ogTitle": "The Future of Web Development: Trends to Watch in 2024",
+                "ogDescription": "Explore the latest trends and technologies shaping the future of web development in 2024.",
+                "ogImage": "https://sushilkumar.dev/images/web-development-trends.jpg"
+            },
+            "featuredImage": {
+                "id": 2,
+                "url": "https://sushilkumar.dev/images/web-development-trends.jpg",
+                "alt": "Future of Web Development Trends 2024",
+                "width": 1200,
+                "height": 630
+            },
+            "stats": {
+                "likes": 28,
+                "comments": 5,
+                "views": 890,
+                "shares": 12
+            }
+        },
+        {
+            "id": 3,
+            "title": "Mastering TypeScript: Advanced Patterns and Techniques",
+            "slug": "mastering-typescript-advanced-patterns",
+            "excerpt": "Deep dive into advanced TypeScript patterns that will make your code more robust, maintainable, and type-safe. Learn from real-world examples and best practices.",
+            "content": "<p>TypeScript has become an essential tool for modern web development. This comprehensive guide explores advanced patterns and techniques that will elevate your TypeScript skills and help you write more robust, maintainable code.</p>\n\n<h2>Advanced Type Patterns</h2>\n<p>Understanding advanced type patterns is crucial for writing maintainable TypeScript code. Let's explore some powerful patterns that will make your code more expressive and type-safe.</p>\n\n<h3>1. Conditional Types</h3>\n<p>Conditional types allow you to create types that depend on other types, enabling powerful type-level programming:</p>\n\n<pre><code>// Basic conditional type\ntype IsString<T> = T extends string ? true : false;\n\ntype Test1 = IsString<string>; // true\ntype Test2 = IsString<number>; // false\n\n// More complex example\ntype NonNullable<T> = T extends null | undefined ? never : T;\n\ntype Example1 = NonNullable<string | null>; // string\ntype Example2 = NonNullable<number | undefined>; // number</code></pre>\n\n<h3>2. Mapped Types</h3>\n<p>Mapped types allow you to create new types based on existing ones by transforming properties:</p>\n\n<pre><code>// Make all properties optional\ntype Partial<T> = {\n  [P in keyof T]?: T[P];\n};\n\n// Make all properties readonly\ntype Readonly<T> = {\n  readonly [P in keyof T]: T[P];\n};\n\n// Make all properties required\ntype Required<T> = {\n  [P in keyof T]-?: T[P];\n};\n\n// Example usage\ninterface User {\n  id: number;\n  name: string;\n  email?: string;\n}\n\ntype PartialUser = Partial<User>; // All properties optional\ntype RequiredUser = Required<User>; // All properties required</code></pre>\n\n<h3>3. Template Literal Types</h3>\n<p>Template literal types enable string manipulation at the type level:</p>\n\n<pre><code>// Basic template literal type\ntype EventName<T extends string> = `on${Capitalize<T>}`;\n\ntype ClickEvent = EventName<'click'>; // 'onClick'\ntype HoverEvent = EventName<'hover'>; // 'onHover'\n\n// More complex example\ntype ApiEndpoint<T extends string> = `/api/${T}`;\n\ntype UsersEndpoint = ApiEndpoint<'users'>; // '/api/users'\ntype PostsEndpoint = ApiEndpoint<'posts'>; // '/api/posts'</code></pre>\n\n<h2>Generic Constraints and Utility Types</h2>\n<p>Leverage TypeScript's powerful type system to create flexible and reusable code with proper constraints.</p>\n\n<h3>Generic Constraints</h3>\n<pre><code>// Constrain generic to objects with specific properties\nfunction getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {\n  return obj[key];\n}\n\nconst user = { name: 'John', age: 30 };\nconst name = getProperty(user, 'name'); // string\nconst age = getProperty(user, 'age'); // number\n\n// Constrain generic to have a specific method\ninterface Lengthwise {\n  length: number;\n}\n\nfunction logLength<T extends Lengthwise>(arg: T): T {\n  console.log(arg.length);\n  return arg;\n}\n\nlogLength('hello'); // OK\nlogLength([1, 2, 3]); // OK\nlogLength(123); // Error: number doesn't have length</code></pre>\n\n<h3>Utility Types in Practice</h3>\n<pre><code>// Pick specific properties\ntype UserSummary = Pick<User, 'id' | 'name'>;\n\n// Omit specific properties\ntype UserWithoutId = Omit<User, 'id'>;\n\n// Extract specific types from union\ntype StringKeys = Extract<keyof User, string>;\n\n// Exclude specific types from union\ntype NonFunctionKeys = Exclude<keyof User, Function>;\n\n// Record type for creating object types\ntype UserRoles = Record<string, 'admin' | 'user' | 'guest'>;\n\nconst roles: UserRoles = {\n  'user1': 'admin',\n  'user2': 'user',\n  'user3': 'guest'\n};</code></pre>\n\n<h2>Advanced Function Types</h2>\n<p>TypeScript provides powerful ways to type functions, enabling better type safety and developer experience.</p>\n\n<h3>Function Overloads</h3>\n<pre><code>// Function overloads for different parameter types\nfunction processValue(value: string): string;\nfunction processValue(value: number): number;\nfunction processValue(value: boolean): boolean;\nfunction processValue(value: string | number | boolean): string | number | boolean {\n  if (typeof value === 'string') {\n    return value.toUpperCase();\n  } else if (typeof value === 'number') {\n    return value * 2;\n  } else {\n    return !value;\n  }\n}\n\nconst result1 = processValue('hello'); // string\const result2 = processValue(42); // number\nconst result3 = processValue(true); // boolean</code></pre>\n\n<h3>Generic Functions with Constraints</h3>\n<pre><code>// Generic function with multiple constraints\nfunction mergeObjects<T extends object, U extends object>(\n  obj1: T,\n  obj2: U\n): T & U {\n  return { ...obj1, ...obj2 };\n}\n\nconst merged = mergeObjects(\n  { name: 'John' },\n  { age: 30 }\n); // { name: string; age: number }\n\n// Generic function with conditional return type\nfunction createArray<T>(value: T, count: number): T[] {\n  return Array(count).fill(value);\n}\n\nconst numbers = createArray(42, 3); // number[]\nconst strings = createArray('hello', 2); // string[]</code></pre>\n\n<h2>Advanced Class Patterns</h2>\n<p>TypeScript classes offer powerful patterns for object-oriented programming with strong typing.</p>\n\n<h3>Abstract Classes and Methods</h3>\n<pre><code>// Abstract base class\nabstract class Animal {\n  protected name: string;\n  \n  constructor(name: string) {\n    this.name = name;\n  }\n  \n  // Abstract method - must be implemented by subclasses\n  abstract makeSound(): string;\n  \n  // Concrete method\n  public getName(): string {\n    return this.name;\n  }\n}\n\n// Concrete implementation\nclass Dog extends Animal {\n  makeSound(): string {\n    return 'Woof!';\n  }\n}\n\nclass Cat extends Animal {\n  makeSound(): string {\n    return 'Meow!';\n  }\n}\n\n// Usage\nconst dog = new Dog('Buddy');\nconsole.log(dog.makeSound()); // 'Woof!'\nconsole.log(dog.getName()); // 'Buddy'</code></pre>\n\n<h3>Generic Classes</h3>\n<pre><code>// Generic class for data structures\nclass Stack<T> {\n  private items: T[] = [];\n  \n  push(item: T): void {\n    this.items.push(item);\n  }\n  \n  pop(): T | undefined {\n    return this.items.pop();\n  }\n  \n  peek(): T | undefined {\n    return this.items[this.items.length - 1];\n  }\n  \n  isEmpty(): boolean {\n    return this.items.length === 0;\n  }\n}\n\n// Usage with different types\nconst numberStack = new Stack<number>();\nnumberStack.push(1);\nnumberStack.push(2);\nconsole.log(numberStack.pop()); // 2\n\nconst stringStack = new Stack<string>();\nstringStack.push('hello');\nstringStack.push('world');\nconsole.log(stringStack.pop()); // 'world'</code></pre>\n\n<h2>Error Handling with Types</h2>\n<p>TypeScript provides powerful ways to handle errors with proper typing.</p>\n\n<h3>Result Pattern</h3>\n<pre><code>// Result type for error handling\ntype Result<T, E = Error> = \n  | { success: true; data: T }\n  | { success: false; error: E };\n\n// Example usage\nfunction divide(a: number, b: number): Result<number, string> {\n  if (b === 0) {\n    return { success: false, error: 'Division by zero' };\n  }\n  return { success: true, data: a / b };\n}\n\n// Usage with proper error handling\nconst result = divide(10, 2);\nif (result.success) {\n  console.log(result.data); // 5\n} else {\n  console.error(result.error); // Error message\n}</code></pre>\n\n<h2>Best Practices and Tips</h2>\n<p>Here are some best practices to follow when working with advanced TypeScript patterns:</p>\n\n<h3>1. Use Type Guards</h3>\n<pre><code>// Type guard function\nfunction isString(value: unknown): value is string {\n  return typeof value === 'string';\n}\n\n// Usage\nfunction processValue(value: unknown) {\n  if (isString(value)) {\n    // TypeScript knows value is string here\n    console.log(value.toUpperCase());\n  }\n}</code></pre>\n\n<h3>2. Prefer Composition over Inheritance</h3>\n<pre><code>// Instead of deep inheritance, use composition\ninterface Flyable {\n  fly(): void;\n}\n\ninterface Swimmable {\n  swim(): void;\n}\n\nclass Bird implements Flyable {\n  fly(): void {\n    console.log('Flying...');\n  }\n}\n\nclass Duck implements Flyable, Swimmable {\n  fly(): void {\n    console.log('Duck flying...');\n  }\n  \n  swim(): void {\n    console.log('Duck swimming...');\n  }\n}</code></pre>\n\n<h3>3. Use Discriminated Unions</h3>\n<pre><code>// Discriminated union for different states\ntype LoadingState = {\n  status: 'loading';\n};\n\ntype SuccessState = {\n  status: 'success';\n  data: any;\n};\n\ntype ErrorState = {\n  status: 'error';\n  error: string;\n};\n\ntype AsyncState = LoadingState | SuccessState | ErrorState;\n\n// Usage with exhaustive checking\nfunction handleState(state: AsyncState) {\n  switch (state.status) {\n    case 'loading':\n      console.log('Loading...');\n      break;\n    case 'success':\n      console.log('Data:', state.data);\n      break;\n    case 'error':\n      console.error('Error:', state.error);\n      break;\n    default:\n      // TypeScript ensures all cases are handled\n      const _exhaustiveCheck: never = state;\n  }\n}</code></pre>\n\n<h2>Conclusion</h2>\n<p>Mastering advanced TypeScript patterns will significantly improve your code quality, maintainability, and developer experience. These patterns provide powerful tools for creating robust, type-safe applications that scale with your needs.</p>\n\n<p>Remember, TypeScript is not just about adding types to JavaScript—it's about leveraging the type system to catch errors at compile time, provide better IDE support, and create more maintainable codebases.</p>\n\n<p>Start incorporating these patterns gradually into your projects, and you'll soon see the benefits of advanced TypeScript usage in your development workflow.</p>",
+            "author": {
+                "id": 1,
+                "name": "Sushil Kumar",
+                "slug": "sushil-kumar",
+                "bio": "Full-stack developer with 5+ years of experience building scalable web applications. Passionate about React, Node.js, and modern web technologies.",
+                "avatar": "https://example.com/avatars/sushil-kumar.jpg"
+            },
+            "publishedAt": "2024-01-05T09:15:00Z",
+            "modifiedAt": "2024-01-05T09:15:00Z",
+            "readTime": "10 min read",
+            "tags": [
+                {
+                    "id": 10,
+                    "name": "TypeScript",
+                    "slug": "typescript"
+                },
+                {
+                    "id": 11,
+                    "name": "Programming",
+                    "slug": "programming"
+                },
+                {
+                    "id": 12,
+                    "name": "Best Practices",
+                    "slug": "best-practices"
+                },
+                {
+                    "id": 13,
+                    "name": "Advanced",
+                    "slug": "advanced"
+                }
+            ],
+            "category": {
+                "id": 3,
+                "name": "Programming",
+                "slug": "programming",
+                "description": "Programming languages, techniques, and advanced concepts"
+            },
+            "featured": false,
+            "status": "published",
+            "seo": {
+                "title": "Mastering TypeScript: Advanced Patterns and Techniques | Sushil Kumar",
+                "metaDescription": "Deep dive into advanced TypeScript patterns that will make your code more robust, maintainable, and type-safe. Learn from real-world examples.",
+                "canonical": "https://sushilkumar.dev/blog/mastering-typescript-advanced-patterns",
+                "ogTitle": "Mastering TypeScript: Advanced Patterns and Techniques",
+                "ogDescription": "Deep dive into advanced TypeScript patterns that will make your code more robust, maintainable, and type-safe.",
+                "ogImage": "https://sushilkumar.dev/images/typescript-patterns.jpg"
+            },
+            "featuredImage": {
+                "id": 3,
+                "url": "https://sushilkumar.dev/images/typescript-patterns.jpg",
+                "alt": "Mastering TypeScript Advanced Patterns",
+                "width": 1200,
+                "height": 630
+            },
+            "stats": {
+                "likes": 35,
+                "comments": 12,
+                "views": 1100,
+                "shares": 8
+            }
+        }
+    ],
+    "total": 3,
+    "pageInfo": {
+        "totalPages": 1,
+        "currentPage": 1,
+        "hasNextPage": false,
+        "hasPreviousPage": false
+    }
+}

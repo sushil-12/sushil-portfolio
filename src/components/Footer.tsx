@@ -35,6 +35,18 @@ const Footer: React.FC = () => {
               Skills
             </a>
             <a 
+              href="#about-us" 
+              className="text-sm text-neutral-300 hover:text-white transition-colors duration-200"
+            >
+              About SushilHub
+            </a>
+            <a 
+              href="/blog" 
+              className="text-sm text-neutral-300 hover:text-white transition-colors duration-200"
+            >
+              Blog
+            </a>
+            <a 
               href="#contact" 
               className="text-sm text-neutral-300 hover:text-white transition-colors duration-200"
             >

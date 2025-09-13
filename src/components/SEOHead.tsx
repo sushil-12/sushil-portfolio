@@ -77,6 +77,10 @@ const SEOHead = ({
     updateMetaTag('msapplication-TileColor', seoConfig.themeColor);
     updateMetaTag('apple-mobile-web-app-title', seoConfig.siteName);
     updateMetaTag('application-name', seoConfig.siteName);
+    
+    // LinkedIn Company Page
+    updateMetaTag('linkedin:company', seoConfig.linkedinCompanyUrl);
+    updateMetaTag('linkedin:profile', seoConfig.linkedinUrl);
 
     // Canonical URL
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;

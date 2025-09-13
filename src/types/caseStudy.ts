@@ -21,6 +21,7 @@ export interface CaseStudy {
   teamSize: string;
   category: 'featured' | 'past';
   role: string;
+  seoKeywords?: string[];
 }
 
 export interface CaseStudyPopupProps {

@@ -5,6 +5,8 @@ import Hero from './Hero';
 import Skills from './Skills';
 import Projects from './Projects';
 import Contact from './Contact';
+import SEOHead from './SEOHead';
+import { generateOrganizationStructuredData } from '../config/structured-data';
 
 const HomePage: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -48,6 +50,12 @@ const HomePage: React.FC = () => {
 
   return (
     <>
+      {/* SEO Head with Organization Schema */}
+      <SEOHead 
+        pageType="homepage"
+        structuredData={generateOrganizationStructuredData()}
+      />
+      
       {/* Side Navigation - Only for Homepage */}
       <motion.nav
         initial={{ x: 100, opacity: 0 }}

@@ -11,10 +11,23 @@ Crawl-delay: 1
 Allow: /blog/
 Allow: /blog/*
 
+# Allow important project pages
+Allow: /projects/
+Allow: /projects/1800limo
+Allow: /projects/wpvip
+Allow: /projects/gitmate
+Allow: /about
+Allow: /contact
+
 # Disallow admin or private areas (if any)
-# Disallow: /admin/
-# Disallow: /private/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /node_modules/
 
 # Allow all static assets
 Allow: /assets/
 Allow: /dist/
+
+# Additional SEO directives
+Host: https://sushilhub.com

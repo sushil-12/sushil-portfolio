@@ -55,42 +55,46 @@ export const caseStudies: CaseStudy[] = [
   },  
   {
     id: "1800limo",
-    title: "1800LIMO.com",
-    tagline: "Premium Limousine Booking Platform",
+    title: "1800LIMO.com - Premium Limousine Booking Platform",
+    tagline: "Premium Limousine Booking Platform | Transportation Technology | Limo Booking System",
     status: "live",
     heroImage: limoImage,
-    overview: "Developed a comprehensive limousine booking platform with real-time communication, payment processing, and fleet management capabilities.",
-    problem: "The client was operating their limousine business on third-party platforms that charged heavy commissions and imposed multiple restrictions. Being completely non-technical, they lacked control over their business data, customers, and revenue stream.",
-    solution: "Designed and delivered a full-fledged, secure booking platform tailored to the client’s business needs. The system supported multi-user roles (individual customers, admin, sub-admin, affiliate drivers, travel agents, and corporate accounts), integrated secure payment services, enabled real-time booking notifications, and provided complete business independence without third-party dependency.",
-    technologies: ["Angular", "Laravel", "Node.js", "WebSockets", "MySQL", "Redis", "Stripe API", "Google Maps API"],
+    overview: "Developed a comprehensive limousine booking platform with real-time communication, payment processing, and fleet management capabilities. A complete transportation technology solution for limousine services, corporate travel, and luxury transportation booking.",
+    problem: "The client was operating their limousine business on third-party platforms that charged heavy commissions and imposed multiple restrictions. Being completely non-technical, they lacked control over their business data, customers, and revenue stream. They needed a custom limo booking system that would give them complete independence and control over their transportation business.",
+    solution: "Designed and delivered a full-fledged, secure booking platform tailored to the client's business needs. The system supported multi-user roles (individual customers, admin, sub-admin, affiliate drivers, travel agents, and corporate accounts), integrated secure payment services, enabled real-time booking notifications, and provided complete business independence without third-party dependency. Built with modern web technologies for scalability and performance.",
+    technologies: ["Angular", "Laravel", "Node.js", "WebSockets", "MySQL", "Redis", "Stripe API", "Google Maps API", "TypeScript", "JavaScript", "PHP", "Real-time Communication"],
     features: [
       "Multi-user system with admin, sub-admin, affiliates, drivers, and corporate accounts",
-      "Real-time booking and availability checking",
-      "Live vehicle tracking and driver communication",
-      "Automated SMS and email notifications",
-      "Payment processing with Stripe integration",
-      "Admin dashboard for fleet management",
-      "Mobile-responsive design"
+      "Real-time booking and availability checking for limousine services",
+      "Live vehicle tracking and driver communication system",
+      "Automated SMS and email notifications for booking confirmations",
+      "Payment processing with Stripe integration for secure transactions",
+      "Admin dashboard for fleet management and business analytics",
+      "Mobile-responsive design for all devices and screen sizes",
+      "Corporate travel booking and management system",
+      "Driver mobile app for real-time updates and navigation"
     ],
     results: [
-      { metric: "Booking Conversion", value: "40%", description: "Increase in online bookings" },
-      { metric: "Customer Satisfaction", value: "4.8/5", description: "Average customer rating" },
-      { metric: "Response Time", value: "<1s", description: "Average booking response time" },
-      { metric: "Revenue Growth", value: "60%", description: "Year-over-year revenue increase" }
+      { metric: "Booking Conversion", value: "40%", description: "Increase in online limousine bookings" },
+      { metric: "Customer Satisfaction", value: "4.8/5", description: "Average customer rating for limo services" },
+      { metric: "Response Time", value: "<1s", description: "Average booking response time for transportation requests" },
+      { metric: "Revenue Growth", value: "60%", description: "Year-over-year revenue increase for limousine business" }
     ],
     screenshots: [limoImage, limoImage, limoImage],
     lessonsLearned: [
-      "Real-time features require careful state management",
-      "Payment integration needs robust error handling",
-      "Mobile-first design is essential for booking platforms",
-      "User experience directly impacts conversion rates",
-      "Collaborating with non-technical clients requires clear communication and extra focus on usability"
+      "Real-time features require careful state management for transportation booking systems",
+      "Payment integration needs robust error handling for high-value limousine bookings",
+      "Mobile-first design is essential for booking platforms and transportation services",
+      "User experience directly impacts conversion rates in luxury transportation",
+      "Collaborating with non-technical clients requires clear communication and extra focus on usability",
+      "Transportation technology requires reliable real-time communication systems"
     ],
     liveUrl: "https://1800limo.com",
     duration: "3 years",
     teamSize: "4 developers",
     category: "featured",
-    role: "Senior Developer & Project Manager"
+    role: "Senior Developer & Project Manager",
+    seoKeywords: ["1800limo", "limousine booking", "transportation technology", "limo booking system", "luxury transportation", "corporate travel", "limousine services", "transportation booking platform", "limo app", "chauffeur services"]
   },  
   {
     id: 'gitmate',

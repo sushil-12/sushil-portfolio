@@ -1,155 +1,271 @@
-// Structured Data for Better AI Overview Visibility
-export const generateStructuredData = (page: string, data?: any) => {
-  const baseUrl = 'https://sushilhub.com';
-  const currentDate = new Date().toISOString();
+import { seoConfig } from './seo';
+import { caseStudies } from '../data/caseStudies';
 
-  switch (page) {
+// Generate structured data for different page types
+export const generateStructuredData = (pageType: string, data?: any) => {
+  const baseStructuredData = {
+    ...seoConfig.structuredData
+  };
+
+  switch (pageType) {
     case 'homepage':
       return {
-        "@context": "https://schema.org",
+        ...baseStructuredData,
         "@type": "Person",
-        "name": "Sushil Kumar",
-        "jobTitle": "Full Stack Developer & Software Engineer",
-        "description": "Full Stack Developer specializing in React.js, Node.js, Next.js, TypeScript, and AWS. Building scalable web applications and modern digital solutions.",
-        "url": baseUrl,
-        "image": `${baseUrl}/src/assets/dark-logo.png`,
-        "sameAs": [
-          "https://github.com/sushilkumar",
-          "https://linkedin.com/in/sushilkumar",
-          "https://twitter.com/sushilkumar"
-        ],
-        "knowsAbout": [
-          "React.js",
-          "Node.js", 
-          "Next.js",
-          "TypeScript",
-          "JavaScript",
-          "AWS",
-          "Full Stack Development",
-          "Web Development",
-          "Software Engineering",
-          "Frontend Development",
-          "Backend Development"
-        ],
         "hasOccupation": {
           "@type": "Occupation",
           "name": "Full Stack Developer",
-          "description": "Developing end-to-end web applications using modern technologies"
+          "description": "Developing web applications and digital solutions for enterprises and startups"
         },
-        "alumniOf": {
+        "worksFor": {
           "@type": "Organization",
-          "name": "Sushil Hub"
-        }
+          "name": "Sushil Hub",
+          "url": "https://sushilhub.com",
+          "sameAs": [
+            "https://www.linkedin.com/company/sushilhub/"
+          ]
+        },
+        "hasCredential": [
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Full Stack Development",
+            "description": "React, Node.js, TypeScript, JavaScript expertise"
+          }
+        ]
       };
 
     case 'blog':
       return {
-        "@context": "https://schema.org",
+        ...baseStructuredData,
         "@type": "Blog",
         "name": "Sushil Hub Blog",
-        "description": "Technical blog about web development, React, TypeScript, and software engineering best practices",
-        "url": `${baseUrl}/blog`,
+        "description": "Technical articles and insights on web development, React, Node.js, and modern technologies",
+        "url": "https://sushilhub.com/blog",
         "author": {
           "@type": "Person",
           "name": "Sushil Kumar",
-          "url": baseUrl
+          "url": "https://sushilhub.com"
         },
         "publisher": {
           "@type": "Organization",
           "name": "Sushil Hub",
-          "url": baseUrl
-        },
-        "inLanguage": "en-US",
-        "dateModified": currentDate
+          "url": "https://sushilhub.com"
+        }
       };
 
     case 'blog-post':
       return {
-        "@context": "https://schema.org",
+        ...baseStructuredData,
         "@type": "BlogPosting",
-        "headline": data.title,
-        "description": data.excerpt,
-        "image": data.image ? `${baseUrl}${data.image}` : `${baseUrl}/src/assets/dark-logo.png`,
-        "datePublished": data.date,
-        "dateModified": data.date,
+        "headline": data?.title || "Blog Post",
+        "description": data?.description || "Technical article by Sushil Kumar",
+        "url": data?.url || "https://sushilhub.com/blog",
+        "datePublished": data?.datePublished || new Date().toISOString(),
+        "dateModified": data?.dateModified || new Date().toISOString(),
         "author": {
           "@type": "Person",
           "name": "Sushil Kumar",
-          "url": baseUrl
+          "url": "https://sushilhub.com"
         },
         "publisher": {
           "@type": "Organization",
           "name": "Sushil Hub",
-          "url": baseUrl
-        },
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": `${baseUrl}/blog/${data.id}`
-        },
-        "articleSection": data.category,
-        "keywords": data.tags.join(', '),
-        "wordCount": data.content.split(' ').length,
-        "timeRequired": data.readTime,
-        "inLanguage": "en-US"
+          "url": "https://sushilhub.com"
+        }
       };
 
     case 'about':
       return {
-        "@context": "https://schema.org",
+        ...baseStructuredData,
         "@type": "AboutPage",
-        "name": "About Sushil Kumar - Full Stack Developer",
-        "description": "Learn about Sushil Kumar's journey as a Full Stack Developer, his expertise in modern web technologies, and his passion for building innovative digital solutions.",
-        "url": `${baseUrl}/about`,
         "mainEntity": {
           "@type": "Person",
           "name": "Sushil Kumar",
           "jobTitle": "Full Stack Developer & Software Engineer",
-          "description": "Passionate full-stack developer with expertise in React.js, Node.js, TypeScript, and AWS. Building scalable web applications and modern digital solutions.",
-          "knowsAbout": [
-            "React.js",
-            "Node.js",
-            "TypeScript", 
-            "JavaScript",
-            "AWS",
-            "Full Stack Development",
-            "Web Development",
-            "Software Engineering"
-          ]
+          "description": "Experienced developer specializing in React, Node.js, TypeScript, and modern web technologies. Developer of 1800limo.com and other enterprise solutions.",
+          "url": "https://sushilhub.com",
+          "sameAs": seoConfig.structuredData.sameAs
         }
       };
 
     case 'services':
       return {
-        "@context": "https://schema.org",
+        ...baseStructuredData,
         "@type": "Service",
-        "name": "Full Stack Web Development Services",
-        "description": "Professional web development services including React.js applications, Node.js backends, TypeScript development, and AWS deployment solutions.",
+        "name": "Full Stack Development Services",
+        "description": "Professional web development services including React, Node.js, TypeScript, and modern web technologies",
         "provider": {
           "@type": "Person",
           "name": "Sushil Kumar",
-          "url": baseUrl
+          "url": "https://sushilhub.com"
         },
         "serviceType": "Web Development",
         "areaServed": "Worldwide",
-        "availableChannel": {
-          "@type": "ServiceChannel",
-          "serviceUrl": `${baseUrl}/contact`
-        },
-        "offers": {
-          "@type": "Offer",
-          "description": "Full Stack Web Development Services",
-          "priceCurrency": "USD"
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Development Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "React Development",
+                "description": "Custom React applications and components"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Node.js Backend Development",
+                "description": "Scalable server-side applications"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Full Stack Solutions",
+                "description": "Complete web application development"
+              }
+            }
+          ]
+        }
+      };
+
+    case 'contact':
+      return {
+        ...baseStructuredData,
+        "@type": "ContactPage",
+        "mainEntity": {
+          "@type": "Person",
+          "name": "Sushil Kumar",
+          "email": seoConfig.email,
+          "url": "https://sushilhub.com",
+          "sameAs": seoConfig.structuredData.sameAs
         }
       };
 
     default:
-      return null;
+      return baseStructuredData;
   }
 };
 
-// Generate JSON-LD script tag
-export const generateJsonLdScript = (structuredData: any) => {
+// Generate structured data for projects/case studies
+export const generateProjectStructuredData = (projectId: string) => {
+  const project = caseStudies.find(p => p.id === projectId);
+  if (!project) return null;
+
   return {
-    __html: JSON.stringify(structuredData, null, 2)
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": project.title,
+    "description": project.overview,
+    "url": project.liveUrl,
+    "creator": {
+      "@type": "Person",
+      "name": "Sushil Kumar",
+      "url": "https://sushilhub.com"
+    },
+    "dateCreated": "2023-01-01", // You can add actual dates to case studies
+    "keywords": project.technologies.join(", "),
+    "about": {
+      "@type": "Thing",
+      "name": project.tagline
+    },
+    "workExample": {
+      "@type": "SoftwareApplication",
+      "name": project.title,
+      "url": project.liveUrl,
+      "applicationCategory": "WebApplication",
+      "operatingSystem": "Web Browser"
+    }
+  };
+};
+
+// Generate organization structured data for SushilHub
+export const generateOrganizationStructuredData = () => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "SushilHub",
+    "alternateName": "Sushil Hub",
+    "url": "https://sushilhub.com",
+    "logo": "https://sushilhub.com/light-logo.png",
+    "description": "Professional software development company specializing in React, Node.js, TypeScript, and modern web technologies. Developer of 1800limo.com limousine booking platform and enterprise solutions.",
+    "foundingDate": "2020",
+    "founder": {
+      "@type": "Person",
+      "name": "Sushil Kumar",
+      "jobTitle": "Full Stack Developer & Software Engineer",
+      "url": "https://sushilhub.com",
+      "sameAs": [
+        "https://linkedin.com/in/sushil-maurya-6256b4154/",
+        "https://github.com/sushil-12"
+      ]
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/sushilhub/",
+      "https://linkedin.com/in/sushil-maurya-6256b4154/",
+      "https://github.com/sushil-12"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": seoConfig.email,
+      "contactType": "Business Inquiries",
+      "availableLanguage": "English"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "US"
+    },
+    "knowsAbout": [
+      "React Development",
+      "Node.js Development", 
+      "TypeScript",
+      "JavaScript",
+      "Web Development",
+      "Full Stack Development",
+      "Limousine Booking Systems",
+      "Transportation Technology",
+      "E-commerce Development",
+      "AI Development",
+      "WordPress VIP",
+      "Limo Booking",
+      "Software Development",
+      "Digital Solutions",
+      "Corporate Travel",
+      "Luxury Transportation"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Software Development Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Transportation Technology Development",
+            "description": "Custom limousine booking platforms and transportation management systems like 1800limo.com"
+          }
+        },
+        {
+          "@type": "Offer", 
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Full Stack Web Development",
+            "description": "React, Node.js, TypeScript applications for enterprises and startups"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service", 
+            "name": "E-commerce Solutions",
+            "description": "Custom e-commerce platforms and online marketplaces"
+          }
+        }
+      ]
+    }
   };
 };

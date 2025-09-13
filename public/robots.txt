@@ -7,6 +7,14 @@ Sitemap: https://sushilhub.com/sitemap.xml
 # Crawl-delay
 Crawl-delay: 1
 
+# Allow all blog content
+Allow: /blog/
+Allow: /blog/*
+
 # Disallow admin or private areas (if any)
 # Disallow: /admin/
 # Disallow: /private/
+
+# Allow all static assets
+Allow: /assets/
+Allow: /dist/

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import DarkLogo from '../assets/dark-logo.png';
+import SEOHead from './SEOHead';
 import {
   Calendar,
   Clock,
@@ -143,6 +144,26 @@ const SingleBlogPost: React.FC<SingleBlogPostProps> = ({
 
   return (
     <div className="min-h-screen bg-neutral-50">
+      {/* SEO Head with Structured Data */}
+      <SEOHead
+        title={post.title}
+        description={post.excerpt}
+        ogImage={post.image}
+        canonicalUrl={`https://sushilhub.com/blog/${post.id}`}
+        pageType="blog-post"
+        structuredData={{
+          title: post.title,
+          excerpt: post.excerpt,
+          date: post.date,
+          image: post.image,
+          category: post.category,
+          tags: post.tags,
+          content: post.content,
+          readTime: post.readTime,
+          id: post.id
+        }}
+      />
+      
       {/* Back to Blog Button */}
       <div className="bg-white border-b border-neutral-200">
         <div className="max-w-7xl mx-auto px-6 py-4">

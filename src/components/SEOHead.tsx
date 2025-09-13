@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { seoConfig } from '../config/seo';
+import { generateStructuredData } from '../config/structured-data';
 
 interface SEOHeadProps {
   title?: string;
@@ -7,6 +8,8 @@ interface SEOHeadProps {
   ogImage?: string;
   canonicalUrl?: string;
   noIndex?: boolean;
+  pageType?: 'homepage' | 'blog' | 'blog-post' | 'about' | 'services' | 'contact';
+  structuredData?: any;
 }
 
 const SEOHead = ({ 
@@ -14,7 +17,9 @@ const SEOHead = ({
   description, 
   ogImage, 
   canonicalUrl,
-  noIndex = false 
+  noIndex = false,
+  pageType = 'homepage',
+  structuredData
 }: SEOHeadProps) => {
   const pageTitle = title ? `${title} | ${seoConfig.title}` : seoConfig.title;
   const pageDescription = description || seoConfig.description;
@@ -83,13 +88,14 @@ const SEOHead = ({
     canonical.href = pageUrl;
 
     // Structured Data
+    const pageStructuredData = structuredData || generateStructuredData(pageType, { title, description, ...structuredData });
     let structuredDataScript = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
     if (!structuredDataScript) {
       structuredDataScript = document.createElement('script');
       structuredDataScript.type = 'application/ld+json';
       document.head.appendChild(structuredDataScript);
     }
-    structuredDataScript.textContent = JSON.stringify(seoConfig.structuredData);
+    structuredDataScript.textContent = JSON.stringify(pageStructuredData);
 
   }, [pageTitle, pageDescription, pageOgImage, pageUrl, noIndex]);
 

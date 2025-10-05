@@ -6,6 +6,7 @@ import Services from './components/Services';
 import ContactPage from './components/ContactPage';
 import BlogPage from './components/BlogPage';
 import BlogPostPage from './components/BlogPostPage';
+import ExternalBlogReader from './components/ExternalBlogReader';
 import NotFound from './components/NotFound';
 import Footer from './components/Footer';
 import FloatingBusinessCardButton from './components/FloatingBusinessCardButton';
@@ -29,6 +30,7 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:id" element={<BlogPostPage />} />
+          <Route path="/external-blog/:id" element={<ExternalBlogReader />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <FloatingBusinessCardButton />

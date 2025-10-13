@@ -133,6 +133,8 @@ const ProjectCard: React.FC<{ project: Project; index: number; onCaseStudyClick:
     const titleLower = title.toLowerCase();
     if (titleLower.includes('wpvip')) return wpvipImage;
     if (titleLower.includes('1800limo')) return limoImage;
+    if (titleLower.includes('limo')) return limoImage;
+
     if (titleLower.includes('metahub') || titleLower.includes('meta')) return metaImage;
     if (titleLower.includes('hegroup')) return hegroupImage;
     if (titleLower.includes('pups4sale')) return pups4saleImage;
@@ -145,7 +147,7 @@ const ProjectCard: React.FC<{ project: Project; index: number; onCaseStudyClick:
   };
 
   const projectImage = getProjectImage(project.title);
-
+  console.log("LIMO", getProjectImage('limo'))
   const handleCaseStudyClick = () => {
     if (project.caseStudyId) {
       onCaseStudyClick(project.caseStudyId);

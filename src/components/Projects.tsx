@@ -8,6 +8,7 @@ import { getCaseStudyById } from '../data/caseStudies';
 // Import project images
 import wpvipImage from '../assets/project/wpvip.png';
 import limoImage from '../assets/project/1800limo.png';
+import limoImage2 from '../assets/project/limo.png';
 import metaImage from '../assets/project/meta.jpg';
 import hegroupImage from '../assets/project/hegroup.png';
 import pups4saleImage from '../assets/project/pups4sale.png';
@@ -133,7 +134,7 @@ const ProjectCard: React.FC<{ project: Project; index: number; onCaseStudyClick:
     const titleLower = title.toLowerCase();
     if (titleLower.includes('wpvip')) return wpvipImage;
     if (titleLower.includes('1800limo')) return limoImage;
-    if (titleLower.includes('limo')) return limoImage;
+    if (titleLower.includes('limo')) return limoImage2;
 
     if (titleLower.includes('metahub') || titleLower.includes('meta')) return metaImage;
     if (titleLower.includes('hegroup')) return hegroupImage;
@@ -147,7 +148,7 @@ const ProjectCard: React.FC<{ project: Project; index: number; onCaseStudyClick:
   };
 
   const projectImage = getProjectImage(project.title);
-  console.log("LIMO", getProjectImage('limo'))
+  console.log("LIMO", getProjectImage('limo'));
   const handleCaseStudyClick = () => {
     if (project.caseStudyId) {
       onCaseStudyClick(project.caseStudyId);

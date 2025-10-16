@@ -14,6 +14,8 @@ import SEOHead from './components/SEOHead';
 import Analytics from './components/Analytics';
 import CookieConsent from './components/CookieConsent';
 import ScrollToTop from './components/ScrollToTop';
+import SampleWorks from './components/SampleWorks';
+import FloatingChatbot from './components/GeminiChatbot';
 
 function App() {
   return (
@@ -28,12 +30,14 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/samples" element={<SampleWorks />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:id" element={<BlogPostPage />} />
           <Route path="/external-blog/:id" element={<ExternalBlogReader />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <FloatingBusinessCardButton />
+        <FloatingChatbot />
         <Footer />
       </main>
       <CookieConsent />
